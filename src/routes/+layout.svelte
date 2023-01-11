@@ -9,8 +9,9 @@
 
 	$slides = [
 		{ route: '/', title: 'Introduction' },
-		{ route: '/01-animations', title: 'Animations with Animate.CSS' },
-		{ route: '/02-lottie', title: 'Lottie-Player' }
+		{ route: '/example/01-animations', title: 'Animations with Animate.CSS' },
+		{ route: '/example/02-lottie', title: 'Lottie-Player' },
+		{ route: '/example/03-animate-tailwind', title: 'Tailwind Transitions' }
 	];
 </script>
 

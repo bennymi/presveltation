@@ -17,6 +17,7 @@ specifiers:
   prettier-plugin-svelte: ^2.8.1
   svelte: ^3.54.0
   svelte-check: ^2.9.2
+  svelte-transition: ^0.0.7
   tailwindcss: ^3.2.4
   tslib: ^2.4.1
   typescript: ^4.9.3
@@ -27,6 +28,7 @@ dependencies:
   '@lottiefiles/lottie-player': 1.6.3
   animate.css: 4.1.1
   iconify-icon: 1.0.2
+  svelte-transition: 0.0.7
 
 devDependencies:
   '@sveltejs/adapter-auto': 1.0.0_@sveltejs+kit@1.0.11
@@ -1980,6 +1982,10 @@ packages:
       svelte: 3.55.1
       typescript: 4.9.4
     dev: true
+
+  /svelte-transition/0.0.7:
+    resolution: {integrity: sha512-YMbl+eIkzeYKBz6E/I8KI8RMezhqB38t2B/Mx8BotmtiN+5wnKath7CWDc+8U9zKGJ/iUYHmx4MwQjIzo05nVg==}
+    dev: false
 
   /svelte/3.55.1:
     resolution: {integrity: sha512-S+87/P0Ve67HxKkEV23iCdAh/SX1xiSfjF1HOglno/YTbSTW7RniICMCofWGdJJbdjw3S+0PfFb1JtGfTXE0oQ==}

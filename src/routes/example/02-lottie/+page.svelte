@@ -6,7 +6,7 @@
 <!-- <div class="flex justify-evenly items-center bg-teal-800 min-h-screen"> -->
 <div class="bg-gray-800 grid grid-cols-2 items-center min-h-screen max-h-screen">
 	<div class="w-2/3 mx-auto">
-		<lottie-player autoplay loop src="lottieEvaporation.json" />
+		<lottie-player autoplay loop src="/lottieEvaporation.json" />
 	</div>
 	<div class="flex flex-col text-white flex-wrap items-center px-12">
 		<h1 class="font-sans font-black text-7xl tracking-tight mx-auto my-8 leading-none">

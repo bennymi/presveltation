@@ -9,8 +9,10 @@
 	onMount(() => {
 		// Update currSlide to correct value based on the current route
 		$slides.forEach((slide, i) => {
+			console.log($page.route.id);
 			if (slide.route === $page.route.id) {
 				currSlide = i;
+				console.log('currSlide', slide.route);
 			}
 		});
 	});
@@ -34,17 +36,16 @@
 			}
 		} else if (key === 'ArrowLeft') {
 			event.preventDefault();
-			if (currSlide != 0) {
+			// if (currSlide != 0) {
+			// 	currSlide -= 1;
+			// 	updateSlide();
+			// }
+			if ($currStep > 0) {
+				$currStep -= 1;
+			} else if ($currStep === 0 && currSlide != 0) {
 				currSlide -= 1;
 				updateSlide();
 			}
-			// if ($currStep > 0) {
-			// 	$currStep -= 1;
-			// } else if ($currStep === 0 && currSlide != 0) {
-			// 	$currStep = 0;
-			// 	currSlide -= 1;
-			// 	goto(slides[currSlide].route);
-			// }
 		} else if (key === 'b') {
 			event.preventDefault();
 			$currStep = 0;

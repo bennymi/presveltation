@@ -4,7 +4,7 @@
 
 <div class="flex items-center justify-center content-center w-screen h-screen">
 	<div class="animate__animated step-0:animate__fadeInLeft" use:addStepAnimation>
-		<img src="14.svg" alt="figure-1" class="h-2/3 m-auto" />
+		<img src="/14.svg" alt="figure-1" class="h-2/3 m-auto" />
 	</div>
 	<div class="animate__animated step-0:animate__fadeInUp" use:addStepAnimation>
 		<p class="font-sans font-bold text-sm text-blue-600 tracking-widest uppercase">Feature</p>

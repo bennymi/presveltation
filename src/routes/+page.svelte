@@ -35,7 +35,7 @@
 		</a>
 		<a
 			href={'/'}
-			class="font-sans text-lg leading-relaxed font-semibold text-gray-600 hover:text-gray-700 flex justify-center items-center gap-1"
+			class="font-sans text-lg leading-relaxed font-semibold text-gray-800 hover:text-gray-900 flex justify-center items-center gap-1"
 		>
 			<iconify-icon icon="mdi:book-open-page-variant" class="text-2xl" />
 			Documentation
