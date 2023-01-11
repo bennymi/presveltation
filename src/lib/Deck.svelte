@@ -9,10 +9,8 @@
 	onMount(() => {
 		// Update currSlide to correct value based on the current route
 		$slides.forEach((slide, i) => {
-			console.log($page.route.id);
 			if (slide.route === $page.route.id) {
 				currSlide = i;
-				console.log('currSlide', slide.route);
 			}
 		});
 	});

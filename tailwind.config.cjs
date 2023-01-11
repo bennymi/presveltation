@@ -5,4 +5,15 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /duration-\d+/
+    },
+    {
+      pattern: /opacity-\d+/
+    },
+    {
+      pattern: /scale-\d+/
+    }
+],
 }
