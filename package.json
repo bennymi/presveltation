@@ -36,6 +36,7 @@
 	"dependencies": {
 		"@lottiefiles/lottie-player": "^1.6.3",
 		"animate.css": "^4.1.1",
+		"highlight.js": "^11.7.0",
 		"iconify-icon": "^1.0.2",
 		"svelte-transition": "^0.0.7"
 	}
