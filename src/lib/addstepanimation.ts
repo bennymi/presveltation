@@ -6,6 +6,13 @@ type Animation = {
     end: number | null;
     class: string;       
 }
+
+// type Tailwind = {
+//     n: number;
+//     class: string;
+// }
+
+// export function addStepAnimation(node: HTMLElement, tailwindStep: Tailwind[] | null=null) {
 export function addStepAnimation(node: HTMLElement) {
     let step: number = 0;
     let unsubscribe: Unsubscriber;
@@ -77,6 +84,11 @@ export function addStepAnimation(node: HTMLElement) {
         updateActiveClasses();
         addActiveClasses();
         // logEverything();
+
+        // if (tailwindStep && step === tailwindStep[0].n) {
+        //     console.log('tailwindStep:', tailwindStep);
+        //     node.classList.add('scale-125');
+        // }
     }
 
     const onInit = () => {
