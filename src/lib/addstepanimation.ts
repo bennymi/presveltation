@@ -7,13 +7,12 @@ type Animation = {
     class: string;       
 }
 
-// type Tailwind = {
-//     n: number;
-//     class: string;
-// }
+type Tailwind = {
+    step: string;
+    classes: string;
+}
 
-// export function addStepAnimation(node: HTMLElement, tailwindStep: Tailwind[] | null=null) {
-export function addStepAnimation(node: HTMLElement) {
+export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | null=null) {
     let step: number = 0;
     let unsubscribe: Unsubscriber;
 	let initialClasses: string[] = [];
@@ -43,8 +42,22 @@ export function addStepAnimation(node: HTMLElement) {
                 start: parseInt(range[1]),
                 end: range.length === 3 ? parseInt(range[2]) : null,
                 class: parts[1]
-            }
+            };
             stepAnimations = [...stepAnimations, animation];
+        });
+
+        // Add the steps that were passed as an argument.
+        tailwindSteps?.forEach((v) => {
+            const range: string[] = v.step.split('-');
+            const classes: string[] = v.classes.split(' ');
+            classes.forEach((v) => {
+                const animation: Animation = {
+                    start: parseInt(range[0]),
+                    end: range.length === 2 ? parseInt(range[1]) : null,
+                    class: v
+                };
+                stepAnimations = [...stepAnimations, animation];
+            });
         });
     }
 
@@ -84,11 +97,6 @@ export function addStepAnimation(node: HTMLElement) {
         updateActiveClasses();
         addActiveClasses();
         // logEverything();
-
-        // if (tailwindStep && step === tailwindStep[0].n) {
-        //     console.log('tailwindStep:', tailwindStep);
-        //     node.classList.add('scale-125');
-        // }
     }
 
     const onInit = () => {
