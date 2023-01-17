@@ -24,13 +24,14 @@
 	// Local
 	let formatted = false;
 	let displayCode: string = code;
+	let lines: number;
 
 	// Trigger syntax highlighting if highlight.js is available
 	$: if ($storeHighlightJs) {
 		console.log('highlight js code');
 		console.log($storeHighlightJs.highlight(code, { language }));
 		displayCode = $storeHighlightJs.highlight(code, { language }).value;
-		console.log('# LINES =', displayCode.split(/\r\n|\r|\n/).length);
+		lines = displayCode.split(/\r\n|\r|\n/).length;
 		formatted = true;
 	}
 
@@ -39,13 +40,20 @@
 
 <div class={classesBase}>
 	<!-- <pre class="whitespace-pre-wrap break-all p-4 pt-1"> -->
-	<pre class="">
-        <code class="language-{language}">
-            {#if formatted}
-				{@html displayCode}
-			{:else}
-				{code.trim()}
-			{/if}
-        </code>
-    </pre>
+	<div class="grid grid-cols-12">
+		<div class="col-span-1">
+			{#each [...Array(lines + 1).keys()] as line}
+				<div>{line}</div>
+			{/each}
+		</div>
+		<pre class="col-span-11">
+                <code class="language-{language}">
+                    {#if formatted}
+					{@html displayCode}
+				{:else}
+					{code.trim()}
+				{/if}
+                </code>
+            </pre>
+	</div>
 </div>
