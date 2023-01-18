@@ -16,7 +16,7 @@
 	/** Provide lines that should be highlighted. Should be a string, e.g.: '1-5, 8, 10-12, 42'. */
 	export let highlightLines: string = '';
 	/** Provide lines that should be collapsed. Only accepts ranges, e.g.: '1-5, 10-13'. */
-	// export let collapseLines: string = '';
+	export let collapseLines: string = '';
 	/** TODO */
 	// export let addedLines: string = '';
 	/** TODO */
@@ -66,7 +66,7 @@
 	let displayCode: string = hljs.highlight(code, { language }).value.trim();
 	let copyState = false;
 	let highlightedLinesList: number[] = [];
-	// let collapsedLinesList: CollapsedRange[] = [];
+	let collapsedLinesList: CollapsedRange[] = [];
 	let blur = focusType === 'blur';
 
 	//
@@ -116,7 +116,7 @@
 		return false;
 	};
 
-	/* $: toggleCollapse = (line: number): void => {
+	$: toggleCollapse = (line: number): void => {
 		const index = collapsedLinesList.findIndex((range) => range.start === line);
 
 		if (index !== -1) {
@@ -127,16 +127,19 @@
 		}
 	};
 
-	$: collapseLine = (line: number): boolean => {
-		collapsedLinesList.forEach(({ start, end, show }) => {
-			if (line > start && line < end && !show) {
-				console.log('collapseLine', line);
-				return true;
-			}
-		});
+	$: isStartOfCollapsedCode = (line: number): CollapsedRange | null => {
+		const index = collapsedLinesList.findIndex(({ start, show }) => line === start && !show);
 
-		return false;
-	}; */
+		return index !== -1 ? collapsedLinesList[index] : null;
+	};
+
+	$: collapseLine = (line: number): boolean => {
+		const index = collapsedLinesList.findIndex(
+			({ start, end, show }) => line > start && line < end && !show
+		);
+
+		return index !== -1 ? true : false;
+	};
 
 	$: if (highlightLines) {
 		// Determine which lines should be highlighted.
@@ -156,11 +159,11 @@
 		});
 	}
 
-	/* $: if (collapseLines) {
+	$: if (collapseLines) {
 		// Determine which lines should be collapsed.
-		const splitHighlights: string[] = highlightLines.replace(/\s/g, '').split(',');
+		const splitCollapseRanges: string[] = collapseLines.replace(/\s/g, '').split(',');
 
-		splitHighlights.forEach((range) => {
+		splitCollapseRanges.forEach((range) => {
 			const splitRange: string[] = range.split('-');
 
 			if (splitRange.length === 2) {
@@ -170,12 +173,12 @@
 					show: false
 				};
 
+				console.log('range', range);
+
 				collapsedLinesList = [...collapsedLinesList, range];
 			}
 		});
-
-		console.log('collapseLines', collapsedLinesList);
-	} */
+	}
 
 	$: {
 		// Take the code and turn it into individual lines without losing the highlighting from hljs.
@@ -246,7 +249,9 @@
 				<!-- Lines -->
 				{#each lines as line, i}
 					<div
-						class="svelte-tailwind-line-{i} relative {applyHighlight(i) ? highlightColor : ''}"
+						class="svelte-tailwind-line-{i} relative {collapseLine(i)
+							? 'hidden'
+							: ''} {applyHighlight(i) ? highlightColor : ''}"
 						on:mouseenter={() => disableBlur(i)}
 						on:mouseleave={() => (blur = true)}
 					>
@@ -260,6 +265,11 @@
 									: 'text-white'}"
 							>
 								{i}
+								<div>
+									{#if isStartOfCollapsedCode(i)}
+										<iconify-icon icon="material-symbols:chevron-right-rounded" class="text-2xl" />
+									{/if}
+								</div>
 							</div>
 						{/if}
 						<!-- Code -->
