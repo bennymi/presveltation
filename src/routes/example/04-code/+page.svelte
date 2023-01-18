@@ -141,7 +141,7 @@
 	</h1>
 
 	<div
-		class="my-8 h-96 overflow-y-auto rounded-lg w-2/4 animate__animated step-0:animate__fadeInUp"
+		class="my-8 flex justify-center animate__animated step-0:animate__fadeInUp"
 		use:addStepAnimation
 	>
 		<CodeBlock

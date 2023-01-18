@@ -39,13 +39,16 @@
 	export let color: string = 'text-white';
 	/** Provided classes to set the border radius. */
 	export let rounded: string = 'rounded-lg';
-	/**  */
+	/** Provide classes to set dimensions of the code block. */
+	export let dimensions: string = 'max-h-96 max-w-3xl';
+	/** Provide classes to set highlight color. */
 	export let highlightColor: string = 'bg-gray-200/10';
 	/** Provided classes to set the button styles. */
 	// export let buttonCopy = 'bg-white/5 hover:bg-white/10';
 
 	// Base Classes
 	// const cBase = 'overflow-hidden shadow';
+	// const cBase = 'max-h-96 max-w-lg';
 	const cBase = '';
 	const cHeader = 'text-xs uppercase flex justify-between items-center p-2 pl-4';
 	// const cPre = 'whitespace-pre-wrap break-all p-4 pt-1';
@@ -207,11 +210,13 @@
 	}
 
 	// Reactive
-	$: classesBase = `${cBase} ${background} ${text} ${color} ${rounded} ${$$props.class ?? ''}`;
+	$: classesBase = `${cBase} ${dimensions} ${background} ${text} ${color} ${rounded} ${
+		$$props.class ?? ''
+	}`;
 </script>
 
 {#if language && code}
-	<div class="code-block overflow-auto {classesBase}">
+	<div class="code-block flex flex-col {classesBase}">
 		<!-- Header -->
 		{#if showHeader}
 			<header class="code-block-header {cHeader} {rounded} {background}">
@@ -220,7 +225,7 @@
 
 				<!-- Copy Button -->
 				<button
-					class="code-block-btn px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20"
+					class="code-block-btn px-2 py-1 rounded-lg text-white/60 bg-white/10 hover:bg-white/20"
 					on:click={onCopyClick}
 					use:clipboard={code}
 				>
@@ -237,7 +242,7 @@
 
 		<!-- Code display block -->
 		{#if lines.length > 0}
-			<div class="p-4 pt-1">
+			<div class="overflow-y-auto p-2">
 				<!-- Lines -->
 				{#each lines as line, i}
 					<div
@@ -248,7 +253,7 @@
 						<!-- Line Numbers -->
 						{#if showLineNumbers}
 							<div
-								class="absolute select-none w-7 pr-2 font-mono border-r-2 text-right border-gray-400 transition-all duration-300 ease-in {applyBlur(
+								class="absolute select-none w-10 pr-2 font-mono border-r-2 text-right border-gray-400 transition-all duration-300 ease-in {applyBlur(
 									i
 								)
 									? 'text-gray-500'
@@ -259,11 +264,12 @@
 						{/if}
 						<!-- Code -->
 						<div
-							class="transition-all pl-10 duration-300 ease-in {applyBlur(i)
+							class="transition-all pl-12 duration-300 ease-in {applyBlur(i)
 								? 'blur-[0.095rem] opacity-60'
 								: ''}"
 						>
-							<pre class=""><code class="language-{language}">{@html line}</code></pre>
+							<pre class="whitespace-pre"><code class="language-{language}">{@html line}</code
+								></pre>
 						</div>
 					</div>
 				{/each}
