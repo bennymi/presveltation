@@ -10,44 +10,59 @@
 
 	// Props
 	/** Sets a language alias for Highlight.js syntax highlighting. */
-	export let language = 'plaintext';
+	export let language: string = 'plaintext';
 	/** Provide the code to render. Be mindful to escape as needed! */
-	export let code = '';
-
-	export let highlightLines: number[] = [1, 2, 3, 4];
+	export let code: string = '';
+	/** Provide lines that should be highlighted. Should be a string, e.g.: '1-5, 8, 10-12, 42'. */
+	export let highlightLines: string = '';
+	/** Provide lines that should be collapsed. Only accepts ranges, e.g.: '1-5, 10-13'. */
+	export let collapseLines: string = '';
+	/** TODO */
+	export let addedLines: string = '';
+	/** TODO */
+	export let removedLines: string = '';
+	/** Set focus type. */
+	export let focusType: 'blur' | 'highlight' = 'blur';
+	/** Show header. */
+	export let showHeader: boolean = false;
+	/** Set header text. Is the same as the language by default. */
+	export let headerText: string = language;
+	/** Show line numbers. */
+	export let showLineNumbers: boolean = true;
 
 	// Props (styles)
 	/** Provided classes to set the background color. */
-	export let background = 'bg-gray-900'; // 'bg-[#141517]';
+	export let background: string = 'bg-gray-900'; // 'bg-[#141517]';
 	/** Provided classes to set the text size. */
-	export let text = 'text-sm';
+	export let text: string = 'text-sm';
 	/** Provided classes to set the text color. */
-	export let color = 'text-white';
+	export let color: string = 'text-white';
 	/** Provided classes to set the border radius. */
-	export let rounded = 'rounded-lg';
+	export let rounded: string = 'rounded-lg';
+	/**  */
+	export let highlightColor: string = 'bg-gray-200/10';
 	/** Provided classes to set the button styles. */
 	// export let buttonCopy = 'bg-white/5 hover:bg-white/10';
 
 	// Base Classes
-	const cBase = 'overflow-hidden shadow';
+	// const cBase = 'overflow-hidden shadow';
+	const cBase = '';
 	const cHeader = 'text-xs uppercase flex justify-between items-center p-2 pl-4';
 	// const cPre = 'whitespace-pre-wrap break-all p-4 pt-1';
-	const cPre = 'whitespace-pre-wrap break-all';
+	// const cPre = 'whitespace-pre-wrap break-all';
+	const cPre = '';
 
 	// Local
 	let displayCode: string = hljs.highlight(code, { language }).value.trim();
 	let copyState = false;
+	let highlightedLinesList: number[] = [];
+	let collapsedLinesList: number[] = [];
+	let blur = focusType === 'blur';
 
 	//
 	let preElement: HTMLElement | null = null;
 	let lineElement: HTMLElement | null = null;
 	let lines: string[] = [];
-
-	// Allow shorthand 'js' alias for Javascript
-	function languageFormatter(lang: string): string {
-		if (lang === 'js') return 'javascript';
-		return lang;
-	}
 
 	// Handle Copy Text
 	function onCopyClick() {
@@ -59,15 +74,61 @@
 		dispatch('copy', {});
 	}
 
+	const arrayRange = (start: number, stop: number) =>
+		Array.from({ length: stop - start }, (value, index) => start + index);
+
+	// Handle hover
+	$: disableBlur = (line: number) => {
+		if (focusType === 'blur' && highlightedLinesList.indexOf(line) === -1) {
+			blur = false;
+		}
+	};
+
+	// Check if blur should be applied to line
+	$: applyBlur = (line: number): boolean => {
+		if (
+			focusType === 'blur' &&
+			blur &&
+			highlightedLinesList.length > 0 &&
+			highlightedLinesList.indexOf(line) === -1
+		) {
+			return true;
+		}
+
+		return false;
+	};
+
+	$: applyHighlight = (line: number): boolean => {
+		if (focusType === 'highlight' && highlightedLinesList.indexOf(line) !== -1) {
+			return true;
+		}
+
+		return false;
+	};
+
+	$: if (highlightLines) {
+		const splitHighlights: string[] = highlightLines.replace(/\s/g, '').split(',');
+
+		splitHighlights.forEach((range) => {
+			const splitRange: string[] = range.split('-');
+
+			if (splitRange.length === 2) {
+				highlightedLinesList = [
+					...highlightedLinesList,
+					...arrayRange(parseInt(splitRange[0]), parseInt(splitRange[1]) + 1)
+				];
+			} else {
+				highlightedLinesList = [...highlightedLinesList, parseInt(splitRange[0])];
+			}
+		});
+	}
+
 	$: {
 		if (browser) {
 			lineElement = document.createElement('div');
 
-			preElement?.childNodes.forEach((node, i) => {
-				// console.log(`${i} NODE:`, node);
-
+			preElement?.childNodes.forEach((node) => {
 				if (node.nodeName === 'SPAN' && node.innerHTML.includes('\n')) {
-					// console.log(`NODE ${i}:`, node);
 					const splitLines: string[] = node.innerHTML.split('\n');
 
 					splitLines.forEach((s, i) => {
@@ -87,9 +148,6 @@
 			});
 
 			lines = lineElement.innerHTML.split('\n');
-			/* console.log('LINE', lineElement);
-			console.log('LINE.innerHTML\n', lineElement.innerHTML);
-			console.log('LINES', lines); */
 		}
 	}
 
@@ -100,43 +158,53 @@
 {#if language && code}
 	<div class="code-block {classesBase}">
 		<!-- Header -->
-		<header class="code-block-header {cHeader} {background} sticky top-0">
-			<!-- Language -->
-			<span class="code-block-language text-white/60">{languageFormatter(language)}</span>
+		{#if showHeader}
+			<!-- <header class="code-block-header {cHeader} {background} sticky top-0"> -->
+			<header class="code-block-header {cHeader} {background}">
+				<!-- Language -->
+				<span class="code-block-language text-white/60">{headerText}</span>
 
-			<!-- Copy Button -->
-			<button
-				class="code-block-btn px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20"
-				on:click={onCopyClick}
-				use:clipboard={code}
-			>
-				{!copyState ? 'Copy' : 'Copied ✓'}
-			</button>
-		</header>
+				<!-- Copy Button -->
+				<button
+					class="code-block-btn px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20"
+					on:click={onCopyClick}
+					use:clipboard={code}
+				>
+					{!copyState ? 'Copy' : 'Copied ✓'}
+				</button>
+			</header>
+		{/if}
 
-		<!-- Pre/Code -->
-		<pre class="hidden {cPre}"><code
-				bind:this={preElement}
-				class="code-block-code language-{language}">{@html displayCode}</code
+		<!-- This element is hidden. We are only using it to bind it to a variable which has the correct childNodes of the code that should be displayed.
+		The other method of creating a new element with document.createElement('div') and setting the innerHTML of it did not work, so this is a hack. -->
+		<pre class="hidden"><code bind:this={preElement} class="code-block-code language-{language}"
+				>{@html displayCode}</code
 			></pre>
 
+		<!-- Code display block -->
 		{#if lines.length > 0}
 			<div class="p-4 pt-1">
 				{#each lines as line, i}
-					<div class="flex">
+					<div
+						class="svelte-tailwind-line-{i} flex {applyHighlight(i) ? highlightColor : ''}"
+						on:mouseenter={() => disableBlur(i)}
+						on:mouseleave={() => (blur = true)}
+					>
+						{#if showLineNumbers}
+							<div
+								class="select-none w-7 pr-2 font-mono border-r-2 text-right border-gray-400 transition-all duration-300 ease-in {applyBlur(
+									i
+								)
+									? 'text-gray-500'
+									: 'text-white'}"
+							>
+								{i}
+							</div>
+						{/if}
 						<div
-							class="select-none w-7 pr-2 font-mono border-r-2 text-right border-gray-400 {highlightLines.indexOf(
-								i
-							) !== -1
-								? 'text-white'
-								: 'text-gray-400'}"
-						>
-							{i}
-						</div>
-						<div
-							class="w-full {highlightLines.indexOf(i) !== -1
-								? ''
-								: 'blur-[0.095rem] opacity-60 select-none'}"
+							class="transition-all duration-300 ease-in {applyBlur(i)
+								? 'blur-[0.095rem] opacity-60'
+								: ''}"
 						>
 							<pre class="pl-2"><code class="language-{language}">{@html line}</code></pre>
 						</div>

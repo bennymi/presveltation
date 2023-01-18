@@ -1,12 +1,7 @@
 <script lang="ts">
-	// import Code from '$lib/CodeBlock/Code.svelte';
-	// import Highlight from '$lib/Highlight/Highlight.svelte';
-	// import LineNumbers from '$lib/Highlight/LineNumbers.svelte';
 	import CodeBlock from '$lib/code/CodeBlock.svelte';
 	// import '$lib/code/highlight.css';
-	// import Prism from '$lib/CodeBlock/Prism.svelte';
 
-	// import javascript from 'highlight.js/lib/languages/javascript';
 	import 'highlight.js/styles/base16/dracula.css';
 
 	import { addStepAnimation } from '$lib/addstepanimation';
@@ -142,23 +137,13 @@
 		Easily display code blocks
 	</h1>
 
-	<!-- <div class="my-4">
-		<Prism {code} language="javascript" />
-	</div> -->
 	<div class="my-8">
-		<CodeBlock language="typescript" {code} />
+		<CodeBlock
+			language="typescript"
+			{code}
+			highlightLines="4-10"
+			showHeader={true}
+			focusType="blur"
+		/>
 	</div>
-
-	<!-- <LineNumbers {highlighted} /> -->
-	<!-- <Highlight language={javascript} {code} let:highlighted>
-	</Highlight> -->
-
-	<!-- <div class="my-8">
-		<Code {code} language="typescript" />
-	</div> -->
-	<!-- <pre>
-        <code class="language-javascript">
-            {@html code}
-        </code>
-    </pre> -->
 </div>
