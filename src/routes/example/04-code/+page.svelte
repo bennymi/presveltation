@@ -133,15 +133,21 @@
 </script>
 
 <div class="flex flex-col justify-center items-center w-screen h-screen">
-	<h1 class="font-sans font-black text-neutral-900 text-5xl text-left mx-auto tracking-tighter">
+	<h1
+		class="font-sans font-black text-neutral-900 text-5xl text-left mx-auto tracking-tighter animate__animated step-0:animate__fadeInDown"
+		use:addStepAnimation
+	>
 		Easily display code blocks
 	</h1>
 
-	<div class="my-8">
+	<div
+		class="my-8 h-96 overflow-y-auto rounded-lg w-2/4 animate__animated step-0:animate__fadeInUp"
+		use:addStepAnimation
+	>
 		<CodeBlock
 			language="typescript"
-			{code}
-			highlightLines="4-10"
+			code={code2}
+			highlightLines="8-17"
 			showHeader={true}
 			focusType="blur"
 		/>

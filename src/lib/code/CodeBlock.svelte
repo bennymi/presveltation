@@ -16,11 +16,11 @@
 	/** Provide lines that should be highlighted. Should be a string, e.g.: '1-5, 8, 10-12, 42'. */
 	export let highlightLines: string = '';
 	/** Provide lines that should be collapsed. Only accepts ranges, e.g.: '1-5, 10-13'. */
-	export let collapseLines: string = '';
+	// export let collapseLines: string = '';
 	/** TODO */
-	export let addedLines: string = '';
+	// export let addedLines: string = '';
 	/** TODO */
-	export let removedLines: string = '';
+	// export let removedLines: string = '';
 	/** Set focus type. */
 	export let focusType: 'blur' | 'highlight' = 'blur';
 	/** Show header. */
@@ -52,11 +52,18 @@
 	// const cPre = 'whitespace-pre-wrap break-all';
 	const cPre = '';
 
+	// Type
+	type CollapsedRange = {
+		start: number;
+		end: number;
+		show: boolean;
+	};
+
 	// Local
 	let displayCode: string = hljs.highlight(code, { language }).value.trim();
 	let copyState = false;
 	let highlightedLinesList: number[] = [];
-	let collapsedLinesList: number[] = [];
+	// let collapsedLinesList: CollapsedRange[] = [];
 	let blur = focusType === 'blur';
 
 	//
@@ -106,7 +113,30 @@
 		return false;
 	};
 
+	/* $: toggleCollapse = (line: number): void => {
+		const index = collapsedLinesList.findIndex((range) => range.start === line);
+
+		if (index !== -1) {
+			collapsedLinesList[index] = {
+				...collapsedLinesList[index],
+				show: !collapsedLinesList[index].show
+			};
+		}
+	};
+
+	$: collapseLine = (line: number): boolean => {
+		collapsedLinesList.forEach(({ start, end, show }) => {
+			if (line > start && line < end && !show) {
+				console.log('collapseLine', line);
+				return true;
+			}
+		});
+
+		return false;
+	}; */
+
 	$: if (highlightLines) {
+		// Determine which lines should be highlighted.
 		const splitHighlights: string[] = highlightLines.replace(/\s/g, '').split(',');
 
 		splitHighlights.forEach((range) => {
@@ -123,7 +153,29 @@
 		});
 	}
 
+	/* $: if (collapseLines) {
+		// Determine which lines should be collapsed.
+		const splitHighlights: string[] = highlightLines.replace(/\s/g, '').split(',');
+
+		splitHighlights.forEach((range) => {
+			const splitRange: string[] = range.split('-');
+
+			if (splitRange.length === 2) {
+				const range: CollapsedRange = {
+					start: parseInt(splitRange[0]),
+					end: parseInt(splitRange[1]),
+					show: false
+				};
+
+				collapsedLinesList = [...collapsedLinesList, range];
+			}
+		});
+
+		console.log('collapseLines', collapsedLinesList);
+	} */
+
 	$: {
+		// Take the code and turn it into individual lines without losing the highlighting from hljs.
 		if (browser) {
 			lineElement = document.createElement('div');
 
@@ -141,13 +193,16 @@
 						}
 					});
 				} else {
+					// console.log('#text', node);
 					let newNode = node.cloneNode();
 					newNode.innerHTML = node.innerHTML;
 					lineElement.appendChild(newNode);
 				}
 			});
 
+			// Split element into array of lines and make sure that next lines characters that were removed by the split are not ignored (simply replace '' with ' ').
 			lines = lineElement.innerHTML.split('\n');
+			lines = lines.map((line) => (line === '' ? ' ' : line));
 		}
 	}
 
@@ -156,12 +211,11 @@
 </script>
 
 {#if language && code}
-	<div class="code-block {classesBase}">
+	<div class="code-block overflow-auto {classesBase}">
 		<!-- Header -->
 		{#if showHeader}
-			<!-- <header class="code-block-header {cHeader} {background} sticky top-0"> -->
-			<header class="code-block-header {cHeader} {background}">
-				<!-- Language -->
+			<header class="code-block-header {cHeader} {rounded} {background}">
+				<!-- Language Text -->
 				<span class="code-block-language text-white/60">{headerText}</span>
 
 				<!-- Copy Button -->
@@ -184,15 +238,17 @@
 		<!-- Code display block -->
 		{#if lines.length > 0}
 			<div class="p-4 pt-1">
+				<!-- Lines -->
 				{#each lines as line, i}
 					<div
-						class="svelte-tailwind-line-{i} flex {applyHighlight(i) ? highlightColor : ''}"
+						class="svelte-tailwind-line-{i} relative {applyHighlight(i) ? highlightColor : ''}"
 						on:mouseenter={() => disableBlur(i)}
 						on:mouseleave={() => (blur = true)}
 					>
+						<!-- Line Numbers -->
 						{#if showLineNumbers}
 							<div
-								class="select-none w-7 pr-2 font-mono border-r-2 text-right border-gray-400 transition-all duration-300 ease-in {applyBlur(
+								class="absolute select-none w-7 pr-2 font-mono border-r-2 text-right border-gray-400 transition-all duration-300 ease-in {applyBlur(
 									i
 								)
 									? 'text-gray-500'
@@ -201,12 +257,13 @@
 								{i}
 							</div>
 						{/if}
+						<!-- Code -->
 						<div
-							class="transition-all duration-300 ease-in {applyBlur(i)
+							class="transition-all pl-10 duration-300 ease-in {applyBlur(i)
 								? 'blur-[0.095rem] opacity-60'
 								: ''}"
 						>
-							<pre class="pl-2"><code class="language-{language}">{@html line}</code></pre>
+							<pre class=""><code class="language-{language}">{@html line}</code></pre>
 						</div>
 					</div>
 				{/each}
