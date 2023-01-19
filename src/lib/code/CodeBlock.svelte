@@ -6,10 +6,10 @@
 
 	const dispatch = createEventDispatcher();
 
-	// Props
-	/** Sets a language alias for Highlight.js syntax highlighting. */
+	// Props (functionality)
+	/** Set the Highlight.js language used for syntax highlighting. */
 	export let language: string = 'plaintext';
-	/** Provide the code to render. Be mindful to escape as needed! */
+	/** Provide the code as a string. */
 	export let code: string = '';
 	/** Provide lines that should be highlighted. Should be a string, e.g.: '1-5, 8, 10-12, 42'. */
 	export let highlightLines: string = '';
@@ -27,32 +27,20 @@
 	export let showLineNumbers: boolean = true;
 
 	// Props (styles)
-	/** Provided classes to set the background color. */
-	export let background: string = 'bg-gray-900'; // 'bg-[#141517]';
-	/** Provided classes to set the text size. */
+	/** Provide classes to set the background color. */
+	export let background: string = 'bg-gray-900';
+	/** Provide classes to set the text size. */
 	export let text: string = 'text-sm';
-	/** Provided classes to set the text color. */
+	/** Provide classes to set the text color. */
 	export let color: string = 'text-white';
-	/** Provided classes to set the border radius. */
+	/** Provide classes to set the border radius. */
 	export let rounded: string = 'rounded-lg';
 	/** Provide classes to set dimensions of the code block. */
 	export let dimensions: string = 'max-h-96 max-w-3xl';
 	/** Provide classes to set highlight color. */
 	export let highlightColor: string = 'bg-gray-200/10';
-	/** Provided classes to set the button styles. */
-	// export let buttonCopy = 'bg-white/5 hover:bg-white/10';
 
-	// Base Classes
-	// const cBase = 'overflow-hidden shadow';
-	// const cBase = 'max-h-96 max-w-lg';
-	const cBase = '';
-	const cHeader =
-		'text-xs rounded-t-lg bg-gray-800 font-bold uppercase flex justify-between items-center p-2 pl-4';
-	// const cPre = 'whitespace-pre-wrap break-all p-4 pt-1';
-	// const cPre = 'whitespace-pre-wrap break-all';
-	const cPre = '';
-
-	// Local
+	// Local variables
 	let displayCode: string = hljs.highlight(code, { language }).value.trim();
 	let copyState = false;
 	let highlightedLinesList: number[] = [];
@@ -61,18 +49,19 @@
 	let lineElement: HTMLElement | null = null;
 	let lines: string[] = [];
 
-	// Handle Copy Text
-	function handleCopy() {
+	const handleCopy = () => {
 		// Add code to clipboard
 		navigator.clipboard.writeText(String(code));
 
+		// Give feedback
 		copyState = true;
 		setTimeout(() => {
 			copyState = false;
 		}, 2000);
-		/** @event {{}} copy - Fires when the Copy button is pressed.  */
+
+		/** @event {{}} copy - Fire event when code is copied.  */
 		dispatch('copy', {});
-	}
+	};
 
 	const arrayRange = (start: number, stop: number) =>
 		Array.from({ length: stop - start }, (value, index) => start + index);
@@ -86,24 +75,16 @@
 
 	// Check if blur should be applied to line
 	$: applyBlur = (line: number): boolean => {
-		if (
+		return (
 			focusType === 'blur' &&
 			blur &&
 			highlightedLinesList.length > 0 &&
 			highlightedLinesList.indexOf(line) === -1
-		) {
-			return true;
-		}
-
-		return false;
+		);
 	};
 
 	$: applyHighlight = (line: number): boolean => {
-		if (focusType === 'highlight' && highlightedLinesList.indexOf(line) !== -1) {
-			return true;
-		}
-
-		return false;
+		return focusType === 'highlight' && highlightedLinesList.indexOf(line) !== -1;
 	};
 
 	$: if (highlightLines) {
@@ -157,25 +138,39 @@
 	}
 
 	// Reactive
-	$: classesBase = `${cBase} ${dimensions} ${background} ${text} ${color} ${rounded} ${
-		$$props.class ?? ''
-	}`;
+	$: classesBase = `${dimensions} ${background} ${text} ${color} ${rounded} ${$$props.class ?? ''}`;
 </script>
 
 {#if language && code}
 	<div class="code-block flex flex-col {classesBase}">
 		<!-- Header -->
 		{#if showHeader}
-			<header class="code-block-header text-white/80 {cHeader}">
+			<header
+				class="code-block-header text-white/80 text-xs rounded-t-lg bg-gray-800 font-bold uppercase flex justify-between items-center p-2 pl-4"
+			>
 				<!-- Language Text -->
 				<span class="code-block-language">{headerText}</span>
 
 				<!-- Copy Button -->
 				<button
-					class="code-block-btn px-2 py-1 rounded-lg transition-all duration-200 bg-white/20 hover:text-white/90 hover:bg-white/30"
+					class="code-block-btn px-2 py-1 rounded-lg transition-all duration-200 text-white/70 hover:text-white/95"
 					on:click={handleCopy}
 				>
-					{!copyState ? 'Copy' : 'Copied ✓'}
+					{#if copyState}
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-5" viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm-4 4q-.825 0-1.413-.587Q3 20.825 3 20V7q0-.425.288-.713Q3.575 6 4 6t.713.287Q5 6.575 5 7v13h10q.425 0 .713.288q.287.287.287.712t-.287.712Q15.425 22 15 22Z"
+							/></svg
+						>
+					{:else}
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-5" viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.413-.587Q3 20.825 3 20V7q0-.425.288-.713Q3.575 6 4 6t.713.287Q5 6.575 5 7v13h10q.425 0 .713.288q.287.287.287.712t-.287.712Q15.425 22 15 22ZM9 4v12V4Z"
+							/></svg
+						>
+					{/if}
 				</button>
 			</header>
 		{/if}
@@ -202,8 +197,8 @@
 								class="absolute select-none w-10 pr-2 font-mono border-r-2 text-right border-gray-400 transition-all duration-300 ease-in {applyBlur(
 									i
 								)
-									? 'text-gray-500'
-									: 'text-white'}"
+									? 'text-white/30'
+									: 'text-white/90'}"
 							>
 								{i}
 							</div>
@@ -212,7 +207,7 @@
 						<div
 							class="transition-all {showLineNumbers
 								? 'pl-12'
-								: 'pl-2'} duration-300 ease-in {applyBlur(i) ? 'blur-[0.095rem] opacity-60' : ''}"
+								: 'pl-2'} duration-200 ease-in {applyBlur(i) ? 'blur-[0.095rem] opacity-60' : ''}"
 						>
 							<pre class="whitespace-pre"><code class="language-{language}">{@html line}</code
 								></pre>

@@ -1,7 +1,5 @@
 <script lang="ts">
 	import CodeBlock from '$lib/code/CodeBlock.svelte';
-	// import '$lib/code/highlight.css';
-
 	import 'highlight.js/styles/base16/dracula.css';
 
 	import { addStepAnimation } from '$lib/addstepanimation';
