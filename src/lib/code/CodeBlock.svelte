@@ -29,10 +29,12 @@
 	// Props (styles)
 	/** Provide classes to set the background color. */
 	export let background: string = 'bg-gray-900';
+	/** Provide classes to set the header style (background / text-color / etc). */
+	export let headerClasses: string = 'bg-gray-800 text-white/80 text-xs';
 	/** Provide classes to set the text size. */
 	export let text: string = 'text-sm';
-	/** Provide classes to set the text color. */
-	export let color: string = 'text-white';
+	/** Provide classes to set the default code text color. */
+	export let textColor: string = 'text-white';
 	/** Provide classes to set the border radius. */
 	export let rounded: string = 'rounded-lg';
 	/** Provide classes to set dimensions of the code block. */
@@ -41,8 +43,8 @@
 	export let highlightColor: string = 'bg-gray-200/10';
 
 	// Local variables
-	let displayCode: string = hljs.highlight(code, { language }).value.trim();
 	let copyState = false;
+	let hiddenCode: string = hljs.highlight(code, { language }).value.trim();
 	let highlightedLinesList: number[] = [];
 	let blur = focusType === 'blur';
 	let preElement: HTMLElement | null = null;
@@ -57,7 +59,7 @@
 		copyState = true;
 		setTimeout(() => {
 			copyState = false;
-		}, 2000);
+		}, 1500);
 
 		/** @event {{}} copy - Fire event when code is copied.  */
 		dispatch('copy', {});
@@ -137,16 +139,16 @@
 		}
 	}
 
-	// Reactive
-	$: classesBase = `${dimensions} ${background} ${text} ${color} ${rounded} ${$$props.class ?? ''}`;
+	$: classesHeader = `${headerClasses} ${headerText}`;
+	$: classesCodeBlock = `${dimensions} ${background} ${text} ${textColor} ${rounded}`;
 </script>
 
 {#if language && code}
-	<div class="code-block flex flex-col {classesBase}">
+	<div class="code-block flex flex-col {classesCodeBlock}">
 		<!-- Header -->
 		{#if showHeader}
 			<header
-				class="code-block-header text-white/80 text-xs rounded-t-lg bg-gray-800 font-bold uppercase flex justify-between items-center p-2 pl-4"
+				class="code-block-header rounded-t-lg font-bold uppercase flex justify-between items-center p-2 pl-4 {classesHeader}"
 			>
 				<!-- Language Text -->
 				<span class="code-block-language">{headerText}</span>
@@ -178,7 +180,7 @@
 		<!-- This element is hidden. We are only using it to bind it to a variable which has the correct childNodes of the code that should be displayed.
 		The other method of creating a new element with document.createElement('div') and setting the innerHTML of it did not work, so this is a hack. -->
 		<pre class="hidden"><code bind:this={preElement} class="code-block-code language-{language}"
-				>{@html displayCode}</code
+				>{@html hiddenCode}</code
 			></pre>
 
 		<!-- Code display block -->
