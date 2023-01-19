@@ -148,6 +148,6 @@
 		class="my-8 flex justify-center animate__animated step-0:animate__fadeInUp"
 		use:addStepAnimation
 	>
-		<CodeBlock language="typescript" code={code2} highlightLines="8-17" showHeader={true} />
+		<CodeBlock language="typescript" code={code2} highlightLines="8-19" showHeader={true} />
 	</div>
 </div>

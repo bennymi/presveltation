@@ -11,7 +11,7 @@
 	export let language: string = 'plaintext';
 	/** Provide the code as a string. */
 	export let code: string = '';
-	/** Provide lines that should be highlighted. Should be a string, e.g.: '1-5, 8, 10-12, 42'. */
+	/** Provide lines that should be highlighted. Ranges are accepted, e.g.: '1-5, 8, 10-12, 42'. */
 	export let highlightLines: string = '';
 	/** TODO */
 	// export let addedLines: string = '';
