@@ -46,7 +46,8 @@
 	// const cBase = 'overflow-hidden shadow';
 	// const cBase = 'max-h-96 max-w-lg';
 	const cBase = '';
-	const cHeader = 'text-xs uppercase flex justify-between items-center p-2 pl-4';
+	const cHeader =
+		'text-xs rounded-t-lg bg-gray-800 font-bold uppercase flex justify-between items-center p-2 pl-4';
 	// const cPre = 'whitespace-pre-wrap break-all p-4 pt-1';
 	// const cPre = 'whitespace-pre-wrap break-all';
 	const cPre = '';
@@ -165,13 +166,13 @@
 	<div class="code-block flex flex-col {classesBase}">
 		<!-- Header -->
 		{#if showHeader}
-			<header class="code-block-header {cHeader} {rounded} {background}">
+			<header class="code-block-header text-white/80 {cHeader}">
 				<!-- Language Text -->
-				<span class="code-block-language text-white/60">{headerText}</span>
+				<span class="code-block-language">{headerText}</span>
 
 				<!-- Copy Button -->
 				<button
-					class="code-block-btn px-2 py-1 rounded-lg text-white/60 bg-white/10 hover:bg-white/20"
+					class="code-block-btn px-2 py-1 rounded-lg transition-all duration-200 bg-white/20 hover:text-white/90 hover:bg-white/30"
 					on:click={handleCopy}
 				>
 					{!copyState ? 'Copy' : 'Copied ✓'}
@@ -209,9 +210,9 @@
 						{/if}
 						<!-- Code -->
 						<div
-							class="transition-all pl-12 duration-300 ease-in {applyBlur(i)
-								? 'blur-[0.095rem] opacity-60'
-								: ''}"
+							class="transition-all {showLineNumbers
+								? 'pl-12'
+								: 'pl-2'} duration-300 ease-in {applyBlur(i) ? 'blur-[0.095rem] opacity-60' : ''}"
 						>
 							<pre class="whitespace-pre"><code class="language-{language}">{@html line}</code
 								></pre>

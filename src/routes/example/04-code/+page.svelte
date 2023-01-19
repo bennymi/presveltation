@@ -147,7 +147,8 @@
 		<CodeBlock
 			language="typescript"
 			code={code2}
-			collapseLines="8-17, 1-6"
+			highlightLines="8-17"
+			showLineNumbers={true}
 			showHeader={true}
 			focusType="blur"
 		/>
