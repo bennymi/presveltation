@@ -126,7 +126,6 @@
 						}
 					});
 				} else {
-					// console.log('#text', node);
 					let newNode = node.cloneNode();
 					newNode.innerHTML = node.innerHTML;
 					lineElement.appendChild(newNode);

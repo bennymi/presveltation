@@ -27,7 +27,9 @@
 	    let activeClasses: string[] = [];
 
 	    const updateMaxSteps = () => {
-	        /** Automatically check how many steps a node requires and update the store. */
+	        /** Automatically check how many steps a node 
+			  * requires and update the store. 
+			 **/
 	        let value = get(maxSteps);
 	        stepAnimations.forEach((a: Animation) => {
 	            if (a.start > value) {
@@ -39,8 +41,8 @@
 
 	    const setupAnimationsDictionary = () => {
 	        /** Create a list of Animation objects, so it's easier to loop through
-	         * them and find the active steps later on.
-	         */
+	          * them and find the active steps later on.
+	         **/
 	        stepClasses.forEach((c: string) => {
 	            const parts: string[] = c.split(':');
 	            const range: string[] = parts[0].split('-');
@@ -68,15 +70,17 @@
 	    }
 
 	    const removePreviousAddedClasses = () => {
-	        /** Remove previously added active classes and reset the activeClast list. */
+	        /** Remove previously added active classes 
+			  * and reset the activeClast list. 
+			 **/
 	        activeClasses.forEach((c: string) => node.classList.remove(c));
 	        activeClasses = [];
 	    }
 
 	    const updateActiveClasses = () => {
-	        /** Add all classes that are active during the current step
-	         * to the activeClassese list.
-	        */
+	        /** Add all classes that are active during the 
+			  * current step to the activeClassese list.
+	         **/
 	        stepAnimations.forEach((a: Animation) => {
 	            if (a.start === step || (a.end && a.start <= step && a.end >= step)) {
 	                activeClasses.push(a.class);
@@ -111,7 +115,9 @@
 	            step = value;
 	            animateStep();
 	        });
-	        // Find the step-related classes in the node classes, add them to a dictionary and update the maxSteps store with the largest step number
+
+	        /** Find the step-related classes in the node classes, add them to a dictionary 
+			  * and update the maxSteps store with the largest step number */
 	        initialClasses = node.classList.value.split(' ');
 	        stepClasses = initialClasses.filter((c: string) => c.search(/step-[\d]+(-\d+)?:/) != -1);
 	        setupAnimationsDictionary();
