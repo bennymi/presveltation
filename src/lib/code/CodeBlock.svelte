@@ -4,8 +4,6 @@
 	import { browser } from '$app/environment';
 	import { createEventDispatcher } from 'svelte';
 
-	import { clipboard } from '$lib/actions/clipboard';
-
 	const dispatch = createEventDispatcher();
 
 	// Props
@@ -63,7 +61,10 @@
 	let lines: string[] = [];
 
 	// Handle Copy Text
-	function onCopyClick() {
+	function handleCopy() {
+		// Add code to clipboard
+		navigator.clipboard.writeText(String(code));
+
 		copyState = true;
 		setTimeout(() => {
 			copyState = false;
@@ -171,8 +172,7 @@
 				<!-- Copy Button -->
 				<button
 					class="code-block-btn px-2 py-1 rounded-lg text-white/60 bg-white/10 hover:bg-white/20"
-					on:click={onCopyClick}
-					use:clipboard={code}
+					on:click={handleCopy}
 				>
 					{!copyState ? 'Copy' : 'Copied ✓'}
 				</button>
