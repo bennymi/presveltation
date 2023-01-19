@@ -20,9 +20,9 @@
 	/** Set focus type. */
 	export let focusType: 'blur' | 'highlight' = 'blur';
 	/** Show header. */
-	export let showHeader: boolean = false;
+	export let showHeader: boolean = true;
 	/** Set header text. Is the same as the language by default. */
-	export let headerText: string = language;
+	export let headerText: string = language.toUpperCase();
 	/** Show line numbers. */
 	export let showLineNumbers: boolean = true;
 
@@ -30,7 +30,7 @@
 	/** Provide classes to set the background color. */
 	export let background: string = 'bg-gray-900';
 	/** Provide classes to set the header style (background / text-color / etc). */
-	export let headerClasses: string = 'bg-gray-800 text-white/80 text-xs';
+	export let headerClasses: string = 'bg-gray-800 text-white/80 text-xs font-bold';
 	/** Provide classes to set the text size. */
 	export let text: string = 'text-sm';
 	/** Provide classes to set the default code text color. */
@@ -147,7 +147,7 @@
 		<!-- Header -->
 		{#if showHeader}
 			<header
-				class="code-block-header rounded-t-lg font-bold uppercase flex justify-between items-center p-2 pl-4 {classesHeader}"
+				class="code-block-header rounded-t-lg flex justify-between items-center p-2 pl-4 {classesHeader}"
 			>
 				<!-- Language Text -->
 				<span class="code-block-language">{headerText}</span>
