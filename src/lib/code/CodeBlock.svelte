@@ -3,6 +3,7 @@
 
 	import { browser } from '$app/environment';
 	import { createEventDispatcher } from 'svelte';
+	import { writable, type Writable } from 'svelte/store';
 
 	const dispatch = createEventDispatcher();
 
@@ -25,6 +26,8 @@
 	export let headerText: string = language.toUpperCase();
 	/** Show line numbers. */
 	export let showLineNumbers: boolean = true;
+	/** Provide store for line number to scroll to. */
+	export let scrollStore: Writable<number> = writable(0);
 
 	// Props (styles)
 	/** Provide classes to set the background color. */
@@ -48,6 +51,7 @@
 	let highlightedLinesList: number[] = [];
 	let blur = focusType === 'blur';
 	let preElement: HTMLElement | null = null;
+	let codeElement: HTMLElement;
 	let lineElement: HTMLElement | null = null;
 	let lines: string[] = [];
 
@@ -138,6 +142,29 @@
 		}
 	}
 
+	function scrollToLine(line: number) {
+		const lineToScrollTo = document.getElementById(`svelte-code-line-${line}`);
+		// codeElement?.scrollTo({ top: lineToScrollTo?.offsetTop!, behavior: 'smooth' });
+		codeElement?.scrollTo({
+			top: lineToScrollTo?.offsetTop! - lineToScrollTo?.offsetHeight!,
+			behavior: 'smooth'
+		});
+	}
+
+	$: if ($scrollStore >= 0 && $scrollStore < lines.length) {
+		// codeElement.scrollTo()
+		console.log('scroll', $scrollStore);
+		// const scrollElement: HTMLElement = document.getElementsByClassName(
+		// 	`svelte-code-line-${$scrollStore}`
+		// );
+
+		scrollToLine($scrollStore);
+
+		// if (browser) {
+		// 	window.scrollTo({ top: scrollElement.offsetTop, behavior: 'smooth' });
+		// }
+	}
+
 	$: classesHeader = `${headerClasses} ${headerText}`;
 	$: classesCodeBlock = `${dimensions} ${background} ${text} ${textColor} ${rounded}`;
 </script>
@@ -184,11 +211,12 @@
 
 		<!-- Code display block -->
 		{#if lines.length > 0}
-			<div class="overflow-y-auto p-2">
+			<div class="overflow-y-auto p-2" bind:this={codeElement}>
 				<!-- Lines -->
 				{#each lines as line, i}
 					<div
-						class="svelte-tailwind-line-{i} relative {applyHighlight(i) ? highlightColor : ''}"
+						id="svelte-code-line-{i}"
+						class="relative {applyHighlight(i) ? highlightColor : ''}"
 						on:mouseenter={() => disableBlur(i)}
 						on:mouseleave={() => (blur = true)}
 					>

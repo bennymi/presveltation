@@ -1,8 +1,12 @@
 <script lang="ts">
+	import { writable, type Writable } from 'svelte/store';
 	import CodeBlock from '$lib/code/CodeBlock.svelte';
 	import 'highlight.js/styles/base16/dracula.css';
 
 	import { addStepAnimation } from '$lib/addstepanimation';
+
+	let scrollStore: Writable<number> = writable(0);
+	let lineNumber: number = 0;
 
 	let code = `const updateMaxSteps = () => {
 	/** Automatically check how many steps a node requires 
@@ -137,6 +141,7 @@
 </script>
 
 <div class="flex flex-col justify-center items-center w-screen h-screen">
+	<!-- <div class="flex flex-col justify-center items-center w-screen"> -->
 	<h1
 		class="font-sans font-black text-neutral-900 text-5xl text-left mx-auto tracking-tighter animate__animated step-0:animate__fadeInDown"
 		use:addStepAnimation
@@ -144,10 +149,20 @@
 		Easily display code blocks
 	</h1>
 
+	<!-- <input class="m-4 border-teal-500 border-2" type="number" bind:value={$scrollStore} />
+
+	<p class="flex justify-center font-bold text-teal-500">{$scrollStore}</p> -->
+
 	<div
 		class="my-8 flex justify-center animate__animated step-0:animate__fadeInUp"
 		use:addStepAnimation
 	>
-		<CodeBlock language="typescript" code={code2} highlightLines="8-19" showHeader={true} />
+		<CodeBlock
+			language="typescript"
+			code={code2}
+			highlightLines="8-19"
+			showHeader={true}
+			{scrollStore}
+		/>
 	</div>
 </div>
