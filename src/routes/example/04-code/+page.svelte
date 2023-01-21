@@ -7,6 +7,13 @@
 
 	let scrollStore: Writable<number> = writable(0);
 	let lineNumber: number = 0;
+	let highlightLines: string = '8-19';
+
+	let focusBlocks = [
+		{ lines: '91-107', scrollLine: 91, text: 'onInit()' },
+		{ lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
+		{ lines: '59-68', scrollLine: 56, text: 'updateActiveClasses()' }
+	];
 
 	let code = `const updateMaxSteps = () => {
 	/** Automatically check how many steps a node requires 
@@ -141,7 +148,6 @@
 </script>
 
 <div class="flex flex-col justify-center items-center w-screen h-screen">
-	<!-- <div class="flex flex-col justify-center items-center w-screen"> -->
 	<h1
 		class="font-sans font-black text-neutral-900 text-5xl text-left mx-auto tracking-tighter animate__animated step-0:animate__fadeInDown"
 		use:addStepAnimation
@@ -153,6 +159,15 @@
 
 	<p class="flex justify-center font-bold text-teal-500">{$scrollStore}</p> -->
 
+	<button
+		class="p-2 bg-blue-500 hover:bg-blue-600 my-4 rounded-lg text-white"
+		on:click={() => {
+			highlightLines = '0-6';
+		}}
+	>
+		Update Lines
+	</button>
+
 	<div
 		class="my-8 flex justify-center animate__animated step-0:animate__fadeInUp"
 		use:addStepAnimation
@@ -160,7 +175,8 @@
 		<CodeBlock
 			language="typescript"
 			code={code2}
-			highlightLines="8-19"
+			{highlightLines}
+			{focusBlocks}
 			showHeader={true}
 			{scrollStore}
 		/>
