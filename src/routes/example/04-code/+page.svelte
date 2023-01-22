@@ -6,8 +6,7 @@
 	import { addStepAnimation } from '$lib/addstepanimation';
 
 	let scrollStore: Writable<number> = writable(0);
-	let lineNumber: number = 0;
-	let highlightLines: string = '8-19';
+	let highlightLines: string = '';
 
 	let focusBlocks = [
 		{ lines: '91-107', scrollLine: 91, text: 'onInit()' },
@@ -155,21 +154,8 @@
 		Easily display code blocks
 	</h1>
 
-	<!-- <input class="m-4 border-teal-500 border-2" type="number" bind:value={$scrollStore} />
-
-	<p class="flex justify-center font-bold text-teal-500">{$scrollStore}</p> -->
-
-	<button
-		class="p-2 bg-blue-500 hover:bg-blue-600 my-4 rounded-lg text-white"
-		on:click={() => {
-			highlightLines = '0-6';
-		}}
-	>
-		Update Lines
-	</button>
-
 	<div
-		class="my-8 flex justify-center animate__animated step-0:animate__fadeInUp"
+		class="my-8 w-full flex justify-center animate__animated step-0:animate__fadeInUp"
 		use:addStepAnimation
 	>
 		<CodeBlock

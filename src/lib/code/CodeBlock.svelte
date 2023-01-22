@@ -35,6 +35,8 @@
 	export let showLineNumbers: boolean = true;
 	/** Focus blocks. */
 	export let focusBlocks: FocusBlock[] = [];
+	/** Show focus buttons. */
+	export let showFocusButtons: boolean = false;
 	/** Provide store for line number to scroll to. */
 	export let scrollStore: Writable<number> = writable(0);
 
@@ -50,7 +52,7 @@
 	/** Provide classes to set the border radius. */
 	export let rounded: string = 'rounded-lg';
 	/** Provide classes to set dimensions of the code block. */
-	export let dimensions: string = 'max-h-96 max-w-3xl';
+	export let dimensions: string = 'h-96 w-2/4'; // 'max-h-96 max-w-3xl';
 	/** Provide classes to set highlight color. */
 	export let highlightColor: string = 'bg-gray-200/10';
 
@@ -202,11 +204,12 @@
 	}
 
 	$: classesHeader = `${headerClasses} ${headerText}`;
-	$: classesCodeBlock = `${dimensions} ${background} ${text} ${textColor} ${rounded}`;
+	// $: classesCodeBlock = `${dimensions} ${background} ${text} ${textColor} ${rounded}`;
+	$: classesCodeBlock = `${background} ${text} ${textColor} ${rounded}`;
 </script>
 
-<div class="flex flex-col">
-	{#if updatedFocusBlocks.length > 0}
+<div class="flex flex-col {dimensions}">
+	{#if showFocusButtons && updatedFocusBlocks.length > 0}
 		<div class="flex justify-start gap-4 my-2">
 			{#each updatedFocusBlocks as block, i}
 				<button
@@ -220,7 +223,7 @@
 	{/if}
 
 	{#if language && code}
-		<div class="code-block flex flex-col {classesCodeBlock}">
+		<div class="code-block flex flex-col overflow-auto {classesCodeBlock}">
 			<!-- Header -->
 			{#if showHeader}
 				<header
@@ -261,7 +264,7 @@
 
 			<!-- Code display block -->
 			{#if lines.length > 0}
-				<div class="overflow-y-auto p-2" bind:this={codeElement}>
+				<div class="overflow-auto p-2" bind:this={codeElement}>
 					<!-- Lines -->
 					{#each lines as line, i}
 						<div
