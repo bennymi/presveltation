@@ -11,9 +11,9 @@
 	let highlightLines: string = '';
 
 	let focusBlocks = [
-		{ lines: '' },
-		{ lines: '91-96', scrollLine: 91 },
-		{ lines: '98-105', text: 'onInit()' },
+		{ lines: '', text: 'Start' },
+		{ lines: '91-96', scrollLine: 91, text: '1: onInit()' },
+		{ lines: '98-105', text: '2: onInit()' },
 		{ lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
 		{ lines: '59-68', scrollLine: 56, text: 'updateActiveClasses()' }
 	];
@@ -97,7 +97,7 @@
 
 	    const updateActiveClasses = () => {
 	        /** Add all classes that are active during the 
-			  * current step to the activeClassese list.
+			  * current step to the activeClasses list.
 	         **/
 	        stepAnimations.forEach((a: Animation) => {
 	            if (a.start === step || (a.end && a.start <= step && a.end >= step)) {
@@ -159,7 +159,7 @@
 		class="font-sans font-black text-neutral-900 text-5xl text-left mx-auto tracking-tighter animate__animated step-0:animate__fadeInDown"
 		use:addStepAnimation
 	>
-		Easily display code blocks
+		Easily step through code blocks
 	</h1>
 
 	<div

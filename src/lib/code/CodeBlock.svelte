@@ -5,14 +5,9 @@
 	import { createEventDispatcher } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 
-	const dispatch = createEventDispatcher();
+	import type { FocusBlock, UpdatedFocusBlock } from './types';
 
-	type FocusBlock = {
-		lines: string;
-		scrollLine?: number;
-		text?: string;
-		highlightLines?: number[];
-	};
+	const dispatch = createEventDispatcher();
 
 	// Props (functionality)
 	/** Set the Highlight.js language used for syntax highlighting. */
@@ -47,6 +42,9 @@
 	export let background: string = 'bg-gray-900';
 	/** Provide classes to set the header style (background / text-color / etc). */
 	export let headerClasses: string = 'bg-gray-800 text-white/80 text-xs font-bold';
+	/** Provide classes for the focus buttons. */
+	export let focusButtonClasses: string =
+		'px-2 py-1 rounded-lg border-2 text-sm font-bold transition-all border-gray-900 text-gray-900 hover:bg-slate-900 hover:shadow-lg hover:shadow-blue-500 hover:text-white';
 	/** Provide classes to set the text size. */
 	export let text: string = 'text-sm';
 	/** Provide classes to set the default code text color. */
@@ -67,7 +65,7 @@
 	let codeElement: HTMLElement;
 	let lineElement: HTMLElement | null = null;
 	let lines: string[] = [];
-	let updatedFocusBlocks: FocusBlock[];
+	let updatedFocusBlocks: UpdatedFocusBlock[];
 
 	const scrollToLine = (line: number) => {
 		if (browser) {
@@ -92,14 +90,14 @@
 	};
 
 	// Animate a change in the focus block. Scroll to line and update focus.
-	const handleFocusBlock = (block: FocusBlock) => {
+	const handleFocusBlock = (block: UpdatedFocusBlock) => {
 		highlightedLinesList = [];
 
 		if (block.scrollLine) scrollToLine(block.scrollLine!);
 
 		setTimeout(() => {
 			highlightedLinesList = block.highlightLines!;
-		}, 500);
+		}, 400);
 	};
 
 	// Create an array of numbers from start to stop.
@@ -219,10 +217,7 @@
 	{#if showFocusButtons && updatedFocusBlocks.length > 0}
 		<div class="flex justify-start gap-4 my-2">
 			{#each updatedFocusBlocks as block, i}
-				<button
-					class="px-2 py-1 rounded-lg border-2 text-sm font-bold transition-all border-gray-900 text-gray-900 hover:bg-slate-900 hover:shadow-lg hover:shadow-blue-500 hover:text-white"
-					on:click={() => handleFocusBlock(block)}
-				>
+				<button class={focusButtonClasses} on:click={() => handleFocusBlock(block)}>
 					{block.text ?? `Focus ${i}`}
 				</button>
 			{/each}
