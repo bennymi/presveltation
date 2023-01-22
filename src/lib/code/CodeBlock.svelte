@@ -37,6 +37,8 @@
 	export let focusBlocks: FocusBlock[] = [];
 	/** Show focus buttons. */
 	export let showFocusButtons: boolean = false;
+	/** Provide store that states which focus block should be active. */
+	export let activeFocusBlockStore: Writable<number> | null = null;
 	/** Provide store for line number to scroll to. */
 	export let scrollStore: Writable<number> = writable(0);
 
@@ -71,12 +73,6 @@
 		document
 			.getElementById(`svelte-code-line-${line}`)
 			?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-		// const lineToScrollTo = document.getElementById(`svelte-code-line-${line}`);
-		// codeElement?.scrollTo({
-		// 	// top: lineToScrollTo?.offsetTop! - lineToScrollTo?.offsetHeight!,
-		// 	top: lineToScrollTo?.offsetHeight,
-		// 	behavior: 'smooth'
-		// });
 	};
 
 	const handleCopy = () => {
@@ -93,6 +89,7 @@
 		dispatch('copy', {});
 	};
 
+	// Animate a change in the focus block. Scroll to line and update focus.
 	const handleFocusBlock = (block: FocusBlock) => {
 		highlightedLinesList = [];
 		scrollToLine(block.scrollLine);
@@ -101,9 +98,11 @@
 		}, 500);
 	};
 
+	// Create an array of numbers from start to stop.
 	const arrayRange = (start: number, stop: number) =>
 		Array.from({ length: stop - start }, (value, index) => start + index);
 
+	// Update the focus blocks with an extra parameter that holds the lines number array.
 	$: {
 		updatedFocusBlocks = focusBlocks.map((block) => ({
 			...block,
@@ -118,7 +117,7 @@
 		}
 	};
 
-	// Check if blur should be applied to line
+	// Check if blur should be applied to a line.
 	$: applyBlur = (line: number): boolean => {
 		return (
 			focusType === 'blur' &&
@@ -128,11 +127,13 @@
 		);
 	};
 
+	// Determine if a line should be highlighted or not.
 	$: applyHighlight = (line: number): boolean => {
 		return focusType === 'highlight' && highlightedLinesList.indexOf(line) !== -1;
 	};
 
 	const stringToLinesArray = (l: string) => {
+		/** Turns a string into a number array: '1-3, 42' -> [1, 2, 3, 42] */
 		let linesArray: number[] = [];
 		const splitHighlights: string[] = l.replace(/\s/g, '').split(',');
 
@@ -152,9 +153,9 @@
 		return linesArray;
 	};
 
+	// Get the lines as an array from it's string: '1-3, 42' -> [1, 2, 3, 42]
 	$: if (highlightLines) {
 		highlightedLinesList = [];
-
 		highlightedLinesList = stringToLinesArray(highlightLines);
 	}
 
@@ -189,22 +190,23 @@
 		}
 	}
 
+	// Scroll to line specified by the scroll store.
 	$: if ($scrollStore >= 0 && $scrollStore < lines.length) {
-		// codeElement.scrollTo()
-		console.log('scroll', $scrollStore);
-		// const scrollElement: HTMLElement = document.getElementsByClassName(
-		// 	`svelte-code-line-${$scrollStore}`
-		// );
-
 		scrollToLine($scrollStore);
-
-		// if (browser) {
-		// 	window.scrollTo({ top: scrollElement.offsetTop, behavior: 'smooth' });
-		// }
 	}
 
+	// Update focus block when the active store changes.
+	$: if (
+		activeFocusBlockStore &&
+		focusBlocks.length > 0 &&
+		$activeFocusBlockStore! >= 0 &&
+		$activeFocusBlockStore! < focusBlocks.length
+	) {
+		handleFocusBlock(updatedFocusBlocks[$activeFocusBlockStore!]);
+	}
+
+	// Set the classes
 	$: classesHeader = `${headerClasses} ${headerText}`;
-	// $: classesCodeBlock = `${dimensions} ${background} ${text} ${textColor} ${rounded}`;
 	$: classesCodeBlock = `${background} ${text} ${textColor} ${rounded}`;
 </script>
 
