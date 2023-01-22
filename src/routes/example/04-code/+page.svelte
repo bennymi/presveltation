@@ -4,15 +4,23 @@
 	import 'highlight.js/styles/base16/dracula.css';
 
 	import { addStepAnimation } from '$lib/addstepanimation';
+	import { maxSteps, currStep } from '$lib/stores';
+	import { onMount } from 'svelte';
 
 	let scrollStore: Writable<number> = writable(0);
 	let highlightLines: string = '';
 
 	let focusBlocks = [
-		{ lines: '91-107', scrollLine: 91, text: 'onInit()' },
+		{ lines: '' },
+		{ lines: '91-96', scrollLine: 91 },
+		{ lines: '98-105', text: 'onInit()' },
 		{ lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
 		{ lines: '59-68', scrollLine: 56, text: 'updateActiveClasses()' }
 	];
+
+	onMount(() => {
+		$maxSteps = focusBlocks.length - 1;
+	});
 
 	let code = `const updateMaxSteps = () => {
 	/** Automatically check how many steps a node requires 
@@ -165,6 +173,7 @@
 			{focusBlocks}
 			showHeader={true}
 			{scrollStore}
+			activeFocusBlockStore={currStep}
 		/>
 	</div>
 </div>

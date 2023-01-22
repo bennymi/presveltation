@@ -9,7 +9,7 @@
 
 	type FocusBlock = {
 		lines: string;
-		scrollLine: number;
+		scrollLine?: number;
 		text?: string;
 		highlightLines?: number[];
 	};
@@ -70,9 +70,11 @@
 	let updatedFocusBlocks: FocusBlock[];
 
 	const scrollToLine = (line: number) => {
-		document
-			.getElementById(`svelte-code-line-${line}`)
-			?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+		if (browser) {
+			document
+				.getElementById(`svelte-code-line-${line}`)
+				?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+		}
 	};
 
 	const handleCopy = () => {
@@ -92,7 +94,9 @@
 	// Animate a change in the focus block. Scroll to line and update focus.
 	const handleFocusBlock = (block: FocusBlock) => {
 		highlightedLinesList = [];
-		scrollToLine(block.scrollLine);
+
+		if (block.scrollLine) scrollToLine(block.scrollLine!);
+
 		setTimeout(() => {
 			highlightedLinesList = block.highlightLines!;
 		}, 500);
@@ -150,7 +154,8 @@
 			}
 		});
 
-		return linesArray;
+		// Return list, but first remove NaN values.
+		return linesArray.filter((v) => !Number.isNaN(v));
 	};
 
 	// Get the lines as an array from it's string: '1-3, 42' -> [1, 2, 3, 42]

@@ -69,7 +69,7 @@ export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | 
 
     const updateActiveClasses = () => {
         /** Add all classes that are active during the current step 
-         * to the activeClassese list.  
+         * to the activeClasses list.  
         */
         stepAnimations.forEach((a: Animation) => {
             if (a.start === step || (a.end && a.start <= step && a.end >= step)) {
