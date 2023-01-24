@@ -2,7 +2,7 @@
 	import hljs from 'highlight.js';
 
 	import { browser } from '$app/environment';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 
 	import type { FocusBlock, UpdatedFocusBlock } from './types';
@@ -58,16 +58,14 @@
 
 	// Local variables
 	let copyState = false;
-	let hiddenCode: string = hljs.highlight(code, { language }).value.trim();
+	// let hiddenCode: string = hljs.highlight(code, { language }).value.trim();
+	let hiddenCode: string = '';
 	let highlightedLinesList: number[] = [];
 	let blur = focusType === 'blur';
 	let preElement: HTMLElement | null = null;
-	let codeElement: HTMLElement;
 	let lineElement: HTMLElement | null = null;
 	let lines: string[] = [];
 	let updatedFocusBlocks: UpdatedFocusBlock[];
-
-	$: console.log('hiddenCode', hiddenCode);
 
 	const scrollToLine = (line: number) => {
 		if (browser) {
@@ -105,6 +103,19 @@
 	// Create an array of numbers from start to stop.
 	const arrayRange = (start: number, stop: number) =>
 		Array.from({ length: stop - start }, (value, index) => start + index);
+
+	onMount(async () => {
+		if (language.toLowerCase() === 'svelte') {
+			const { hljsDefineSvelte } = await import('./svelte-highlight');
+			hljs.registerLanguage('svelte', hljsDefineSvelte);
+			hiddenCode = hljs.highlight(code, { language: 'svelte' }).value.trim();
+			// console.log(hljsDefineSvelte);
+			// console.log('prop code', code);
+			// console.log('hiddenCode', hiddenCode);
+		} else {
+			hiddenCode = hljs.highlight(code, { language }).value.trim();
+		}
+	});
 
 	// Update the focus blocks with an extra parameter that holds the lines number array.
 	$: {
@@ -171,7 +182,9 @@
 
 			preElement?.childNodes.forEach((node) => {
 				if (node.nodeName === 'SPAN' && node.innerHTML.includes('\n')) {
-					const splitLines: string[] = node.innerHTML.split('\n');
+					let splitLines: string[] = node.innerHTML.split('\n');
+
+					splitLines = splitLines.map((v) => (v === '' ? ' ' : v));
 
 					splitLines.forEach((s, i) => {
 						let newNode = node.cloneNode();
@@ -262,14 +275,15 @@
 
 			<!-- This element is hidden. We are only using it to bind it to a variable which has the correct childNodes of the code that should be displayed.
 		The other method of creating a new element with document.createElement('div') and setting the innerHTML of it did not work, so this is a hack. -->
-
-			<pre class="hidden"><code bind:this={preElement} class="code-block-code language-{language}"
-					>{@html hiddenCode}</code
-				></pre>
+			{#if hiddenCode}
+				<pre class="hidden"><code bind:this={preElement} class="code-block-code language-{language}"
+						>{@html hiddenCode}</code
+					></pre>
+			{/if}
 
 			<!-- Code display block -->
 			{#if lines.length > 0}
-				<div class="overflow-auto p-2" bind:this={codeElement}>
+				<div class="overflow-auto p-2">
 					<!-- Lines -->
 					{#each lines as line, i}
 						<div

@@ -11,20 +11,19 @@
 	let highlightLines: string = '';
 
 	let focusBlocks = [
-		{ lines: '', text: 'Start' },
-		{ lines: '91-96', scrollLine: 91, text: '1: onInit()' },
-		{ lines: '98-105', text: '2: onInit()' },
-		{ lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
-		{ lines: '59-68', scrollLine: 56, text: 'updateActiveClasses()' }
+		{ lines: '', text: 'Start' }
+		// { lines: '91-96', scrollLine: 91, text: '1: onInit()' },
+		// { lines: '98-105', text: '2: onInit()' },
+		// { lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
+		// { lines: '59-68', scrollLine: 56, text: 'updateActiveClasses()' }
 	];
 
 	onMount(() => {
 		$maxSteps = focusBlocks.length - 1;
 	});
 
-	let svelteCode = `
-	<script>
-import Nested from './Nested.svelte'
+	let svelteCode = `<script>
+	import Nested from './Nested.svelte'
 <\/script>
 
 <p>These styles...</p>
@@ -36,8 +35,9 @@ import Nested from './Nested.svelte'
 		font-family: 'Comic Sans MS', cursive;
 		font-size: 2em;
 	}
-<\/style>
-	`;
+</style>`;
+
+	$: console.log('-----svelteCode:', svelteCode);
 
 	let code = `const updateMaxSteps = () => {
 	/** Automatically check how many steps a node requires 
@@ -184,7 +184,7 @@ import Nested from './Nested.svelte'
 		use:addStepAnimation
 	>
 		<CodeBlock
-			language="html"
+			language="svelte"
 			code={svelteCode}
 			{highlightLines}
 			{focusBlocks}
