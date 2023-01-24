@@ -192,6 +192,7 @@
 			{focusBlocks}
 			showHeader={true}
 			showFocusButtons={true}
+			showLineNumbers={true}
 			{scrollStore}
 			activeFocusBlockStore={currStep}
 		/>

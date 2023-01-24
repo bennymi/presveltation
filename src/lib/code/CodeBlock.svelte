@@ -7,6 +7,7 @@
 
 	import type { FocusBlock, UpdatedFocusBlock } from './types';
 	import Header from './Header.svelte';
+	import CodeLine from './CodeLine.svelte';
 
 	// Props (functionality)
 	/** Set the Highlight.js language used for syntax highlighting. */
@@ -80,9 +81,6 @@
 		if (block.scrollLine) scrollToLine(block.scrollLine!);
 
 		highlightedLinesList = block.highlightLines!;
-		// setTimeout(() => {
-		// 	highlightedLinesList = block.highlightLines!;
-		// }, 200);
 	};
 
 	// Create an array of numbers from start to stop.
@@ -248,27 +246,13 @@
 							on:mouseenter={() => disableBlur(i)}
 							on:mouseleave={() => (blur = true)}
 						>
-							<!-- Line Numbers -->
-							{#if showLineNumbers}
-								<div
-									class="absolute select-none w-10 pr-2 font-mono border-r-2 text-right border-gray-400 transition-all duration-300 ease-in {applyBlur(
-										i
-									)
-										? 'text-white/30'
-										: 'text-white/90'}"
-								>
-									{i}
-								</div>
-							{/if}
-							<!-- Code -->
-							<div
-								class="transition-all {showLineNumbers
-									? 'pl-12'
-									: 'pl-2'} duration-200 ease-in {applyBlur(i) ? 'blur-[0.095rem] opacity-60' : ''}"
-							>
-								<pre class="whitespace-pre"><code class="language-{language}">{@html line}</code
-									></pre>
-							</div>
+							<CodeLine
+								applyBlur={applyBlur(i)}
+								{showLineNumbers}
+								lineNumber={i}
+								{line}
+								{language}
+							/>
 						</div>
 					{/each}
 				</div>
