@@ -51,7 +51,7 @@
 	/** Provide classes to set the border radius. */
 	export let rounded: string = 'rounded-lg';
 	/** Provide classes to set dimensions of the code block. */
-	export let dimensions: string = 'h-96 w-2/4'; // 'max-h-96 max-w-3xl';
+	export let dimensions: string = 'h-96 w-3/4 md:w-2/4'; // 'max-h-96 max-w-3xl';
 	/** Provide classes to set highlight color. */
 	export let highlightColor: string = 'bg-gray-200/10';
 
@@ -79,9 +79,10 @@
 
 		if (block.scrollLine) scrollToLine(block.scrollLine!);
 
-		setTimeout(() => {
-			highlightedLinesList = block.highlightLines!;
-		}, 400);
+		highlightedLinesList = block.highlightLines!;
+		// setTimeout(() => {
+		// 	highlightedLinesList = block.highlightLines!;
+		// }, 200);
 	};
 
 	// Create an array of numbers from start to stop.
@@ -212,7 +213,7 @@
 
 <div class="flex flex-col {dimensions}">
 	{#if showFocusButtons && updatedFocusBlocks.length > 0}
-		<div class="flex justify-start gap-4 my-2">
+		<div class="flex justify-start flex-wrap gap-4 mt-2">
 			{#each updatedFocusBlocks as block, i}
 				<button class={focusButtonClasses} on:click={() => handleFocusBlock(block)}>
 					{block.text ?? `Focus ${i}`}
@@ -222,7 +223,7 @@
 	{/if}
 
 	{#if language && code}
-		<div class="code-block flex flex-col overflow-auto {classesCodeBlock}">
+		<div class="code-block flex flex-col overflow-auto mt-2 {classesCodeBlock}">
 			<!-- Header -->
 			{#if showHeader}
 				<Header {classesHeader} {headerText} {code} on:copy />

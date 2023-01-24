@@ -12,14 +12,14 @@
 	let highlightLines: string = '';
 
 	let focusBlocks = [
-		{ lines: '', text: 'Start' },
-		{ lines: '0-3', text: 'Imports' },
-		{ lines: '4,5', text: 'Use Element' },
-		{ lines: '7-13', text: 'Apply Styles' }
-		// { lines: '91-96', scrollLine: 91, text: '1: onInit()' },
-		// { lines: '98-105', text: '2: onInit()' },
-		// { lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
-		// { lines: '59-68', scrollLine: 56, text: 'updateActiveClasses()' }
+		{ lines: '', text: 'Unblur' },
+		// { lines: '0-3', text: 'Imports' },
+		// { lines: '4,5', text: 'Use Element' },
+		// { lines: '7-13', text: 'Apply Styles' }
+		{ lines: '91-96', scrollLine: 91, text: '1: onInit()' },
+		{ lines: '98-105', scrollLine: 92, text: '2: onInit()' },
+		{ lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
+		{ lines: '59-68', scrollLine: 57, text: 'updateActiveClasses()' }
 	];
 
 	onMount(() => {
@@ -186,8 +186,8 @@
 		use:addStepAnimation
 	>
 		<CodeBlock
-			language="svelte"
-			code={svelteCode}
+			language="typescript"
+			code={code2}
 			{highlightLines}
 			{focusBlocks}
 			showHeader={true}
