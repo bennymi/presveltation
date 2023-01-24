@@ -182,14 +182,14 @@
 
 			preElement?.childNodes.forEach((node) => {
 				if (node.nodeName === 'SPAN' && node.innerHTML.includes('\n')) {
-					let splitLines: string[] = node.innerHTML.split('\n');
-
-					splitLines = splitLines.map((v) => (v === '' ? ' ' : v));
+					const splitLines: string[] = node.innerHTML.split('\n');
 
 					splitLines.forEach((s, i) => {
-						let newNode = node.cloneNode();
-						newNode.innerHTML = s;
-						lineElement?.appendChild(newNode);
+						if (s !== '') {
+							let newNode = node.cloneNode();
+							newNode.innerHTML = s;
+							lineElement?.appendChild(newNode);
+						}
 
 						if (i !== splitLines.length - 1) {
 							lineElement?.appendChild(document.createTextNode('\n'));

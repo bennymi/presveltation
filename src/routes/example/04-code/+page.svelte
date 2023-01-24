@@ -2,6 +2,7 @@
 	import { writable, type Writable } from 'svelte/store';
 	import CodeBlock from '$lib/code/CodeBlock.svelte';
 	import 'highlight.js/styles/base16/dracula.css';
+	// import 'highlight.js/styles/base16/monokai.css';
 
 	import { addStepAnimation } from '$lib/addstepanimation';
 	import { maxSteps, currStep } from '$lib/stores';
@@ -11,7 +12,10 @@
 	let highlightLines: string = '';
 
 	let focusBlocks = [
-		{ lines: '', text: 'Start' }
+		{ lines: '', text: 'Start' },
+		{ lines: '0-3', text: 'Imports' },
+		{ lines: '4,5', text: 'Use Element' },
+		{ lines: '7-13', text: 'Apply Styles' }
 		// { lines: '91-96', scrollLine: 91, text: '1: onInit()' },
 		// { lines: '98-105', text: '2: onInit()' },
 		// { lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
@@ -29,15 +33,13 @@
 <p>These styles...</p>
 <Nested/>
 
-<style>
+<${''}style>
 	p {
 		color: purple;
 		font-family: 'Comic Sans MS', cursive;
 		font-size: 2em;
 	}
-</style>`;
-
-	$: console.log('-----svelteCode:', svelteCode);
+</${''}style>`;
 
 	let code = `const updateMaxSteps = () => {
 	/** Automatically check how many steps a node requires 
@@ -189,6 +191,7 @@
 			{highlightLines}
 			{focusBlocks}
 			showHeader={true}
+			showFocusButtons={true}
 			{scrollStore}
 			activeFocusBlockStore={currStep}
 		/>
