@@ -67,6 +67,8 @@
 	let lines: string[] = [];
 	let updatedFocusBlocks: UpdatedFocusBlock[];
 
+	$: console.log('hiddenCode', hiddenCode);
+
 	const scrollToLine = (line: number) => {
 		if (browser) {
 			document
@@ -260,6 +262,7 @@
 
 			<!-- This element is hidden. We are only using it to bind it to a variable which has the correct childNodes of the code that should be displayed.
 		The other method of creating a new element with document.createElement('div') and setting the innerHTML of it did not work, so this is a hack. -->
+
 			<pre class="hidden"><code bind:this={preElement} class="code-block-code language-{language}"
 					>{@html hiddenCode}</code
 				></pre>
