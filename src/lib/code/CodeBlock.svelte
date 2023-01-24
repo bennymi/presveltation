@@ -106,12 +106,10 @@
 
 	onMount(async () => {
 		if (language.toLowerCase() === 'svelte') {
+			// If language is svelte first register the language with hljs.
 			const { hljsDefineSvelte } = await import('./svelte-highlight');
 			hljs.registerLanguage('svelte', hljsDefineSvelte);
 			hiddenCode = hljs.highlight(code, { language: 'svelte' }).value.trim();
-			// console.log(hljsDefineSvelte);
-			// console.log('prop code', code);
-			// console.log('hiddenCode', hiddenCode);
 		} else {
 			hiddenCode = hljs.highlight(code, { language }).value.trim();
 		}

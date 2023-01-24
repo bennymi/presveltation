@@ -65,7 +65,7 @@
 
 	const updateMaxSteps = () => {
 		/** Automatically check how many steps a node 
-			 * requires and update the store. 
+		  * requires and update the store. 
 		 **/
 		let value = get(maxSteps);
 		stepAnimations.forEach((a: Animation) => {
@@ -78,7 +78,7 @@
 
 	const setupAnimationsDictionary = () => {
 		/** Create a list of Animation objects, so it's easier to loop through
-			 * them and find the active steps later on.
+		  * them and find the active steps later on.
 		 **/
 		stepClasses.forEach((c: string) => {
 			const parts: string[] = c.split(':');
@@ -108,7 +108,7 @@
 
 	const removePreviousAddedClasses = () => {
 		/** Remove previously added active classes 
-			 * and reset the activeClast list. 
+		  * and reset the activeClast list. 
 		 **/
 		activeClasses.forEach((c: string) => node.classList.remove(c));
 		activeClasses = [];
@@ -116,7 +116,7 @@
 
 	const updateActiveClasses = () => {
 		/** Add all classes that are active during the 
-			 * current step to the activeClasses list.
+	      * current step to the activeClasses list.
 		 **/
 		stepAnimations.forEach((a: Animation) => {
 			if (a.start === step || (a.end && a.start <= step && a.end >= step)) {
@@ -154,7 +154,7 @@
 		});
 
 		/** Find the step-related classes in the node classes, add them to a dictionary 
-			 * and update the maxSteps store with the largest step number */
+		  * and update the maxSteps store with the largest step number */
 		initialClasses = node.classList.value.split(' ');
 		stepClasses = initialClasses.filter((c: string) => c.search(/step-[\d]+(-\d+)?:/) != -1);
 		setupAnimationsDictionary();
