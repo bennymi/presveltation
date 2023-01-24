@@ -57,7 +57,7 @@
 	export let highlightColor: string = 'bg-gray-200/10';
 
 	// Local variables
-	// let hiddenCode: string = hljs.highlight(code, { language }).value.trim();
+	let uniqueID = Math.random().toString(16).slice(2); // Generate a unique ID.
 	let hiddenCode: string = '';
 	let highlightedLinesList: number[] = [];
 	let blur = focusType === 'blur';
@@ -69,7 +69,7 @@
 	const scrollToLine = (line: number) => {
 		if (browser) {
 			document
-				.getElementById(`svelte-code-line-${line}`)
+				.getElementById(`svhighlight-${uniqueID}-line-${line}`)
 				?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
 		}
 	};
@@ -241,7 +241,7 @@
 					<!-- Lines -->
 					{#each lines as line, i}
 						<div
-							id="svelte-code-line-{i}"
+							id="svhighlight-{uniqueID}-line-{i}"
 							class="relative {applyHighlight(i) ? highlightColor : ''}"
 							on:mouseenter={() => disableBlur(i)}
 							on:mouseleave={() => (blur = true)}
