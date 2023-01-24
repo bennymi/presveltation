@@ -175,7 +175,7 @@
 
 <div class="flex flex-col justify-center items-center w-screen h-screen">
 	<h1
-		class="font-sans font-black text-neutral-900 text-5xl text-left mx-auto tracking-tighter animate__animated step-0:animate__fadeInDown"
+		class="font-sans font-black text-neutral-900 text-5xl text-center mx-auto tracking-tighter animate__animated step-0:animate__fadeInDown"
 		use:addStepAnimation
 	>
 		Easily step through code blocks

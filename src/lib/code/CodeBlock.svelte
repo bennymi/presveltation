@@ -43,7 +43,7 @@
 	export let headerClasses: string = 'bg-gray-800 text-white/80 text-xs font-bold';
 	/** Provide classes for the focus buttons. */
 	export let focusButtonClasses: string =
-		'px-2 py-1 rounded-lg border-2 text-sm font-bold transition-all border-gray-900 text-gray-900 hover:bg-slate-900 hover:shadow-lg hover:shadow-blue-500 hover:text-white';
+		'flex-grow px-2 py-1 rounded-lg border-2 text-sm font-bold transition-all border-gray-900 text-gray-900 hover:bg-slate-900 hover:shadow-lg hover:shadow-blue-500 hover:text-white';
 	/** Provide classes to set the text size. */
 	export let text: string = 'text-sm';
 	/** Provide classes to set the default code text color. */
@@ -213,7 +213,7 @@
 
 <div class="flex flex-col {dimensions}">
 	{#if showFocusButtons && updatedFocusBlocks.length > 0}
-		<div class="flex justify-start flex-wrap gap-4 mt-2">
+		<div class="flex justify-start flex-wrap gap-x-4 gap-y-2">
 			{#each updatedFocusBlocks as block, i}
 				<button class={focusButtonClasses} on:click={() => handleFocusBlock(block)}>
 					{block.text ?? `Focus ${i}`}
