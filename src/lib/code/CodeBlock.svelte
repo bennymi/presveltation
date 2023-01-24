@@ -209,9 +209,9 @@
 	$: classesCodeBlock = `${background} ${text} ${textColor} ${rounded}`;
 </script>
 
-<div class="flex flex-col {dimensions}">
+<div class="svhiglight flex flex-col {dimensions}">
 	{#if showFocusButtons && updatedFocusBlocks.length > 0}
-		<div class="flex justify-start flex-wrap gap-x-4 gap-y-2">
+		<div class="svhiglight-focus-buttons flex justify-start flex-wrap gap-x-4 gap-y-2">
 			{#each updatedFocusBlocks as block, i}
 				<button class={focusButtonClasses} on:click={() => handleFocusBlock(block)}>
 					{block.text ?? `Focus ${i}`}
@@ -221,7 +221,7 @@
 	{/if}
 
 	{#if language && code}
-		<div class="code-block flex flex-col overflow-auto mt-2 {classesCodeBlock}">
+		<div class="svhiglight-block flex flex-col overflow-auto mt-2 {classesCodeBlock}">
 			<!-- Header -->
 			{#if showHeader}
 				<Header {classesHeader} {headerText} {code} on:copy />

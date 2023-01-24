@@ -25,14 +25,14 @@
 </script>
 
 <header
-	class="code-block-header rounded-t-lg flex justify-between items-center p-2 pl-4 {classesHeader}"
+	class="svhighlight-header rounded-t-lg flex justify-between items-center p-2 pl-4 {classesHeader}"
 >
 	<!-- Language Text -->
 	<span class="code-block-language">{headerText}</span>
 
 	<!-- Copy Button -->
 	<button
-		class="code-block-btn px-2 py-1 rounded-lg transition-all duration-200 text-white/70 hover:text-white/95"
+		class="svhighlight-copy-btn px-2 py-1 rounded-lg transition-all duration-200 text-white/70 hover:text-white/95"
 		on:click={handleCopy}
 	>
 		{#if copyState}
