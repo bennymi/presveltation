@@ -106,13 +106,6 @@
 		}));
 	}
 
-	// Handle hover
-	$: disableBlur = (line: number) => {
-		if (focusType === 'blur' && highlightedLinesList.indexOf(line) === -1) {
-			blur = false;
-		}
-	};
-
 	// Determine if a line should be highlighted or not.
 	$: applyHighlight = (line: number): boolean => {
 		return focusType === 'highlight' && highlightedLinesList.indexOf(line) !== -1;
@@ -196,21 +189,19 @@
 
 	// Check if blur should be applied to a line.
 	$: applyBlur = (line: number): boolean => {
-		// console.log(
-		// 	`Apply blur for line ${line} at step ${$activeFocusBlockStore}? ${
-		// 		focusType === 'blur' &&
-		// 		blur &&
-		// 		highlightedLinesList.length > 0 &&
-		// 		highlightedLinesList.indexOf(line) === -1
-		// 	}`
-		// );
-
 		return (
 			focusType === 'blur' &&
 			blur &&
 			highlightedLinesList.length > 0 &&
 			highlightedLinesList.indexOf(line) === -1
 		);
+	};
+
+	// Handle hover
+	$: disableBlur = (line: number) => {
+		if (focusType === 'blur' && highlightedLinesList.indexOf(line) === -1) {
+			blur = false;
+		}
 	};
 
 	// Set the classes
