@@ -145,13 +145,13 @@
 			lineElement = document.createElement('div');
 
 			preElement?.childNodes.forEach((node) => {
-				if (node.nodeName === 'SPAN' && node.innerHTML.includes('\n')) {
-					const splitLines: string[] = node.innerHTML.split('\n');
+				if (node.nodeName === 'SPAN' && (<HTMLElement>node).innerHTML.includes('\n')) {
+					const splitLines: string[] = (<HTMLElement>node).innerHTML.split('\n');
 
 					splitLines.forEach((s, i) => {
 						if (s !== '') {
 							let newNode = node.cloneNode();
-							newNode.innerHTML = s;
+							(<HTMLElement>newNode).innerHTML = s;
 							lineElement?.appendChild(newNode);
 						}
 
@@ -161,8 +161,8 @@
 					});
 				} else {
 					let newNode = node.cloneNode();
-					newNode.innerHTML = node.innerHTML;
-					lineElement.appendChild(newNode);
+					(<HTMLElement>newNode).innerHTML = (<HTMLElement>node).innerHTML;
+					lineElement!.appendChild(newNode);
 				}
 			});
 
