@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { writable, type Writable } from 'svelte/store';
 	import CodeBlock from '$lib/code/CodeBlock.svelte';
 	import 'highlight.js/styles/base16/dracula.css';
 	// import 'highlight.js/styles/base16/monokai.css';
@@ -8,7 +7,6 @@
 	import { maxSteps, currStep } from '$lib/stores';
 	import { onMount } from 'svelte';
 
-	let scrollStore: Writable<number> = writable(0);
 	let highlightLines: string = '';
 
 	let focusBlocks = [
@@ -193,7 +191,6 @@
 			showHeader={true}
 			showFocusButtons={true}
 			showLineNumbers={true}
-			{scrollStore}
 			activeFocusBlockStore={currStep}
 		/>
 	</div>

@@ -3,7 +3,7 @@
 
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
-	import { writable, type Writable } from 'svelte/store';
+	import type { Writable } from 'svelte/store';
 
 	import type { FocusBlock, UpdatedFocusBlock } from './types';
 	import Header from './Header.svelte';
@@ -32,10 +32,8 @@
 	export let focusBlocks: FocusBlock[] = [];
 	/** Show focus buttons. */
 	export let showFocusButtons: boolean = false;
-	/** Provide store that states which focus block should be active. */
+	/** Provide store that states which focus block index should be active. */
 	export let activeFocusBlockStore: Writable<number> | null = null;
-	/** Provide store for line number to scroll to. */
-	export let scrollStore: Writable<number> = writable(0);
 
 	// Props (styles)
 	/** Provide classes to set the background color. */
@@ -52,7 +50,7 @@
 	/** Provide classes to set the border radius. */
 	export let rounded: string = 'rounded-lg';
 	/** Provide classes to set dimensions of the code block. */
-	export let dimensions: string = 'h-96 w-3/4 md:w-2/4'; // 'max-h-96 max-w-3xl';
+	export let dimensions: string = 'h-96 w-3/4 md:w-2/4';
 	/** Provide classes to set highlight color. */
 	export let highlightColor: string = 'bg-gray-200/10';
 
@@ -170,11 +168,6 @@
 			lines = lineElement.innerHTML.split('\n');
 			lines = lines.map((line) => (line === '' ? ' ' : line));
 		}
-	}
-
-	// Scroll to line specified by the scroll store.
-	$: if ($scrollStore >= 0 && $scrollStore < lines.length) {
-		scrollToLine($scrollStore);
 	}
 
 	// Update focus block when the active store changes.
