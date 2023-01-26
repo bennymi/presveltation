@@ -47,6 +47,8 @@
 	export let text: string = 'text-sm';
 	/** Provide classes to set the default code text color. */
 	export let textColor: string = 'text-white';
+	/** Provide classes to set the default line number text color. */
+	export let lineNumberTextColor: string = 'text-white/90';
 	/** Provide classes to set the border radius. */
 	export let rounded: string = 'rounded-lg';
 	/** Provide classes to set dimensions of the code block. */
@@ -235,17 +237,14 @@
 					{#each lines as line, i}
 						<div
 							id="svhighlight-{uniqueID}-line-{i}"
-							class="relative {applyHighlight(i) ? highlightColor : ''}"
+							class="relative transition-all duration-300 ease-in {applyHighlight(i)
+								? highlightColor
+								: ''} 
+							{applyBlur(i) ? 'blur-[0.095rem] opacity-60' : ''}"
 							on:mouseenter={() => disableBlur(i)}
 							on:mouseleave={() => (blur = true)}
 						>
-							<CodeLine
-								applyBlur={applyBlur(i)}
-								{showLineNumbers}
-								lineNumber={i}
-								{line}
-								{language}
-							/>
+							<CodeLine {showLineNumbers} {lineNumberTextColor} lineNumber={i} {line} {language} />
 						</div>
 					{/each}
 				</div>
