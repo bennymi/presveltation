@@ -13,10 +13,14 @@ Create fun interactive and dynamic presentations and slide shows with SvelteKit 
 
 ## TODOs (Coming Soon)
 
-- create speaker view
-- create table of contents modal
-- create more examples:
-  - maps
-  - math / formulas
-  - tables
+**Features:**
+- ❌ create speaker view
+- ❌ create table of contents modal
+
+**Documentation:**
+- ❌ write documentation
+- ❌ create more examples for demo:
+  - ❌ maps
+  - ❌ math / formulas
+  - ❌ tables
 
