@@ -1,6 +1,6 @@
 {
-	"name": "svelte-presentation",
-	"version": "0.0.1",
+	"name": "svelte-show",
+	"version": "0.1.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -37,8 +37,6 @@
 		"@lottiefiles/lottie-player": "^1.6.3",
 		"animate.css": "^4.1.1",
 		"highlight.js": "^11.7.0",
-		"iconify-icon": "^1.0.2",
-		"prismjs": "^1.29.0",
-		"svelte-transition": "^0.0.7"
+		"iconify-icon": "^1.0.2"
 	}
 }
