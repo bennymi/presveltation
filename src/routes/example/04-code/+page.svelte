@@ -13,10 +13,10 @@
 
 	let focusBlocks: FocusBlock[] = [
 		{ lines: '', text: 'Unblur' },
-		{ lines: '91-96', scrollLine: 95, text: '1: onInit()' },
-		{ lines: '98-105', scrollLine: 92, text: '2: onInit()' },
+		{ lines: '91-96', scrollLine: 104, text: '1: onInit()' },
+		{ lines: '98-105', scrollLine: 105, text: '2: onInit()' },
 		{ lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
-		{ lines: '59-68', scrollLine: 57, text: 'updateActiveClasses()' }
+		{ lines: '59-68', scrollLine: 70, text: 'updateActiveClasses()' }
 	];
 
 	onMount(() => {
