@@ -24,6 +24,11 @@
 		goto($slides[currSlide].route);
 	};
 
+	const menuUpdate = (e: CustomEvent) => {
+		currSlide = e.detail;
+		updateSlide();
+	};
+
 	const handleKeydown = (event: KeyboardEvent) => {
 		const key: string = event.key;
 
@@ -60,6 +65,10 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<Overview bind:open={openOverview} on:close={() => (openOverview = false)} />
+<Overview
+	bind:open={openOverview}
+	on:close={() => (openOverview = false)}
+	on:update-slide={menuUpdate}
+/>
 
 <slot />
