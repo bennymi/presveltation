@@ -75,7 +75,7 @@
 			</div>
 
 			<iframe
-				class="h-3/4 w-3/4 scale-50 rounded-lg border-2 border-gray-900 bg-white shadow-lg shadow-gray-900"
+				class="h-3/4 w-3/4 scale-75 rounded-lg border-2 border-gray-900 bg-white shadow-lg shadow-gray-900"
 				src={slidesFiltered[hoveredSlide].route}
 				title={slidesFiltered[hoveredSlide].title}
 				frameborder="0"
