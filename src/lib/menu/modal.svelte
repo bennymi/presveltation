@@ -39,43 +39,19 @@
 
 <svelte:window on:keydown={handle_keydown} />
 
-<div class="modal-background" on:click={close} on:keydown />
-
-<div class="modal" role="dialog" aria-modal="true" bind:this={modal}>
-	<slot name="header" />
-	<hr />
+<div
+	class="fixed top-0 left-0 z-10 h-full w-full bg-gray-800/95"
+	on:click|self={close}
+	on:keydown
+/>
+<!-- w-[calc(100vw - 4em)] max-h-[calc(100vh - 4em)] max-w-lg -->
+<!-- <div
+	class="absolute left-1/2 top-1/2 z-50 w-fit -translate-x-1/2 -translate-y-1/2 rounded-lg border-2 border-gray-800 bg-gray-800 p-4 shadow-lg shadow-gray-900"
+	role="dialog"
+	aria-modal="true"
+	bind:this={modal}
+>
 	<slot />
-	<hr />
+</div> -->
 
-	<!-- svelte-ignore a11y-autofocus -->
-	<button autofocus on:click={close}>close modal</button>
-</div>
-
-<style>
-	.modal-background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, 0.3);
-	}
-
-	.modal {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		width: calc(100vw - 4em);
-		max-width: 32em;
-		max-height: calc(100vh - 4em);
-		overflow: auto;
-		transform: translate(-50%, -50%);
-		padding: 1em;
-		border-radius: 0.2em;
-		background: white;
-	}
-
-	button {
-		display: block;
-	}
-</style>
+<slot />

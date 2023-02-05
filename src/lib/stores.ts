@@ -1,9 +1,5 @@
 import { writable, type Writable } from "svelte/store";
-
-type Slide = {
-    route: string;
-    title: string;
-};
+import type { Slide } from './types';
 
 export const slides: Writable<Slide[]> = writable([]);
 export const currStep: Writable<number> = writable(0);
