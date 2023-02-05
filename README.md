@@ -15,7 +15,7 @@ Create fun interactive and dynamic presentations and slide shows with SvelteKit 
 
 **Features:**
 - ❌ create speaker view
-- ❌ create table of contents modal
+- ✔️ create table of contents modal
 
 **Documentation:**
 - ❌ write documentation

@@ -46,7 +46,7 @@
 		>
 			<div class=" h-full w-1/3 bg-gray-800 shadow-lg shadow-gray-900">
 				<div class="flex items-center justify-evenly bg-gray-900 px-1 py-4 text-white">
-					<div class="text-2xl font-bold">Table of Contents</div>
+					<div class="text-xl font-bold">Table of Contents</div>
 					<input
 						type="text"
 						bind:value={search}
