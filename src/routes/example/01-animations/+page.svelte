@@ -2,23 +2,23 @@
 	import { addStepAnimation } from '$lib/addstepanimation';
 </script>
 
-<div class="flex items-center justify-center content-center w-screen h-screen">
+<div class="flex h-screen w-screen content-center items-center justify-center">
 	<div class="animate__animated step-0:animate__fadeInLeft" use:addStepAnimation>
-		<img src="/14.svg" alt="figure-1" class="h-2/3 m-auto" />
+		<img src="/14.svg" alt="figure-1" class="m-auto h-2/3" />
 	</div>
 	<div class="animate__animated step-0:animate__fadeInUp" use:addStepAnimation>
-		<p class="font-sans font-bold text-sm text-blue-600 tracking-widest uppercase">Feature</p>
-		<h1 class="font-sans font-black text-neutral-900 text-5xl text-left mt-8 tracking-tighter">
+		<p class="font-sans text-sm font-bold uppercase tracking-widest text-blue-600">Feature</p>
+		<h1 class="mt-8 text-left font-sans text-5xl font-black tracking-tighter text-neutral-900">
 			Create impactful presentations with animations.
 		</h1>
-		<p class="font-sans font-light text-xl text-gray-500 mt-8 leading-relaxed">
+		<p class="mt-8 font-sans text-xl font-light leading-relaxed text-gray-500">
 			Supports CSS animation out of the box with <a
 				href="https://animate.style/"
 				class="text-blue-600 hover:text-neutral-600">animate.css</a
 			>.
 		</p>
 
-		<p class="font-sans font-light text-xl text-gray-500 mt-8 leading-relaxed">
+		<p class="mt-8 font-sans text-xl font-light leading-relaxed text-gray-500">
 			Use animation freely <br />
 			Just add one more class <br />
 			Sounds super badass <br />

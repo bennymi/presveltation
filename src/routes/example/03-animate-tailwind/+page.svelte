@@ -2,16 +2,16 @@
 	import { addStepAnimation } from '$lib/addstepanimation';
 </script>
 
-<div class="grid grid-cols-2 items-center justify-center content-center w-screen h-screen">
+<div class="grid h-screen w-screen grid-cols-2 content-center items-center justify-center">
 	<div class="flex justify-center">
-		<h1 class="font-sans font-black text-neutral-900 text-5xl text-left mx-auto tracking-tighter">
+		<h1 class="mx-auto text-left font-sans text-5xl font-black tracking-tighter text-neutral-900">
 			Add <iconify-icon icon="logos:tailwindcss" /> transitions
 		</h1>
 	</div>
-	<div class="grid grid-cols-2 grid-rows-2 gap-y-2 h-screen items-center bg-gray-800 text-white">
+	<div class="grid h-screen grid-cols-2 grid-rows-2 items-center gap-y-2 bg-gray-800 text-white">
 		<!-- STEP 1 -->
 		<div
-			class="w-60 mx-auto flex justify-around border-2 items-center py-2 px-4 rounded-md transition-all ease-in duration-300"
+			class="mx-auto flex w-60 items-center justify-around rounded-md border-2 py-2 px-4 transition-all duration-300 ease-in"
 			use:addStepAnimation={[
 				{ step: '0', classes: 'border-gray-600' },
 				{
@@ -20,12 +20,12 @@
 				}
 			]}
 		>
-			<div class="w-20 m-0">
+			<div class="m-0 w-20">
 				<lottie-player autoplay loop src="/lottieHumidity.json" />
 			</div>
 			<div>
 				<h2
-					class="font-sans font-bold text-2xl"
+					class="font-sans text-2xl font-bold"
 					use:addStepAnimation={[
 						{
 							step: '1',
@@ -39,7 +39,7 @@
 		</div>
 		<!-- STEP 2 -->
 		<div
-			class="w-60 mx-auto flex justify-around border-2 items-center py-2 px-4 rounded-md transition-all ease-in duration-300"
+			class="mx-auto flex w-60 items-center justify-around rounded-md border-2 py-2 px-4 transition-all duration-300 ease-in"
 			use:addStepAnimation={[
 				{ step: '0', classes: 'border-gray-600' },
 				{
@@ -48,12 +48,12 @@
 				}
 			]}
 		>
-			<div class="w-20 m-0">
+			<div class="m-0 w-20">
 				<lottie-player autoplay loop src="/lottieTemperatureMeter.json" />
 			</div>
 			<div>
 				<h2
-					class="font-sans font-bold text-2xl"
+					class="font-sans text-2xl font-bold"
 					use:addStepAnimation={[
 						{
 							step: '2',
@@ -66,7 +66,7 @@
 			</div>
 		</div>
 		<div
-			class="w-60 mx-auto flex justify-around border-2 items-center py-2 px-4 rounded-md transition-all ease-in duration-300"
+			class="mx-auto flex w-60 items-center justify-around rounded-md border-2 py-2 px-4 transition-all duration-300 ease-in"
 			use:addStepAnimation={[
 				{ step: '0', classes: 'border-gray-600' },
 				{
@@ -76,12 +76,12 @@
 				}
 			]}
 		>
-			<div class="w-20 m-0">
+			<div class="m-0 w-20">
 				<lottie-player autoplay loop src="/lottieSunny.json" />
 			</div>
 			<div>
 				<h2
-					class="font-sans font-bold text-2xl"
+					class="font-sans text-2xl font-bold"
 					use:addStepAnimation={[
 						{
 							step: '3',
@@ -95,7 +95,7 @@
 			</div>
 		</div>
 		<div
-			class="w-60 mx-auto flex justify-around border-2 items-center py-2 px-4 rounded-md transition-all ease-in duration-300"
+			class="mx-auto flex w-60 items-center justify-around rounded-md border-2 py-2 px-4 transition-all duration-300 ease-in"
 			use:addStepAnimation={[
 				{ step: '0', classes: 'border-gray-600' },
 				{
@@ -104,12 +104,12 @@
 				}
 			]}
 		>
-			<div class="w-20 m-0">
+			<div class="m-0 w-20">
 				<lottie-player autoplay loop src="/lottieWindyIcon.json" />
 			</div>
 			<div>
 				<h2
-					class="font-sans font-bold text-2xl"
+					class="font-sans text-2xl font-bold"
 					use:addStepAnimation={[
 						{
 							step: '4',

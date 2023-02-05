@@ -13,10 +13,10 @@
 
 	let focusBlocks: FocusBlock[] = [
 		{ lines: '', text: 'Unblur' },
-		{ lines: '91-96', scrollLine: 104, text: '1: onInit()' },
-		{ lines: '98-105', scrollLine: 105, text: '2: onInit()' },
+		{ lines: '91-96', scrollLine: 91, text: '1: onInit()' },
+		{ lines: '98-105', scrollLine: 92, text: '2: onInit()' },
 		{ lines: '8-19', scrollLine: 6, text: 'updateMaxSteps()' },
-		{ lines: '59-68', scrollLine: 70, text: 'updateActiveClasses()' }
+		{ lines: '59-68', scrollLine: 57, text: 'updateActiveClasses()' }
 	];
 
 	onMount(() => {
@@ -24,9 +24,9 @@
 	});
 </script>
 
-<div class="flex flex-col justify-center items-center w-screen h-screen">
+<div class="flex h-screen w-screen flex-col items-center justify-center">
 	<h1
-		class="font-sans font-black text-neutral-900 text-5xl text-center mx-auto tracking-tighter animate__animated step-0:animate__fadeInDown"
+		class="animate__animated step-0:animate__fadeInDown mx-auto text-center font-sans text-5xl font-black tracking-tighter text-neutral-900"
 		use:addStepAnimation
 	>
 		Add interactive code blocks with
@@ -39,7 +39,7 @@
 	</h1>
 
 	<div
-		class="my-8 w-full flex justify-center animate__animated step-0:animate__fadeInUp"
+		class="animate__animated step-0:animate__fadeInUp my-8 flex w-full justify-center"
 		use:addStepAnimation
 	>
 		<CodeBlock
