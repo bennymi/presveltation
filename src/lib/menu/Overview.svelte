@@ -38,11 +38,11 @@
 			index %= tabbable.length;
 
 			(<HTMLElement>tabbable[index]).focus();
-		} else if (key === 'ArrowDown' && displayedSlide < $slides.length - 1) {
+		} else if (key === 'ArrowDown' && search === '' && displayedSlide < $slides.length - 1) {
 			e.preventDefault();
 			displayedSlide += 1;
 			document.getElementById(`menu-slide-${displayedSlide}`)?.focus();
-		} else if (key === 'ArrowUp' && displayedSlide > 0) {
+		} else if (key === 'ArrowUp' && search === '' && displayedSlide > 0) {
 			e.preventDefault();
 			displayedSlide -= 1;
 			document.getElementById(`menu-slide-${displayedSlide}`)?.focus();
