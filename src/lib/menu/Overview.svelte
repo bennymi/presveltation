@@ -3,15 +3,17 @@
 	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 
-	import Modal from './Modal.svelte';
 	import { slides } from '$lib/stores';
 
 	const dispatch = createEventDispatcher();
 
 	export let open: boolean = false;
+	let modal: HTMLElement;
 	let search: string = '';
 	let currSlide: number = 0;
 	let displayedSlide: number = 0;
+
+	const close = () => dispatch('close');
 
 	const handleUpdateSlide = (slideNumber: number) => {
 		open = false;
@@ -19,16 +21,31 @@
 	};
 
 	const handleKeydown = (e: KeyboardEvent) => {
-		console.log('handleKeydown', e);
+		const key = e.key;
 
-		if (e.key === 'ArrowDown' && displayedSlide > 0) {
+		if (key === 'Escape') {
+			close();
+		} else if (key === 'Tab') {
 			e.preventDefault();
+			// trap focus
+			const nodes = modal.querySelectorAll('*');
+			const tabbable: Element[] = Array.from(nodes).filter((n) => (<HTMLElement>n).tabIndex >= 0);
 
+			let index = tabbable.indexOf(document.activeElement!);
+			if (index === -1 && e.shiftKey) index = 0;
+
+			index += tabbable.length + (e.shiftKey ? -1 : 1);
+			index %= tabbable.length;
+
+			(<HTMLElement>tabbable[index]).focus();
+		} else if (key === 'ArrowDown' && displayedSlide < $slides.length - 1) {
+			e.preventDefault();
+			displayedSlide += 1;
+			document.getElementById(`menu-slide-${displayedSlide}`)?.focus();
+		} else if (key === 'ArrowUp' && displayedSlide > 0) {
+			e.preventDefault();
 			displayedSlide -= 1;
-			console.log('displayedSlide', displayedSlide);
-			const activeElement = document.getElementById(`menu-slide-${displayedSlide}`);
-
-			activeElement?.focus();
+			document.getElementById(`menu-slide-${displayedSlide}`)?.focus();
 		}
 	};
 
@@ -50,7 +67,12 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if open}
-	<Modal on:close>
+	<div
+		class="fixed top-0 left-0 bottom-0 z-50 h-full w-full bg-gray-800/95"
+		on:click|self={close}
+		bind:this={modal}
+		on:keydown
+	>
 		<div class="flex h-full w-full items-center" on:click|self={() => (open = false)} on:keydown>
 			<div class=" h-full w-1/3 bg-gray-800 shadow-lg shadow-gray-900">
 				<div class="flex items-center justify-evenly bg-gray-900 px-1 py-4 text-white">
@@ -84,7 +106,10 @@
 							id="menu-slide-{slideNumber}"
 							on:click={() => handleUpdateSlide(slideNumber)}
 							on:mouseenter={() => (displayedSlide = slideNumber)}
-							class="rounded-lg border-2 border-gray-900 px-2 py-1 text-left text-white hover:bg-gray-900 hover:font-bold hover:shadow-md hover:shadow-blue-500"
+							class="rounded-lg border-2 border-gray-900 px-2 py-1 text-left text-white hover:bg-gray-900 hover:font-bold hover:shadow-md hover:shadow-blue-500 {slideNumber ===
+							displayedSlide
+								? 'bg-gray-900 font-bold'
+								: ''}"
 						>
 							{slideNumber + 1}: {title}
 						</button>
@@ -97,7 +122,8 @@
 				src={$slides[displayedSlide].route}
 				title={$slides[displayedSlide].title}
 				frameborder="0"
+				tabindex="-1"
 			/>
 		</div>
-	</Modal>
+	</div>
 {/if}
