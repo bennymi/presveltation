@@ -6,7 +6,7 @@
 
 	let modal: HTMLElement;
 
-	const handle_keydown = (e: KeyboardEvent) => {
+	const handleKeydown = (e: KeyboardEvent) => {
 		if (e.key === 'Escape') {
 			close();
 			return;
@@ -37,21 +37,20 @@
 	}
 </script>
 
-<svelte:window on:keydown={handle_keydown} />
+<svelte:window on:keydown={handleKeydown} />
 
 <div
-	class="fixed top-0 left-0 z-10 h-full w-full bg-gray-800/95"
+	class="fixed top-0 left-0 bottom-0 z-50 h-full w-full bg-gray-800/95"
+	on:click|self={close}
+	on:keydown
+>
+	<slot />
+</div>
+
+<!-- <div
+	class="fixed top-0 left-0 bottom-0 z-10 h-full w-full bg-gray-800/95"
 	on:click|self={close}
 	on:keydown
 />
-<!-- w-[calc(100vw - 4em)] max-h-[calc(100vh - 4em)] max-w-lg -->
-<!-- <div
-	class="absolute left-1/2 top-1/2 z-50 w-fit -translate-x-1/2 -translate-y-1/2 rounded-lg border-2 border-gray-800 bg-gray-800 p-4 shadow-lg shadow-gray-900"
-	role="dialog"
-	aria-modal="true"
-	bind:this={modal}
->
-	<slot />
-</div> -->
 
-<slot />
+<slot /> -->
