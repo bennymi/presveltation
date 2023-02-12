@@ -13,7 +13,10 @@
 	let currSlide: number = 0;
 	let displayedSlide: number = 0;
 
-	const close = () => dispatch('close');
+	const close = () => {
+		open = false;
+		dispatch('close');
+	};
 
 	const handleUpdateSlide = (slideNumber: number) => {
 		open = false;
@@ -49,15 +52,22 @@
 		}
 	};
 
-	onMount(() => {
+	const updateDisplaySlide = () => {
 		$slides.forEach((slide, i) => {
 			if (slide.route === $page.route.id) {
 				currSlide = i;
 				displayedSlide = i;
 			}
 		});
+	};
+
+	onMount(() => {
+		updateDisplaySlide();
 	});
 
+	$: if (open) {
+		updateDisplaySlide();
+	}
 	$: slidesWithNumber = $slides.map((slide, i) => ({ ...slide, slideNumber: i }));
 	$: slidesFiltered = slidesWithNumber.filter((s) =>
 		s.title.toLowerCase().includes(search.toLowerCase())

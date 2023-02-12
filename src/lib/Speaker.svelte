@@ -30,7 +30,7 @@
 		<p class="text-gray-700">No Notes Available</p>
 		<iframe
 			src={slide.route}
-			class="h-3/4 w-3/4 scale-75 border-2 border-blue-700"
+			class="h-3/4 w-3/4 scale-75 rounded-lg border-2 border-blue-700"
 			title={`Notes: ${slide.title}`}
 			frameborder="0"
 		/>
