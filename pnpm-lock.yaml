@@ -20,12 +20,16 @@ specifiers:
   scroll-into-view-if-needed: ^3.0.4
   svelte: ^3.54.0
   svelte-check: ^2.9.2
+  svelte-local-storage-store: ^0.4.0
   svhighlight: ^0.6.5
   tailwindcss: ^3.2.4
   tslib: ^2.4.1
   typescript: ^4.9.3
   vite: ^4.0.0
   vitest: ^0.25.3
+
+dependencies:
+  svelte-local-storage-store: 0.4.0_svelte@3.55.1
 
 devDependencies:
   '@lottiefiles/lottie-player': 1.6.3
@@ -2003,6 +2007,15 @@ packages:
       svelte: 3.55.1
     dev: true
 
+  /svelte-local-storage-store/0.4.0_svelte@3.55.1:
+    resolution: {integrity: sha512-ctPykTt4S3BE5bF0mfV0jKiUR1qlmqLvnAkQvYHLeb9wRyO1MdIFDVI23X+TZEFleATHkTaOpYZswIvf3b2tWA==}
+    engines: {node: '>=0.14'}
+    peerDependencies:
+      svelte: ^3.48.0
+    dependencies:
+      svelte: 3.55.1
+    dev: false
+
   /svelte-preprocess/4.10.7_oifjsu5oar4lzyaoppb2hxramu:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
     engines: {node: '>= 9.11.2'}
@@ -2058,7 +2071,6 @@ packages:
   /svelte/3.55.1:
     resolution: {integrity: sha512-S+87/P0Ve67HxKkEV23iCdAh/SX1xiSfjF1HOglno/YTbSTW7RniICMCofWGdJJbdjw3S+0PfFb1JtGfTXE0oQ==}
     engines: {node: '>= 8'}
-    dev: true
 
   /svhighlight/0.6.5:
     resolution: {integrity: sha512-E3pxWMBAn4iQaqaGU/4m9F5wxfET09874iqkGZ7Ls+Q0CBWzkoLMPlNO/inifbOcnatOgIkPqgvv7EAEcMzJuQ==}
