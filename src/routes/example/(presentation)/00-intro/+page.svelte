@@ -25,15 +25,7 @@
 		</p>
 		<p />
 	</div>
-	<div class="max-w-4/6 fnot-sans mx-auto mt-8 text-center text-lg font-normal text-blue-400">
-		Press <kbd class="rounded-lg bg-blue-500 px-2 py-1 font-mono font-bold text-white">m</kbd> to
-		open an overview of all slides, and
-		<kbd class="rounded-lg bg-blue-500 px-2 py-1 font-mono font-bold text-white">s</kbd> to open the
-		speaker view / notes.
-	</div>
-	<div class="mt-8 text-center text-lg text-gray-400">
-		(These demo slides are currently not mobile friendly)
-	</div>
+
 	<nav class="mx-auto mt-8 flex space-x-4">
 		<a
 			href="https://github.com/bennymi/svelte-presentation"
@@ -57,4 +49,22 @@
 			Example
 		</a>
 	</nav>
+
+	<div class="mx-auto mt-8 w-4/6 text-center font-sans text-lg font-normal text-blue-400">
+		Press <kbd>m</kbd> to open an overview of all slides, and
+		<kbd>s</kbd> to open the speaker view / notes. Use
+		<kbd>&larr</kbd>
+		and <kbd>&rarr</kbd> to move through the slides, and enter full screen mode by pressing
+		<kbd>F11</kbd>.
+	</div>
+
+	<div class="mt-8 text-center text-lg text-gray-400">
+		(These demo slides are currently not mobile friendly)
+	</div>
 </div>
+
+<style>
+	kbd {
+		@apply rounded-lg bg-blue-600 px-2 py-1 font-mono font-bold text-white;
+	}
+</style>
