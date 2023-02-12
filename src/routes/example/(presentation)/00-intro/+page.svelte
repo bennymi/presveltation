@@ -17,7 +17,7 @@
 		class="max-w-4/6 mx-auto mt-8 text-center font-sans text-2xl font-normal leading-relaxed text-gray-400"
 	>
 		<p>
-			A tool for creating presentations and slideshows using <iconify-icon
+			A library for creating presentations and slideshows using <iconify-icon
 				icon="logos:svelte-kit"
 				class="text-2xl"
 			/>
