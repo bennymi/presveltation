@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { create_in_transition } from 'svelte/internal';
+
 	let seconds: number = 0;
 	let myInterval: ReturnType<typeof setInterval> | null = null;
 	let isPaused: boolean = true;
@@ -10,10 +12,10 @@
 
 	function handleClick() {
 		if (isPaused && !myInterval) {
-			// start = new Date().getTime();
 			myInterval = setInterval(() => {
 				seconds += 1;
 			}, 1000);
+
 			isPaused = false;
 		} else if (isPaused) {
 			isPaused = false;
@@ -22,8 +24,33 @@
 		}
 	}
 
-	function handleReset() {
+	function spin(node, options) {
+		const { times = 1 } = options;
+		return {
+			...options,
+			css(t) {
+				// Svelte takes care of applying the easing function.
+				const degrees = 360 * times; // through which to spin
+				return `transform: rotate(-${t * degrees}deg);`;
+			}
+		};
+	}
+
+	function animateSpin(node) {
+		const n = 1;
+		const d = 600;
+
+		const intro = create_in_transition(node, spin, {
+			duration: d * n,
+			times: n
+		});
+		intro.start();
+	}
+
+	function handleReset(event: Event) {
 		pause();
+		// resetUpdate += 1;
+		animateSpin(event.target);
 		myInterval = null;
 		seconds = 0;
 	}
