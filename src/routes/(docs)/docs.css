@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    @apply py-4 text-3xl font-bold text-gray-900 dark:text-white;
+}
+
+h2 {
+    @apply py-4 text-2xl font-bold text-gray-900 dark:text-white;
+}
+
+p {
+    @apply leading-relaxed text-gray-700 text-justify dark:text-gray-200;
+}
+
+/* br {
+    @apply my-4;
+} */
