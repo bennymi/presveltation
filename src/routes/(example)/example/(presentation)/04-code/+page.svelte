@@ -48,7 +48,7 @@
 			{highlightLines}
 			{focusBlocks}
 			showHeader={true}
-			showFocusButtons={true}
+			showFocusButtons={false}
 			showLineNumbers={true}
 			activeFocusBlockStore={currStep}
 			dimensions="h-96 w-1/2"

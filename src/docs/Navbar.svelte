@@ -28,7 +28,8 @@
 	class="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between gap-12 bg-white/80 px-4 backdrop-blur-sm transition dark:bg-gray-900/30 sm:px-6 lg:z-30 lg:px-8"
 >
 	<a href="/" class="text-2xl font-bold text-white">SvelteShow</a>
-	<div class="flex items-center justify-center gap-4">
+	<div class="flex items-center justify-center gap-5">
+		<a href="/example/00-intro" class="text-xl font-bold text-white">Demo</a>
 		<form method="post" class="inline-flex">
 			<button formaction="/?/setTheme&theme={darkTheme ? 'light' : 'dark'}" class="inline-flex">
 				<span class="sr-only">Dark / Light mode toggle</span>

@@ -83,7 +83,8 @@
 <p>
 	To create a note for a slide that will then be shown in the speaker's view create a sub-folder in
 	the slide folder, called <code>notes/</code>, with a
-	<code>+page.svelte</code> file.
+	<code>+page.svelte</code> file. If you do not create notes for a slide, the speaker's view will simply
+	show a standard page with the slide number & title, as well as a small view of the slide.
 </p>
 
 <br />
@@ -92,9 +93,7 @@
 	To make notes visible we first need to set up the <code>(notes)/+layout.svelte</code>
 	file. Here you need to import <code>Speaker</code> component, which renders the notes through an
 	<code>iframe</code>. Once this is set up you can access the presentation notes by pressing the
-	<kbd>s</kbd> key ("s" stands for "Speaker"). If you did not create notes for a slide, the speaker's
-	view will simply show a standard page with the slide number & title, as well as a small view of the
-	slide.
+	<kbd>s</kbd> key ("s" stands for "Speaker").
 </p>
 
 <br />
