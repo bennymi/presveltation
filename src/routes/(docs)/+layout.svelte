@@ -44,8 +44,6 @@
 		</aside>
 		<div class="mx-auto w-3/6 max-w-3xl pt-20 pb-56">
 			<slot />
-			<!-- Add Previous and Next button to the bottom of each page. -->
-			<!-- Move sideMenus array to layout and pass it to an extra component. BottomNavigation -->
 			<div class="mt-12 w-full">
 				<BottomNav previous={previousPage} next={nextPage} />
 			</div>
