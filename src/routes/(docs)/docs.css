@@ -17,3 +17,7 @@ p {
 kbd {
     @apply rounded-lg border-2 border-purple-900 bg-slate-100 py-1 px-2 font-mono text-purple-900;
 }
+
+code {
+    @apply font-mono;
+}

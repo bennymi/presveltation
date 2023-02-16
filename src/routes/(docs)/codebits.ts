@@ -1,7 +1,23 @@
 import type { FocusBlock } from "svhighlight";
 
+export let tailwindConfig = `/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/**/*.{html,js,svelte,ts}',
+    "./node_modules/svelte-show/**/*.{svelte,ts}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}`;
+
 export let folderStructure = `
 src/routes/ 
+    |- (notes)/
+        |- notes/
+            |- +layout.svelte       <- Notes layout (import Speaker here)
+            |- +page.svelte         <- Notes page (can be left empty)
     |- (slides)/
         |- slide 1/                 <- These are your slide folders / pages
             |- notes/
@@ -13,10 +29,6 @@ src/routes/
             |- +page.svelte
         |- +layout.svelte           <- Slide layout (import Deck here)
         |- +page.svelte             <- Starting slide at route "/"
-    |- (notes)/
-        |- notes/
-            |- +layout.svelte       <- Notes layout (import Speaker here)
-            |- +page.svelte         <- Notes page (can be left empty)
     |- +layout.svelte               <- Import app.css here
     |- app.css                      <- app.css for the Tailwind imports
 `;
