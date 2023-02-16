@@ -27,8 +27,8 @@
 		rel="noopener noreferrer"
 		href="https://tailwindcss.com/docs/guides/sveltekit">TailwindCSS</a
 	>
-	for this library. You might also need to update your <code>tailwind.config.cjs</code> file as follows,
-	to make sure that this library gets processed properly by Tailwind:
+	for this library. You might also need to update your <code>tailwind.config.cjs</code> file to make
+	sure that this library gets processed properly by Tailwind:
 </p>
 
 <br />
