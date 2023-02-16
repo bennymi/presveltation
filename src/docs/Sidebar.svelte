@@ -1,40 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 
-	type SubMenu = {
-		name: string;
-		route: string;
-	};
+	import type { SideMenu } from './types';
 
-	type SideMenu = {
-		name: string;
-		route: string;
-		subMenus: SubMenu[];
-	};
-
-	let sideMenus: SideMenu[] = [
-		{
-			name: 'Getting Started',
-			route: '/',
-			subMenus: [
-				{ name: 'Project Structure', route: '/#project-structure' },
-				{ name: 'Slides Folder', route: '/#slides-folder' },
-				{ name: 'Notes Folder', route: '/#notes-folder' }
-			]
-		},
-		{
-			name: 'Stores',
-			route: '/stores',
-			subMenus: [
-				{ name: 'Slides', route: '/stores/#slides' },
-				{ name: 'Current Slide', route: '/stores/#curr-slide' },
-				{ name: 'Max Steps', route: '/stores/#max-steps' },
-				{ name: 'Current Step', route: '/stores/#curr-step' }
-			]
-		}
-	];
-
-	$: console.log($page);
+	export let sideMenus: SideMenu[];
 </script>
 
 <nav
@@ -44,7 +13,7 @@
 		<div class="space-y-4">
 			<a
 				href={sideMenu.route}
-				class="pl-1 text-lg font-bold {$page.url.pathname === sideMenu.route
+				class="pl-2 text-lg font-bold {$page.url.pathname === sideMenu.route
 					? 'border-l-2 border-purple-700'
 					: ''}"
 			>
