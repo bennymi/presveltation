@@ -28,7 +28,7 @@
 
 	<nav class="mx-auto mt-8 flex space-x-4">
 		<a
-			href="https://github.com/bennymi/svelte-presentation"
+			href="https://github.com/bennymi/svelte-show"
 			class="flex items-center justify-center gap-1 font-sans text-lg font-semibold leading-relaxed text-blue-500 hover:text-blue-600"
 		>
 			<iconify-icon icon="mdi:github" class="text-2xl" />

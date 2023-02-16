@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 h1 {
-    @apply py-4 text-3xl font-bold text-gray-900 dark:text-white;
+    @apply pb-4 pt-8 text-4xl font-bold text-gray-900 dark:text-white;
 }
 
 h2 {
-    @apply py-4 text-2xl font-bold text-gray-900 dark:text-white;
+    @apply pb-4 pt-8 text-2xl font-bold text-gray-900 dark:text-white;
 }
 
 p {
     @apply leading-relaxed text-gray-700 text-justify dark:text-gray-200;
 }
 
-/* br {
-    @apply my-4;
-} */
+kbd {
+    @apply rounded-lg border-2 border-purple-900 bg-slate-100 py-1 px-2 font-mono text-purple-900;
+}
