@@ -28,6 +28,19 @@
 				{ name: 'Max Steps', route: '/stores/#max-steps' },
 				{ name: 'Current Step', route: '/stores/#curr-step' }
 			]
+		},
+		{
+			name: 'Slide Steps',
+			route: '/slide-steps',
+			subMenus: [
+				{ name: 'Current Slide', route: '/slide-steps/#animate-css' },
+				{ name: 'Max Steps', route: '/slide-steps/#tailwind-css' }
+			]
+		},
+		{
+			name: 'Dynamic Code',
+			route: '/code',
+			subMenus: [{ name: 'Current Slide', route: '/code/#svhighlight' }]
 		}
 	];
 
@@ -38,8 +51,10 @@
 
 <div class="h-full min-h-screen dark:bg-gradient-to-tr dark:from-[#10032c] dark:to-purple-900">
 	<Navbar />
-	<div class="flex">
-		<aside class="sticky top-14 h-screen overflow-y-auto">
+	<!-- <div class="flex h-full min-h-screen"> -->
+	<!-- <aside class="sticky top-14 h-full overflow-y-auto"> -->
+	<div class="flex h-full min-h-screen">
+		<aside class="sticky top-14 h-[calc(100vh-3.5em)] overflow-y-auto">
 			<Sidebar {sideMenus} />
 		</aside>
 		<div class="mx-auto w-3/6 max-w-3xl pt-20 pb-56">
