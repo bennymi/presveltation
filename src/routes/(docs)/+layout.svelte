@@ -26,9 +26,10 @@
 			]
 		},
 		{
-			name: 'Add Slide Steps',
+			name: 'Slide Step Classes',
 			route: '/slide-steps',
 			subMenus: [
+				{ name: 'Add Step Animations', route: '/slide-steps#add-step-animation' },
 				{ name: 'Animate.css', route: '/slide-steps#animate-css' },
 				{ name: 'Adding Tailwind Classes', route: '/slide-steps#tailwind-css' }
 			]

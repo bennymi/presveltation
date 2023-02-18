@@ -10,7 +10,7 @@
 	<a
 		target="_blank"
 		rel="noopener noreferrer"
-		class="font-bold underline"
+		class="underline"
 		href="https://github.com/joshnuss/svelte-local-storage-store"
 	>
 		<code>svelte-local-storage-store</code>

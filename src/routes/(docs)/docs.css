@@ -18,6 +18,10 @@ kbd {
     @apply rounded-lg border-2 border-purple-900 bg-slate-100 py-1 px-2 font-mono text-purple-900;
 }
 
-p code {
+p code, li code {
     @apply rounded-md bg-purple-400/30 px-1 font-mono text-white;
+}
+
+li {
+    @apply text-white;
 }
