@@ -44,9 +44,10 @@
 <p>
 	To make this work, we also need to tell the slide how many steps should exist on the slide, which
 	we can do by simply updating the <code>$maxSteps</code> store value to the number of focus blocks
-	we want to highlight on a slide. Next, we can pass the <code>currStep</code> store to
-	SvHighlight's code block <code>activeFocusBlockStore</code> prop. The focus blocks will then automatically
-	update and scroll to the highlighted sections as you use the arrow keys on your slide.
+	we want to highlight on a slide (inside <code>onMount</code>). Next, we can pass the
+	<code>currStep</code>
+	store to SvHighlight's code block <code>activeFocusBlockStore</code> prop. The focus blocks will then
+	automatically update and scroll to the highlighted sections as you use the arrow keys on your slide.
 </p>
 
 <br />

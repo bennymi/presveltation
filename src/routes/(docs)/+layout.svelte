@@ -26,6 +26,14 @@
 			]
 		},
 		{
+			name: 'Add Slide Steps',
+			route: '/slide-steps',
+			subMenus: [
+				{ name: 'Animate.css', route: '/slide-steps#animate-css' },
+				{ name: 'Adding Tailwind Classes', route: '/slide-steps#tailwind-css' }
+			]
+		},
+		{
 			name: 'Stores',
 			route: '/stores',
 			subMenus: [
@@ -33,14 +41,6 @@
 				{ name: 'Current Slide', route: '/stores#curr-slide' },
 				{ name: 'Max Steps', route: '/stores#max-steps' },
 				{ name: 'Current Step', route: '/stores#curr-step' }
-			]
-		},
-		{
-			name: 'Slide Steps',
-			route: '/slide-steps',
-			subMenus: [
-				{ name: 'Animate.css', route: '/slide-steps#animate-css' },
-				{ name: 'Adding Tailwind Classes', route: '/slide-steps#tailwind-css' }
 			]
 		},
 		{
@@ -65,7 +65,7 @@
 	<meta name="description" content={meta.description} />
 	<meta
 		name="keywords"
-		content="svelte, sveltekit, presenter, presentation, slideshow, tailwind, powerpoint, typescript, css, revealjs, reveal js, open source"
+		content="svelte, sveltekit, presenter, presentation, slideshow, tailwind, slides, powerpoint, typescript, css, revealjs, reveal js, open source"
 	/>
 	<meta name="author" content="Benedikt Mielke" />
 	<!-- Open Graph - https://ogp.me/ -->

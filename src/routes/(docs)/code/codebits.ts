@@ -18,7 +18,7 @@ export let focusBlocksExample = `<script lang="ts">
 </script>
 
 <CodeBlock
-    language="typescript"
+    language="svelte"
     {code}
     {focusBlocks}
     showHeader={false}

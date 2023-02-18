@@ -16,15 +16,15 @@
 				href={sideMenu.route}
 				class="border-purple-700 pl-2 text-lg font-bold transition duration-300 {$page.url
 					.pathname === sideMenu.route
-					? 'border-l-2 border-purple-700'
-					: ''}"
+					? 'border-l-2 border-purple-700 text-gray-200'
+					: 'text-gray-400 hover:text-gray-200'}"
 			>
 				{sideMenu.name}
 			</a>
 			{#if $page.url.pathname === sideMenu.route}
 				<div class="text-md flex flex-col space-y-2 pl-5" transition:slide={{ duration: 300 }}>
 					{#each sideMenu.subMenus as subMenu}
-						<a href={subMenu.route}>{subMenu.name}</a>
+						<a class="text-gray-400 hover:text-gray-200" href={subMenu.route}>{subMenu.name}</a>
 					{/each}
 				</div>
 			{/if}

@@ -33,7 +33,7 @@ src/routes/
     |- app.css                      <- app.css for the Tailwind imports
 `;
 
-export let slidesLayout = `<script>
+export let slidesLayout = `<script lang="ts">
     import { Deck, slides } from 'svelte-show';
 
     $slides = [
@@ -47,7 +47,7 @@ export let slidesLayout = `<script>
     <slot />
 </Deck>`;
 
-export let notesLayout = `<script>
+export let notesLayout = `<script lang="ts">
     import { Speaker } from 'svelte-show';
 </script>
 
