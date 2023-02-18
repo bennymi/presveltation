@@ -46,7 +46,10 @@
 		{
 			name: 'Dynamic Code',
 			route: '/code',
-			subMenus: [{ name: 'Current Slide', route: '/code#svhighlight' }]
+			subMenus: [
+				{ name: 'SvHighlight', route: '/code#svhighlight' },
+				{ name: 'Add Step Focus Blocks', route: '/code#focus-blocks' }
+			]
 		}
 	];
 

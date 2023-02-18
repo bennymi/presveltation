@@ -29,7 +29,13 @@
 >
 	<a href="/" class="text-3xl font-bold text-white">SvelteShow</a>
 	<div class="flex items-center justify-center gap-5">
-		<a href="/example/00-intro" class="text-xl font-bold text-white">Demo</a>
+		<a
+			target="_blank"
+			rel="noopener noreferrer"
+			href="/example/00-intro"
+			class="text-xl font-bold text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+			>Demo</a
+		>
 		<form method="post" class="inline-flex">
 			<button formaction="/?/setTheme&theme={darkTheme ? 'light' : 'dark'}" class="inline-flex">
 				<span class="sr-only">Dark / Light mode toggle</span>
@@ -44,11 +50,13 @@
 			</button>
 		</form>
 		<a
-			href="https://github.com/bennymi/svelte-presentation"
-			class="flex items-center justify-center gap-1 text-lg font-semibold leading-relaxed text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-100"
+			href="https://github.com/bennymi/svelte-show"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="flex items-center justify-center gap-1 text-lg font-semibold leading-relaxed text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
 		>
 			<iconify-icon icon="mdi:github" class="text-3xl" />
-			<!-- GitHub -->
+			GitHub
 		</a>
 	</div>
 </div>
