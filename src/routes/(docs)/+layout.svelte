@@ -9,6 +9,12 @@
 	import BottomNav from '../../docs/BottomNav.svelte';
 	import type { SideMenu } from '../../docs/types';
 
+	const meta = {
+		title: 'SvelteShow: Create Presentations and Slideshows with Svelte & Tailwind',
+		description:
+			'Create interactive and dynamic presentations and slideshows with Svelte / SvelteKit and Tailwind CSS.'
+	};
+
 	let sideMenus: SideMenu[] = [
 		{
 			name: 'Getting Started',
@@ -23,24 +29,24 @@
 			name: 'Stores',
 			route: '/stores',
 			subMenus: [
-				{ name: 'Slides', route: '/stores/#slides' },
-				{ name: 'Current Slide', route: '/stores/#curr-slide' },
-				{ name: 'Max Steps', route: '/stores/#max-steps' },
-				{ name: 'Current Step', route: '/stores/#curr-step' }
+				{ name: 'Slides', route: '/stores#slides' },
+				{ name: 'Current Slide', route: '/stores#curr-slide' },
+				{ name: 'Max Steps', route: '/stores#max-steps' },
+				{ name: 'Current Step', route: '/stores#curr-step' }
 			]
 		},
 		{
 			name: 'Slide Steps',
 			route: '/slide-steps',
 			subMenus: [
-				{ name: 'Current Slide', route: '/slide-steps/#animate-css' },
-				{ name: 'Max Steps', route: '/slide-steps/#tailwind-css' }
+				{ name: 'Animate.css', route: '/slide-steps#animate-css' },
+				{ name: 'Adding Tailwind Classes', route: '/slide-steps#tailwind-css' }
 			]
 		},
 		{
 			name: 'Dynamic Code',
 			route: '/code',
-			subMenus: [{ name: 'Current Slide', route: '/code/#svhighlight' }]
+			subMenus: [{ name: 'Current Slide', route: '/code#svhighlight' }]
 		}
 	];
 
@@ -48,6 +54,25 @@
 	$: previousPage = currentPageIdx === 0 ? null : sideMenus[currentPageIdx - 1];
 	$: nextPage = currentPageIdx === sideMenus.length - 1 ? null : sideMenus[currentPageIdx + 1];
 </script>
+
+<svelte:head>
+	<title>SvelteShow: Create Presentations and Slideshows with Svelte & Tailwind</title>
+	<!-- Meta Tags -->
+	<meta name="title" content={meta.title} />
+	<meta name="description" content={meta.description} />
+	<meta
+		name="keywords"
+		content="svelte, sveltekit, presenter, presentation, slideshow, tailwind, powerpoint, typescript, css, revealjs, reveal js, open source"
+	/>
+	<meta name="author" content="Benedikt Mielke" />
+	<!-- Open Graph - https://ogp.me/ -->
+	<meta property="og:site_name" content="SvelteShow" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://svelte-show.vercel.app{$page.url.pathname}" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content={meta.title} />
+	<meta property="og:description" content={meta.description} />
+</svelte:head>
 
 <div class="h-full min-h-screen dark:bg-gradient-to-tr dark:from-[#10032c] dark:to-purple-900">
 	<Navbar />

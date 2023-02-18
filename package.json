@@ -2,6 +2,28 @@
 	"name": "svelte-show",
 	"version": "0.1.0",
 	"private": true,
+	"description": "SvelteShow: Create interactive and dynamic presentations and slideshows with Svelte / SvelteKit and Tailwind.",
+	"author": "Benedikt Mielke",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bennymi/svelte-show.git"
+	},
+	"bugs": {
+		"url": "https://github.com/bennymi/svelte-show/issues"
+	},
+	"homepage": "https://svelte-show.vercel.app/",
+	"license": "MIT",
+	"keywords": [
+		"svelte",
+		"tailwind",
+		"sveltekit",
+		"typescript",
+		"revealjs",
+		"presentation",
+		"presenter",
+		"slideshow",
+		"powerpoint"
+	],
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -15,7 +37,7 @@
 	"devDependencies": {
 		"@lottiefiles/lottie-player": "^1.6.3",
 		"@sveltejs/adapter-auto": "^1.0.0",
-		"@sveltejs/kit": "^1.0.0",
+		"@sveltejs/kit": "^1.7.2",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"animate.css": "^4.1.1",
