@@ -74,8 +74,9 @@
 
 <p>
 	You can also add Tailwind classes stepwise. To do this you have to use method 2, otherwise
-	Tailwind will purge the classes. So pass the steps and classes you want to add as an argument to
-	the <code>addStepAnimation</code> action.
+	Tailwind will purge the classes. Pass the steps and classes you want to add as an argument to the <code
+		>addStepAnimation</code
+	> action.
 </p>
 
 <br />

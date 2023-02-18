@@ -12,7 +12,7 @@
 	];
 
 	let focusButtonClasses: string =
-		'flex-grow rounded-lg border-2 border-gray-900 px-2 py-1 text-sm font-bold text-gray-900 transition-all hover:bg-slate-900 hover:text-white hover:shadow-lg hover:shadow-blue-500 dark:bg-gray-300/80';
+		'flex-grow rounded-lg border-2 border-gray-900 px-2 py-1 text-sm font-bold text-gray-900 transition-all hover:bg-slate-900 hover:text-white hover:shadow-lg hover:shadow-indigo-400 dark:bg-gray-300/80';
 </script>
 
 <h1>Dynamic Code Blocks</h1>
