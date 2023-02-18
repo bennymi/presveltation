@@ -7,7 +7,8 @@
 		{ lines: '', text: 'Unblur' },
 		{ lines: '4, 8-12', text: '1: Define Focus Blocks' },
 		{ lines: '1-3, 8, 14-16', text: '2: Set Max Steps for Slide' },
-		{ lines: '3, 26', text: '3: Pass currStep store to CodeBlock' }
+		{ lines: '3, 26', text: '3: Pass currStep store to CodeBlock' },
+		{ lines: '27', text: `4: Specify the CodeBlock's dimensions` }
 	];
 
 	let focusButtonClasses: string =
@@ -46,8 +47,10 @@
 	we can do by simply updating the <code>$maxSteps</code> store value to the number of focus blocks
 	we want to highlight on a slide (inside <code>onMount</code>). Next, we can pass the
 	<code>currStep</code>
-	store to SvHighlight's code block <code>activeFocusBlockStore</code> prop. The focus blocks will then
-	automatically update and scroll to the highlighted sections as you use the arrow keys on your slide.
+	store to SvHighlight's code block <code>activeFocusBlockStore</code> prop. If you have a lot of
+	code and want a scrollbar to appear you also need to specify the <code>dimensions</code>. The
+	focus blocks will then automatically update and scroll to the highlighted sections as you use the
+	arrow keys on your slide.
 </p>
 
 <br />
