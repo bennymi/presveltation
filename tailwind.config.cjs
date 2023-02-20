@@ -6,6 +6,7 @@ module.exports = {
     './src/**/*.{html,js,svelte,ts}',
     './node_modules/svhighlight/**/*.svelte',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       textShadow: {

@@ -7,6 +7,7 @@
 	import Navbar from '../../docs/Navbar.svelte';
 	import Sidebar from '../../docs/Sidebar.svelte';
 	import BottomNav from '../../docs/BottomNav.svelte';
+	import { theme } from '../../docs/stores';
 	import type { SideMenu } from '../../docs/types';
 
 	const meta = {
@@ -78,18 +79,20 @@
 	<meta property="og:description" content={meta.description} />
 </svelte:head>
 
-<div class="h-full min-h-screen dark:bg-gradient-to-tr dark:from-[#10032c] dark:to-purple-900">
-	<Navbar />
-	<!-- <div class="flex h-full min-h-screen"> -->
-	<!-- <aside class="sticky top-14 h-full overflow-y-auto"> -->
-	<div class="flex h-full min-h-screen">
-		<aside class="sticky top-14 h-[calc(100vh-3.5em)] overflow-y-auto">
-			<Sidebar {sideMenus} />
-		</aside>
-		<div class="mx-auto w-3/6 max-w-3xl pt-20 pb-56">
-			<slot />
-			<div class="mt-12 w-full">
-				<BottomNav previous={previousPage} next={nextPage} />
+<div class:dark={$theme === 'dark'}>
+	<div class="h-full min-h-screen dark:bg-gradient-to-tr dark:from-[#10032c] dark:to-purple-900">
+		<Navbar />
+		<!-- <div class="flex h-full min-h-screen"> -->
+		<!-- <aside class="sticky top-14 h-full overflow-y-auto"> -->
+		<div class="flex h-full min-h-screen">
+			<aside class="sticky top-14 h-[calc(100vh-3.5em)] overflow-y-auto">
+				<Sidebar {sideMenus} />
+			</aside>
+			<div class="mx-auto w-3/6 max-w-3xl pt-20 pb-56">
+				<slot />
+				<div class="mt-12 w-full">
+					<BottomNav previous={previousPage} next={nextPage} />
+				</div>
 			</div>
 		</div>
 	</div>

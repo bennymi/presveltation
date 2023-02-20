@@ -10,18 +10,14 @@ h2 {
     @apply pb-4 pt-8 text-2xl font-bold text-gray-900 dark:text-white;
 }
 
-p {
+p, li {
     @apply leading-relaxed text-gray-700 text-justify dark:text-gray-200;
 }
 
 kbd {
-    @apply rounded-lg border-2 border-purple-900 bg-slate-100 py-1 px-2 font-mono text-purple-900;
+    @apply rounded-lg border-2 border-purple-900 bg-slate-100 py-1 px-2 font-mono text-purple-900 shadow-md shadow-purple-500;
 }
 
 p code, li code {
-    @apply rounded-md bg-purple-400/30 px-1 font-mono text-white;
-}
-
-li {
-    @apply text-white;
+    @apply rounded-md bg-purple-700 px-1 font-mono text-white dark:bg-purple-400/30;
 }
