@@ -10,12 +10,6 @@
 	import { theme } from '../../docs/stores';
 	import type { SideMenu } from '../../docs/types';
 
-	const meta = {
-		title: 'SvelteShow: Create Presentations and Slideshows with Svelte & Tailwind',
-		description:
-			'Create interactive and dynamic presentations and slideshows with Svelte / SvelteKit and Tailwind CSS.'
-	};
-
 	let sideMenus: SideMenu[] = [
 		{
 			name: 'Getting Started',
@@ -60,30 +54,10 @@
 	$: nextPage = currentPageIdx === sideMenus.length - 1 ? null : sideMenus[currentPageIdx + 1];
 </script>
 
-<svelte:head>
-	<title>SvelteShow: Create Presentations and Slideshows with Svelte & Tailwind</title>
-	<!-- Meta Tags -->
-	<meta name="title" content={meta.title} />
-	<meta name="description" content={meta.description} />
-	<meta
-		name="keywords"
-		content="svelte, sveltekit, presenter, presentation, slideshow, tailwind, slides, powerpoint, typescript, css, revealjs, reveal js, open source"
-	/>
-	<meta name="author" content="Benedikt Mielke" />
-	<!-- Open Graph - https://ogp.me/ -->
-	<meta property="og:site_name" content="SvelteShow" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://svelte-show.vercel.app{$page.url.pathname}" />
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:title" content={meta.title} />
-	<meta property="og:description" content={meta.description} />
-</svelte:head>
-
 <div class:dark={$theme === 'dark'}>
 	<div class="h-full min-h-screen dark:bg-gradient-to-tr dark:from-[#10032c] dark:to-purple-900">
 		<Navbar />
-		<!-- <div class="flex h-full min-h-screen"> -->
-		<!-- <aside class="sticky top-14 h-full overflow-y-auto"> -->
+
 		<div class="flex h-full min-h-screen">
 			<aside class="sticky top-14 h-[calc(100vh-3.5em)] overflow-y-auto">
 				<Sidebar {sideMenus} />
