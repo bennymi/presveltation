@@ -34,6 +34,8 @@ src/routes/
 `;
 
 export let slidesLayout = `<script lang="ts">
+    import 'animate.css';
+    
     import { Deck, slides } from 'svelte-show';
 
     $slides = [

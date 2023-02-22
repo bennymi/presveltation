@@ -52,6 +52,10 @@
 
 <a id="animate-css"><h2>Animate.css</h2></a>
 
+<CodeBlock code="pnpm add -D animate.css" language="shell" showLineNumbers={false} />
+
+<br />
+
 <p>
 	You can use the <a
 		class="underline"

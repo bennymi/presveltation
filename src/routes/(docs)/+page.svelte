@@ -64,7 +64,8 @@
 		>(slides)/+layout.svelte</code
 	>
 	file. Here we need to import the <code>{'<Deck>'}</code> component, as well as the
-	<code>$slides</code> store, and tell it what slides make up the presentation.
+	<code>$slides</code> store, and tell it what slides make up the presentation. You can also import
+	<code>animate.css</code> here, so that it is available for all slides.
 </p>
 
 <br />
