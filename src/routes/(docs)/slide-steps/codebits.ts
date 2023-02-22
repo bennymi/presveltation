@@ -3,7 +3,7 @@ export let addStepAnimationEx = `<script lang="ts">
 </script>
 
 <h1
-    class="animate__animated step-0:animate__fadeInUp transition-all"
+    class="animate__animated animate__fadeInUp transition-all"
     use:addStepAnimation={[
         { step: '1', classes: 'scale-125 text-blue-500' }
     ]}
@@ -17,7 +17,7 @@ export let animateCssEx = `<script lang="ts">
 </script>
 
 <div 
-    class="animate__animated step-0:animate__fadeInLeft step-1:animate__fadeOutRight" 
+    class="animate__animated animate__fadeInLeft step-1:animate__fadeOutRight" 
     use:addStepAnimation
 >
     <img src="/14.svg" alt="figure-1" class="m-auto h-2/3" />

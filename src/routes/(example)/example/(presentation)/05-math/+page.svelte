@@ -4,7 +4,7 @@
 	import { addStepAnimation } from '$lib/addstepanimation';
 	import { maxSteps, currStep } from '$lib/stores';
 
-	import katex from 'katex';
+	import Katex from '$lib/math/Katex.svelte';
 
 	let equ = `E = \\sqrt{(mc^2)^2 + (pc)^2}`;
 	let equE = `\\htmlClass{focusE}{E} = \\sqrt{(mc^2)^2 + (pc)^2}`;
@@ -13,41 +13,19 @@
 	let equP = `\\htmlClass{focusE}{E} = \\sqrt{(\\htmlClass{focusM}{m}\\htmlClass{focusC}{c}^2)^2 + (\\htmlClass{focusP}{p}\\htmlClass{focusC}{c})^2}`;
 
 	$: equations = [equ, equE, equM, equC, equP];
-
 	$: {
 		$maxSteps = equations.length - 1;
 	}
-	// $: currEquation = equations[$currStep];
-	$: currEquation = katex.renderToString(equations[$currStep], {
-		displayMode: true,
-		trust: true,
-		strict: false,
-		throwOnError: false
-	});
+	$: currEquation = equations[$currStep];
 </script>
 
-<svelte:head>
-	<link
-		rel="stylesheet"
-		href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
-		integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
-		crossorigin="anonymous"
-	/>
-</svelte:head>
-
 <div class="flex h-screen w-screen flex-col items-center justify-center bg-gray-900">
-	<h1
-		class="animate__animated step-0:animate__fadeInLeft mx-auto mb-12 text-center font-sans text-5xl font-black tracking-tighter text-white"
-		use:addStepAnimation
-	>
+	<h1 class="mx-auto mb-12 text-center font-sans text-5xl font-black tracking-tighter text-white">
 		Math...
 	</h1>
-	<div
-		class="animate__animated step-0:animate__fadeInRight flex items-center gap-20 text-2xl"
-		use:addStepAnimation
-	>
+	<div class="flex flex-col items-center gap-8 text-2xl md:flex-row md:gap-20">
 		<div class="text-white">
-			{@html currEquation}
+			<Katex math={currEquation} displayMode={false} />
 		</div>
 		<div class="flex flex-col text-white">
 			<div><span class="step-1-4:focusE font-bold" use:addStepAnimation>E</span>: energy</div>
