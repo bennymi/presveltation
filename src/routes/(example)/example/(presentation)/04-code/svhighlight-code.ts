@@ -1,5 +1,5 @@
 export let code = `
-export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | null=null) {
+export function addStepAnimation(node: HTMLElement, tailwindSteps: Step[] | null=null) {
     let step: number = 0;
     let unsubscribe: Unsubscriber;
     let initialClasses: string[] = [];
@@ -37,7 +37,7 @@ export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | 
 
         // Add the steps that were passed as an argument.
         tailwindSteps?.forEach((v) => {
-            const range: string[] = v.step.split('-');
+            const range: string[] = v.steps.split('-');
             const classes: string[] = v.classes.split(' ');
             classes.forEach((v) => {
                 const animation: Animation = {

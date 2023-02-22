@@ -1,10 +1,10 @@
-<script lang="ts" id="MathJax-script">
-	import './math.css';
-
-	import { addStepAnimation } from '$lib/addstepanimation';
+<script lang="ts">
+	import { addSteps } from '$lib/addsteps';
 	import { maxSteps, currStep } from '$lib/stores';
 
 	import Katex from '$lib/math/Katex.svelte';
+
+	import './math.css';
 
 	let equ = `E = \\sqrt{(mc^2)^2 + (pc)^2}`;
 	let equE = `\\htmlClass{focusE}{E} = \\sqrt{(mc^2)^2 + (pc)^2}`;
@@ -25,16 +25,16 @@
 	</h1>
 	<div class="flex flex-col items-center gap-8 text-2xl md:flex-row md:gap-20">
 		<div class="text-white">
-			<Katex math={currEquation} displayMode={false} />
+			<Katex math={currEquation} />
 		</div>
 		<div class="flex flex-col text-white">
-			<div><span class="step-1-4:focusE font-bold" use:addStepAnimation>E</span>: energy</div>
-			<div><span class="step-2-4:focusM font-bold" use:addStepAnimation>m</span>: mass</div>
+			<div><span class="step-1-4:focusE font-bold" use:addSteps>E</span>: energy</div>
+			<div><span class="step-2-4:focusM font-bold" use:addSteps>m</span>: mass</div>
 			<div>
-				<span class="step-3-4:focusC font-bold" use:addStepAnimation>c</span>: speed of light
+				<span class="step-3-4:focusC font-bold" use:addSteps>c</span>: speed of light
 			</div>
 			<div>
-				<span class="step-4:focusP font-bold" use:addStepAnimation>p</span>: momentum
+				<span class="step-4:focusP font-bold" use:addSteps>p</span>: momentum
 			</div>
 		</div>
 	</div>

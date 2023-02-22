@@ -1,10 +1,10 @@
 <script>
-	import { addStepAnimation } from '$lib/addstepanimation';
+	import { addSteps } from '$lib/addsteps';
 </script>
 
 <div class="flex h-screen max-h-screen flex-col justify-center bg-gray-900">
 	<div class="max-w-5/6 mx-auto ">
-		<div class="animate__animated step-1:animate__flip" use:addStepAnimation>
+		<div class="animate__animated step-1:animate__flip" use:addSteps>
 			<iconify-icon icon="openmoji:deciduous-tree" class="text-9xl" />
 		</div>
 	</div>

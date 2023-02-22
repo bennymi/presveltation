@@ -4,7 +4,6 @@
 	import 'highlight.js/styles/base16/dracula.css';
 	import { CodeBlock, type FocusBlock } from 'svhighlight';
 
-	import { addStepAnimation } from '$lib/addstepanimation';
 	import { maxSteps, currStep } from '$lib/stores';
 
 	import { code } from './svhighlight-code';
@@ -26,8 +25,7 @@
 
 <div class="flex h-screen w-screen flex-col items-center justify-center">
 	<h1
-		class="animate__animated step-0:animate__fadeInDown mx-auto text-center font-sans text-5xl font-black tracking-tighter text-neutral-900"
-		use:addStepAnimation
+		class="animate__animated animate__fadeInDown mx-auto text-center font-sans text-5xl font-black tracking-tighter text-neutral-900"
 	>
 		Add interactive code blocks with
 		<a
@@ -38,10 +36,7 @@
 		</a>
 	</h1>
 
-	<div
-		class="animate__animated step-0:animate__fadeInUp my-8 flex w-full justify-center"
-		use:addStepAnimation
-	>
+	<div class="animate__animated animate__fadeInUp my-8 flex w-full justify-center">
 		<CodeBlock
 			language="typescript"
 			{code}

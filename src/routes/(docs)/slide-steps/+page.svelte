@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { CodeBlock } from 'svhighlight';
-	import { addStepAnimationEx, animateCssEx, tailwindEx } from './codebits';
+	import { addStepsEx, animateCssEx, tailwindEx } from './codebits';
 </script>
 
 <h1>Add Slide Step Classes</h1>
@@ -9,7 +9,7 @@
 
 <p>
 	You can add classes to elements at specific steps in your presentation. To do this import the <code
-		>addStepAnimation</code
+		>addSteps</code
 	>
 	action. You can use this action to specify which classes you want to add and when. Step
 	<code>0</code> always represents the inital slide when you enter it. You can add classes in 2 different
@@ -27,8 +27,7 @@
 	<li>
 		You can pass the steps and the classes to the action as an argument. The argument should be a
 		list of objects with a <code>step</code> and a <code>classes</code> property. Example:
-		<code>{`use:addStepAnimation={[ { step: '0, 3-5', classes: 'scale-125 bg-gray-900' } ]}`}</code
-		>.
+		<code>{`use:addSteps={[ { steps: '0, 3-5', classes: 'scale-125 bg-gray-900' } ]}`}</code>.
 	</li>
 </ol>
 
@@ -42,13 +41,13 @@
 <br />
 
 <p>
-	<code>addStepAnimation</code> will automatically update the <code>maxSteps</code> store to the highest
-	step value you specified.
+	<code>addSteps</code> will automatically update the <code>maxSteps</code> store to the highest step
+	value you specified.
 </p>
 
 <br />
 
-<CodeBlock code={addStepAnimationEx} language="svelte" />
+<CodeBlock code={addStepsEx} language="svelte" />
 
 <a id="animate-css"><h2>Animate.css</h2></a>
 
@@ -79,7 +78,7 @@
 <p>
 	You can also add Tailwind classes stepwise. To do this you have to use method 2, otherwise
 	Tailwind will purge the classes. Pass the steps and classes you want to add as an argument to the <code
-		>addStepAnimation</code
+		>addSteps</code
 	> action.
 </p>
 

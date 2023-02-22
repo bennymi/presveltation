@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { addStepAnimation } from '$lib/addstepanimation';
-	// import Katex from '$lib/Katex.svelte';
 </script>
 
 <!-- <div class="flex justify-evenly items-center bg-teal-800 min-h-screen"> -->
