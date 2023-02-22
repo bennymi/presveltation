@@ -8,9 +8,9 @@
 
 	let equ = `E = \\sqrt{(mc^2)^2 + (pc)^2}`;
 	let equE = `\\htmlClass{focusE}{E} = \\sqrt{(mc^2)^2 + (pc)^2}`;
-	let equM = `E = \\sqrt{(\\htmlClass{focusM}{m}c^2)^2 + (pc)^2}`;
-	let equC = `E = \\sqrt{(m\\htmlClass{focusC}{c}^2)^2 + (p\\htmlClass{focusC}{c})^2}`;
-	let equP = `E = \\sqrt{(mc^2)^2 + (\\htmlClass{focusP}{p}c)^2}`;
+	let equM = `\\htmlClass{focusE}{E} = \\sqrt{(\\htmlClass{focusM}{m}c^2)^2 + (pc)^2}`;
+	let equC = `\\htmlClass{focusE}{E} = \\sqrt{(\\htmlClass{focusM}{m}\\htmlClass{focusC}{c}^2)^2 + (p\\htmlClass{focusC}{c})^2}`;
+	let equP = `\\htmlClass{focusE}{E} = \\sqrt{(\\htmlClass{focusM}{m}\\htmlClass{focusC}{c}^2)^2 + (\\htmlClass{focusP}{p}\\htmlClass{focusC}{c})^2}`;
 
 	$: equations = [equ, equE, equM, equC, equP];
 
@@ -50,13 +50,13 @@
 			{@html currEquation}
 		</div>
 		<div class="flex flex-col text-white">
-			<div><span class="step-1:focusE" use:addStepAnimation>E</span>: energy</div>
-			<div><span class="step-2:focusM" use:addStepAnimation>m</span>: mass</div>
+			<div><span class="step-1-4:focusE font-bold" use:addStepAnimation>E</span>: energy</div>
+			<div><span class="step-2-4:focusM font-bold" use:addStepAnimation>m</span>: mass</div>
 			<div>
-				<span class="step-3:focusC" use:addStepAnimation>c</span>: speed of light
+				<span class="step-3-4:focusC font-bold" use:addStepAnimation>c</span>: speed of light
 			</div>
 			<div>
-				<span class="step-4:focusP" use:addStepAnimation>p</span>: momentum
+				<span class="step-4:focusP font-bold" use:addStepAnimation>p</span>: momentum
 			</div>
 		</div>
 	</div>
