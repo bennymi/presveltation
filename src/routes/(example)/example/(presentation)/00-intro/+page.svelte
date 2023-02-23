@@ -41,13 +41,13 @@
 			<iconify-icon icon="mdi:book-open-page-variant" class="text-2xl" />
 			Documentation
 		</a>
-		<a
+		<!-- <a
 			href={'/'}
 			class="flex items-center justify-center gap-1 font-sans text-lg font-semibold leading-relaxed text-orange-500 hover:text-orange-600"
 		>
 			<iconify-icon icon="mdi:presentation-play" class="text-2xl" />
 			Example
-		</a>
+		</a> -->
 	</nav>
 
 	<div class="mx-auto mt-8 w-4/6 text-center font-sans text-lg font-normal text-blue-400">

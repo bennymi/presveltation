@@ -1,3 +1,4 @@
+<!-- Source: https://svelte.dev/repl/49ff6c089825418888cf804d9dde77bc?version=3 -->
 <script lang="ts">
 	import katex from 'katex';
 
@@ -6,7 +7,7 @@
 
 	const options = {
 		displayMode: displayMode,
-		trust: true,
+		trust: true, // so we can add htmlClass
 		strict: false,
 		throwOnError: false
 	};

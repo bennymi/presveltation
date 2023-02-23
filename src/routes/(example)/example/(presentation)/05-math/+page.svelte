@@ -4,13 +4,16 @@
 
 	import Katex from '$lib/math/Katex.svelte';
 
-	import './math.css';
+	let classE = 'text-teal-400';
+	let classM = 'text-purple-400';
+	let classC = 'text-orange-400';
+	let classP = 'text-blue-400';
 
 	let equ = `E = \\sqrt{(mc^2)^2 + (pc)^2}`;
-	let equE = `\\htmlClass{focusE}{E} = \\sqrt{(mc^2)^2 + (pc)^2}`;
-	let equM = `\\htmlClass{focusE}{E} = \\sqrt{(\\htmlClass{focusM}{m}c^2)^2 + (pc)^2}`;
-	let equC = `\\htmlClass{focusE}{E} = \\sqrt{(\\htmlClass{focusM}{m}\\htmlClass{focusC}{c}^2)^2 + (p\\htmlClass{focusC}{c})^2}`;
-	let equP = `\\htmlClass{focusE}{E} = \\sqrt{(\\htmlClass{focusM}{m}\\htmlClass{focusC}{c}^2)^2 + (\\htmlClass{focusP}{p}\\htmlClass{focusC}{c})^2}`;
+	let equE = `\\htmlClass{${classE}}{E} = \\sqrt{(mc^2)^2 + (pc)^2}`;
+	let equM = `\\htmlClass{${classE}}{E} = \\sqrt{(\\htmlClass{${classM}}{m}c^2)^2 + (pc)^2}`;
+	let equC = `\\htmlClass{${classE}}{E} = \\sqrt{(\\htmlClass{${classM}}{m}\\htmlClass{${classC}}{c}^2)^2 + (p\\htmlClass{${classC}}{c})^2}`;
+	let equP = `\\htmlClass{${classE}}{E} = \\sqrt{(\\htmlClass{${classM}}{m}\\htmlClass{${classC}}{c}^2)^2 + (\\htmlClass{${classP}}{p}\\htmlClass{${classC}}{c})^2}`;
 
 	$: equations = [equ, equE, equM, equC, equP];
 	$: {
@@ -28,13 +31,18 @@
 			<Katex math={currEquation} />
 		</div>
 		<div class="flex flex-col text-white">
-			<div><span class="step-1-4:focusE font-bold" use:addSteps>E</span>: energy</div>
-			<div><span class="step-2-4:focusM font-bold" use:addSteps>m</span>: mass</div>
 			<div>
-				<span class="step-3-4:focusC font-bold" use:addSteps>c</span>: speed of light
+				<span class="font-bold" use:addSteps={[{ steps: '1-4', classes: classE }]}>E</span>: energy
 			</div>
 			<div>
-				<span class="step-4:focusP font-bold" use:addSteps>p</span>: momentum
+				<span class="font-bold" use:addSteps={[{ steps: '2-4', classes: classM }]}>m</span>: mass
+			</div>
+			<div>
+				<span class="font-bold" use:addSteps={[{ steps: '3-4', classes: classC }]}>c</span>: speed
+				of light
+			</div>
+			<div>
+				<span class="font-bold" use:addSteps={[{ steps: '4', classes: classP }]}>p</span>: momentum
 			</div>
 		</div>
 	</div>
