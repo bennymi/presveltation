@@ -46,6 +46,14 @@
 				{ name: 'SvHighlight', route: '/code#svhighlight' },
 				{ name: 'Add Step Focus Blocks', route: '/code#focus-blocks' }
 			]
+		},
+		{
+			name: 'Math',
+			route: '/math',
+			subMenus: [
+				{ name: 'Katex', route: '/math#katex' },
+				{ name: 'Example', route: '/math#math-example' }
+			]
 		}
 	];
 

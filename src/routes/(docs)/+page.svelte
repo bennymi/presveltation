@@ -11,7 +11,20 @@
 	with SvelteKit and TailwindCSS. Check out a demo presentation here:
 	<a target="_blank" rel="noopener noreferrer" href="/example/00-intro" class="font-bold underline"
 		>Demo / Example</a
-	>.
+	>. This library is inspired by
+	<a
+		target="_blank"
+		rel="noopener noreferrer"
+		href="https://github.com/AlexandreKempf/svelte-slides"
+		class="font-bold underline">svelte-slides</a
+	>
+	and
+	<a
+		target="_blank"
+		rel="noopener noreferrer"
+		href="https://revealjs.com/"
+		class="font-bold underline">reveal.js</a
+	>
 </p>
 
 <br />
