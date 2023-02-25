@@ -51,13 +51,8 @@
 	<div
 		class="flex items-center justify-center gap-2 text-lg font-semibold leading-relaxed text-gray-300 hover:text-gray-100"
 	>
-		<button
-			class="flex justify-center md:hidden"
-			on:click={handleClick}
-			aria-label="menu"
-			aria-pressed={showSidebar}
-			aria-details="open menu to see available pages"
-		>
+		<button class="flex justify-center md:hidden" on:click={handleClick} aria-pressed={showSidebar}>
+			<span class="sr-only">open menu button to see available pages</span>
 			<iconify-icon icon="material-symbols:menu-rounded" class="text-2xl" />
 		</button>
 		<a href="/" class="text-2xl font-bold text-white md:text-3xl">SvelteShow</a>
