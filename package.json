@@ -15,13 +15,14 @@
 	"license": "MIT",
 	"keywords": [
 		"svelte",
-		"tailwind",
 		"sveltekit",
+		"tailwind",
 		"typescript",
 		"revealjs",
 		"presentation",
 		"presenter",
 		"slideshow",
+		"slides",
 		"powerpoint"
 	],
 	"scripts": {

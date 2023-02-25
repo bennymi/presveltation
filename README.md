@@ -2,6 +2,10 @@
 
 Create fun interactive and dynamic presentations and slide shows with SvelteKit and TailwindCSS.
 
+## Links
+- [SvelteShow Documentation](https://svelte-show.vercel.app/)
+- [svelte-show Github](https://github.com/bennymi/svelte-show)
+
 ## Features
 
 - ✅ speaker view / notes
@@ -14,11 +18,7 @@ Create fun interactive and dynamic presentations and slide shows with SvelteKit 
 - ✅ easily apply steps per slide with **maxStep** and **currStep** stores
 
 ## TODOs (Coming Soon)
-
-**Documentation:**
-- ❌ write documentation
-- ❌ create more examples for demo:
+- more examples:
   - ❌ maps
-  - ❌ math / formulas
   - ❌ tables
 
