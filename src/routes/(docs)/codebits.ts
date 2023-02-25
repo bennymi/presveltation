@@ -1,10 +1,8 @@
-import type { FocusBlock } from "svhighlight";
-
 export let tailwindConfig = `/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './src/**/*.{html,js,svelte,ts}',
-    "./node_modules/svelte-show/**/*.{svelte,ts}"
+    "./node_modules/presveltation/**/*.{svelte,ts}"
   ],
   theme: {
     extend: {},
@@ -36,12 +34,15 @@ src/routes/
 export let slidesLayout = `<script lang="ts">
     import 'animate.css';
     
-    import { Deck, slides } from 'svelte-show';
+    import { Deck, slides } from 'presveltation';
 
     $slides = [
+        // no notes -> default notes are shown instead
         { route: '/00-intro', title: 'Introduction', notes: false },
-        { route: '/01-motivation', title: 'Motivation', notes: true },
-        { route: '/02-related-works', title: 'Related Works', notes: true }
+        // notes is in /01-motivation/notes route
+        { route: '/01-motivation', title: 'Motivation', notes: true }, 
+        // notes are in specified 'notesRoute' -> 'notes/02-related-works'
+        { route: '/02-related-works', title: 'Related Works', notes: true, notesRoute: '/notes/02-related-works' } 
     ]
 </script>
 
@@ -50,9 +51,10 @@ export let slidesLayout = `<script lang="ts">
 </Deck>`;
 
 export let notesLayout = `<script lang="ts">
-    import { Speaker } from 'svelte-show';
+    import { Speaker } from 'presveltation';
 </script>
 
 <div class="h-screen min-h-screen">
 	<Speaker />
+    <slot />
 </div>`;

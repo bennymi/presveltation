@@ -5,10 +5,10 @@
 
 	let focusBlocks: FocusBlock[] = [
 		{ lines: '', text: 'Unblur' },
-		{ lines: '4, 8-12', text: '1: Define Focus Blocks' },
-		{ lines: '1-3, 8, 14-16', text: '2: Set Max Steps for Slide' },
-		{ lines: '3, 26', text: '3: Pass currStep store to CodeBlock' },
-		{ lines: '27', text: `4: Specify the CodeBlock's dimensions` }
+		{ lines: '7, 12-16, 26', text: '1: Define Focus Blocks' },
+		{ lines: '1, 6, 12, 18-20', text: '2: Set Max Steps for Slide' },
+		{ lines: '6, 30', text: '3: Pass currStep store to CodeBlock' },
+		{ lines: '31', text: `4: Specify the CodeBlock's dimensions` }
 	];
 
 	let focusButtonClasses: string =

@@ -5,14 +5,14 @@
 	import 'iconify-icon';
 
 	const meta = {
-		title: 'SvelteShow: Create Presentations and Slideshows with Svelte & Tailwind',
+		title: 'PreSveltation: Create Presentations and Slideshows with Svelte & Tailwind CSS',
 		description:
 			'Create interactive and dynamic presentations and slideshows with Svelte / SvelteKit and Tailwind CSS.'
 	};
 </script>
 
 <svelte:head>
-	<title>SvelteShow: Create Presentations and Slideshows with Svelte & Tailwind</title>
+	<title>{meta.title}</title>
 	<!-- Meta Tags -->
 	<meta name="title" content={meta.title} />
 	<meta name="description" content={meta.description} />

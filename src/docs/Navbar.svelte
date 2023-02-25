@@ -55,7 +55,7 @@
 			<span class="sr-only">open menu button to see available pages</span>
 			<iconify-icon icon="material-symbols:menu-rounded" class="text-2xl" />
 		</button>
-		<a href="/" class="text-2xl font-bold text-white md:text-3xl">SvelteShow</a>
+		<a href="/" class="text-2xl font-bold text-white md:text-3xl">PreSveltation</a>
 	</div>
 	<div class="flex items-center justify-center gap-5">
 		<button
@@ -86,7 +86,7 @@
 		</a>
 
 		<a
-			href="https://github.com/bennymi/svelte-show"
+			href="https://github.com/bennymi/presveltation"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="flex items-center justify-center gap-1 text-lg font-semibold leading-relaxed text-gray-300 hover:text-gray-100"

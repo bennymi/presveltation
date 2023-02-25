@@ -1,15 +1,15 @@
 export let storesEx = `<script lang="ts">
-    import { slides, currSlide, maxSteps, currStep } from 'svelte-show';
+    import { slides, currSlide, maxSteps, currStep } from 'presveltation';
 </script>`;
 
 export let slidesEx = `<script lang="ts">
-    import { slides } from 'svelte-show';
+    import { slides } from 'presveltation';
 
     $: console.log($slides);
 </script>`;
 
 export let currSlideEx = `<script lang="ts">
-    import { slides, currSlide } from 'svelte-show';
+    import { slides, currSlide } from 'presveltation';
 
     $: activeSlide = $slides[$currSlide];
 </script>
@@ -19,7 +19,7 @@ export let currSlideEx = `<script lang="ts">
 
 export let maxStepsEx = `<script lang="ts">
     import { onMount } from 'svelte';
-    import { maxSteps } from 'svelte-show';
+    import { maxSteps } from 'presveltation';
 
     onMount(() => {
         $maxSteps = 5;
@@ -28,7 +28,7 @@ export let maxStepsEx = `<script lang="ts">
 
 export let currStepEx = `<script lang="ts">
     import { onMount} from 'svelte';
-    import { maxSteps, currStep } from 'svelte-show';
+    import { maxSteps, currStep } from 'presveltation';
 
     onMount(() => {
         $maxSteps = 2;

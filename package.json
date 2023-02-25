@@ -1,17 +1,16 @@
 {
-	"name": "svelte-show",
+	"name": "presveltation",
 	"version": "0.5.0",
-	"private": true,
-	"description": "SvelteShow: Create interactive and dynamic presentations and slideshows with Svelte / SvelteKit and Tailwind CSS.",
+	"description": "PreSveltation: Create interactive and dynamic presentations and slideshows with Svelte / SvelteKit and Tailwind CSS.",
 	"author": "Benedikt Mielke",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/bennymi/svelte-show.git"
+		"url": "https://github.com/bennymi/presveltation.git"
 	},
 	"bugs": {
-		"url": "https://github.com/bennymi/svelte-show/issues"
+		"url": "https://github.com/bennymi/presveltation/issues"
 	},
-	"homepage": "https://svelte-show.vercel.app/",
+	"homepage": "https://presveltation.vercel.app/",
 	"license": "MIT",
 	"keywords": [
 		"svelte",
@@ -58,6 +57,7 @@
 		"scroll-into-view-if-needed": "^3.0.4",
 		"svelte": "^3.54.0",
 		"svelte-check": "^2.9.2",
+		"svelte2tsx": "^0.6.2",
 		"svhighlight": "^0.7.1",
 		"tailwindcss": "^3.2.4",
 		"tslib": "^2.4.1",

@@ -1,5 +1,5 @@
 export let addStepsEx = `<script lang="ts">
-    import { addSteps } from 'svelte-show';
+    import { addSteps } from 'presveltation';
 </script>
 
 <h1
@@ -13,7 +13,7 @@ export let addStepsEx = `<script lang="ts">
 </h1>`;
 
 export let animateCssEx = `<script lang="ts">
-    import { addSteps } from 'svelte-show';
+    import { addSteps } from 'presveltation';
 </script>
 
 <div 
@@ -24,7 +24,7 @@ export let animateCssEx = `<script lang="ts">
 </div>`;
 
 export let tailwindEx = `<script lang="ts">
-    import { addSteps } from 'svelte-show';
+    import { addSteps } from 'presveltation';
 </script>
 
 <div class="h-screen min-h-screen flex justify-center items-center">

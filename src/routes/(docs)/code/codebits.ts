@@ -1,9 +1,13 @@
 export let focusBlocksExample = `<script lang="ts">
     import { onMount } from 'svelte';
 
-    import { maxSteps, currStep } from 'svelte-show';
+    // import a theme from highlight.js
+    import 'highlight.js/styles/base16/dracula.css';
+
+    import { maxSteps, currStep } from 'presveltation';
     import { CodeBlock, type FocusBlock } from 'svhighlight';
 
+    // you can also define the code in a separate .ts / .js file and import it
     let code = \`...\`;
 
     let focusBlocks: FocusBlock[] = [

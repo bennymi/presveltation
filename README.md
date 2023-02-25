@@ -1,10 +1,10 @@
-# SvelteShow
+# PreSveltation
 
-Create fun interactive and dynamic presentations and slide shows with SvelteKit and TailwindCSS.
+Create fun, interactive, and dynamic presentations and slideshows with SvelteKit and Tailwind CSS.
 
 ## Links
-- [SvelteShow Documentation](https://svelte-show.vercel.app/)
-- [svelte-show Github](https://github.com/bennymi/svelte-show)
+- [SvelteShow Documentation](https://presveltation.vercel.app/)
+- [presveltation Github](https://github.com/bennymi/presveltation)
 
 ## Features
 

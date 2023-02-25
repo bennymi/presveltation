@@ -29,7 +29,7 @@
 
 <br />
 
-<CodeBlock code="npm i svelte-show --save-dev" language="shell" showLineNumbers={false} />
+<CodeBlock code="npm i presveltation --save-dev" language="shell" showLineNumbers={false} />
 
 <br />
 
@@ -37,7 +37,7 @@
 
 <br />
 
-<CodeBlock code="pnpm add -D svelte-show" language="shell" showLineNumbers={false} />
+<CodeBlock code="pnpm add -D presveltation" language="shell" showLineNumbers={false} />
 
 <br />
 
@@ -67,7 +67,10 @@
 <p>
 	The structure of the project should look something like shown below (you can find an example in
 	the
-	<a class="font-bold underline" href="https://github.com/bennymi/svelte-show/tree/main/src/routes">
+	<a
+		class="font-bold underline"
+		href="https://github.com/bennymi/presveltation/tree/main/src/routes"
+	>
 		GitHub repo</a
 	>). The individual folder structures are explained in more detail in the following sections.
 </p>
@@ -99,7 +102,9 @@
 	<code>boolean</code>
 	value that specifies, whether the slide has a <code>notes/+page.svelte</code> file. You also need
 	to pass the <code>notesURL</code> to <code>Deck</code>, which by default is in the
-	<code>/notes</code> route.
+	<code>/notes</code> route. If you want to put your notes somewhere else you can also specify a
+	<code>notesRoute</code>
+	attribute in the <code>slides</code> store.
 </p>
 
 <br />

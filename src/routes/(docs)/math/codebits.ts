@@ -1,5 +1,5 @@
 export let katexEx = `<script lang="ts">
-    import { Katex } from 'svelte-show';
+    import { Katex } from 'presveltation';
 
     let equation = \`E = \\\\sqrt{(mc^2) + (pc)^2}\`;
 </script>
@@ -7,7 +7,7 @@ export let katexEx = `<script lang="ts">
 <Katex math={equation} />`;
 
 export let mathEx = `<script lang="ts">
-    import { maxSteps, currStep, Katex } from 'svelte-show';
+    import { maxSteps, currStep, Katex } from 'presveltation';
 
     let classE = 'text-teal-400';
     let classM = 'text-purple-400';
