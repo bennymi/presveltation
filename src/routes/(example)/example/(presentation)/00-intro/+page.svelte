@@ -1,10 +1,10 @@
 <script>
-	import { addStepAnimation } from '$lib/addstepanimation';
+	import { addSteps } from '$lib/addsteps';
 </script>
 
 <div class="flex h-screen max-h-screen flex-col justify-center bg-gray-900">
 	<div class="max-w-5/6 mx-auto ">
-		<div class="animate__animated step-1:animate__flip" use:addStepAnimation>
+		<div class="animate__animated step-1:animate__flip" use:addSteps>
 			<iconify-icon icon="openmoji:deciduous-tree" class="text-9xl" />
 		</div>
 	</div>
@@ -28,7 +28,7 @@
 
 	<nav class="mx-auto mt-8 flex space-x-4">
 		<a
-			href="https://github.com/bennymi/svelte-presentation"
+			href="https://github.com/bennymi/svelte-show"
 			class="flex items-center justify-center gap-1 font-sans text-lg font-semibold leading-relaxed text-blue-500 hover:text-blue-600"
 		>
 			<iconify-icon icon="mdi:github" class="text-2xl" />
@@ -41,13 +41,13 @@
 			<iconify-icon icon="mdi:book-open-page-variant" class="text-2xl" />
 			Documentation
 		</a>
-		<a
+		<!-- <a
 			href={'/'}
 			class="flex items-center justify-center gap-1 font-sans text-lg font-semibold leading-relaxed text-orange-500 hover:text-orange-600"
 		>
 			<iconify-icon icon="mdi:presentation-play" class="text-2xl" />
 			Example
-		</a>
+		</a> -->
 	</nav>
 
 	<div class="mx-auto mt-8 w-4/6 text-center font-sans text-lg font-normal text-blue-400">

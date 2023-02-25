@@ -1,5 +1,4 @@
 <script>
-	import '../../app.css';
 	import 'animate.css';
 	import 'iconify-icon';
 	import '@lottiefiles/lottie-player';
@@ -12,7 +11,8 @@
 		{ route: '/example/01-animations', title: 'Animations with Animate.CSS' },
 		{ route: '/example/02-lottie', title: 'Lottie-Player' },
 		{ route: '/example/03-animate-tailwind', title: 'Tailwind Transitions' },
-		{ route: '/example/04-code', title: 'Code Blocks' }
+		{ route: '/example/04-code', title: 'Code Blocks' },
+		{ route: '/example/05-math', title: 'Math' }
 	];
 </script>
 

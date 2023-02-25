@@ -1,16 +1,27 @@
-export let code = `
-export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | null=null) {
+import { get, type Unsubscriber } from "svelte/store";
+import { currStep, maxSteps } from "$lib/stores";
+
+type Animation = {
+    start: number;
+    end: number | null;
+    class: string;       
+}
+
+type Step = {
+    steps: string;
+    classes: string;
+}
+
+export function addSteps(node: HTMLElement, argSteps: Step[] | null=null) {
     let step: number = 0;
     let unsubscribe: Unsubscriber;
-    let initialClasses: string[] = [];
+	let initialClasses: string[] = [];
     let stepClasses: string[] = [];
     let stepAnimations: Animation[] = [];
     let activeClasses: string[] = [];
 
     const updateMaxSteps = () => {
-        /** Automatically check how many steps a node 
-         * requires and update the store. 
-         **/
+        /** Automatically check how many steps a node requires and update the store. */
         let value = get(maxSteps);
         stepAnimations.forEach((a: Animation) => {
             if (a.start > value) {
@@ -23,7 +34,7 @@ export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | 
     const setupAnimationsDictionary = () => {
         /** Create a list of Animation objects, so it's easier to loop through
          * them and find the active steps later on.
-         **/
+         */
         stepClasses.forEach((c: string) => {
             const parts: string[] = c.split(':');
             const range: string[] = parts[0].split('-');
@@ -36,8 +47,8 @@ export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | 
         });
 
         // Add the steps that were passed as an argument.
-        tailwindSteps?.forEach((v) => {
-            const range: string[] = v.step.split('-');
+        argSteps?.forEach((v) => {
+            const range: string[] = v.steps.split('-');
             const classes: string[] = v.classes.split(' ');
             classes.forEach((v) => {
                 const animation: Animation = {
@@ -51,17 +62,15 @@ export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | 
     }
 
     const removePreviousAddedClasses = () => {
-        /** Remove previously added active classes 
-         * and reset the activeClast list. 
-         **/
+        /** Remove previously added active classes and reset the activeClast list. */
         activeClasses.forEach((c: string) => node.classList.remove(c));
         activeClasses = [];
     }
 
     const updateActiveClasses = () => {
-        /** Add all classes that are active during the 
-         * current step to the activeClasses list.
-         **/
+        /** Add all classes that are active during the current step 
+         * to the activeClasses list.  
+        */
         stepAnimations.forEach((a: Animation) => {
             if (a.start === step || (a.end && a.start <= step && a.end >= step)) {
                 activeClasses.push(a.class);
@@ -96,9 +105,7 @@ export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | 
             step = value;
             animateStep();
         });
-
-        /** Find the step-related classes in the node classes, add them to a dictionary 
-         * and update the maxSteps store with the largest step number */
+        // Find the step-related classes in the node classes, add them to a dictionary and update the maxSteps store with the largest step number
         initialClasses = node.classList.value.split(' ');
         stepClasses = initialClasses.filter((c: string) => c.search(/step-[\d]+(-\d+)?:/) != -1);
         setupAnimationsDictionary();
@@ -108,10 +115,9 @@ export function addStepAnimation(node: HTMLElement, tailwindSteps: Tailwind[] | 
 
     onInit();
 
-    return {
-        destroy() {
+	return {
+		destroy() {
             unsubscribe();
-        }
-    };
+		}
+	};
 }
-`;

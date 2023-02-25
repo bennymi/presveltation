@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { addStepAnimation } from '$lib/addstepanimation';
+	import { addSteps } from '$lib/addsteps';
 </script>
 
 <div class="grid h-screen w-screen grid-cols-2 content-center items-center justify-center">
@@ -12,10 +12,10 @@
 		<!-- STEP 1 -->
 		<div
 			class="mx-auto flex w-60 items-center justify-around rounded-md border-2 py-2 px-4 transition-all duration-300 ease-in"
-			use:addStepAnimation={[
-				{ step: '0', classes: 'border-gray-600' },
+			use:addSteps={[
+				{ steps: '0', classes: 'border-gray-600' },
 				{
-					step: '1',
+					steps: '1',
 					classes: 'scale-125 bg-gray-900 shadow-md shadow-teal-800 border-gray-900 border-teal-800'
 				}
 			]}
@@ -26,9 +26,9 @@
 			<div>
 				<h2
 					class="font-sans text-2xl font-bold"
-					use:addStepAnimation={[
+					use:addSteps={[
 						{
-							step: '1',
+							steps: '1',
 							classes: 'text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-800'
 						}
 					]}
@@ -40,10 +40,10 @@
 		<!-- STEP 2 -->
 		<div
 			class="mx-auto flex w-60 items-center justify-around rounded-md border-2 py-2 px-4 transition-all duration-300 ease-in"
-			use:addStepAnimation={[
-				{ step: '0', classes: 'border-gray-600' },
+			use:addSteps={[
+				{ steps: '0', classes: 'border-gray-600' },
 				{
-					step: '2',
+					steps: '2',
 					classes: 'scale-125 bg-gray-900 shadow-md shadow-red-800 border-gray-900 border-red-800'
 				}
 			]}
@@ -54,9 +54,9 @@
 			<div>
 				<h2
 					class="font-sans text-2xl font-bold"
-					use:addStepAnimation={[
+					use:addSteps={[
 						{
-							step: '2',
+							steps: '2',
 							classes: 'text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800'
 						}
 					]}
@@ -67,10 +67,10 @@
 		</div>
 		<div
 			class="mx-auto flex w-60 items-center justify-around rounded-md border-2 py-2 px-4 transition-all duration-300 ease-in"
-			use:addStepAnimation={[
-				{ step: '0', classes: 'border-gray-600' },
+			use:addSteps={[
+				{ steps: '0', classes: 'border-gray-600' },
 				{
-					step: '3',
+					steps: '3',
 					classes:
 						'scale-125 bg-gray-900 shadow-md shadow-yellow-800 border-gray-900 border-yellow-800'
 				}
@@ -82,9 +82,9 @@
 			<div>
 				<h2
 					class="font-sans text-2xl font-bold"
-					use:addStepAnimation={[
+					use:addSteps={[
 						{
-							step: '3',
+							steps: '3',
 							classes:
 								'text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-800'
 						}
@@ -96,10 +96,10 @@
 		</div>
 		<div
 			class="mx-auto flex w-60 items-center justify-around rounded-md border-2 py-2 px-4 transition-all duration-300 ease-in"
-			use:addStepAnimation={[
-				{ step: '0', classes: 'border-gray-600' },
+			use:addSteps={[
+				{ steps: '0', classes: 'border-gray-600' },
 				{
-					step: '4',
+					steps: '4',
 					classes: 'scale-125 bg-gray-900 shadow-md shadow-blue-800 border-gray-900 border-blue-800'
 				}
 			]}
@@ -110,9 +110,9 @@
 			<div>
 				<h2
 					class="font-sans text-2xl font-bold"
-					use:addStepAnimation={[
+					use:addSteps={[
 						{
-							step: '4',
+							steps: '4',
 							classes: 'text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-800'
 						}
 					]}

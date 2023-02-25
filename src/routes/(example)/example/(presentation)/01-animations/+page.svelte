@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { addStepAnimation } from '$lib/addstepanimation';
+	import { addSteps } from '$lib/addsteps';
 </script>
 
 <div class="flex h-screen w-screen content-center items-center justify-center">
-	<div class="animate__animated step-0:animate__fadeInLeft" use:addStepAnimation>
+	<div class="animate__animated step-0:animate__fadeInLeft" use:addSteps>
 		<img src="/14.svg" alt="figure-1" class="m-auto h-2/3" />
 	</div>
-	<div class="animate__animated step-0:animate__fadeInUp" use:addStepAnimation>
+	<div class="animate__animated step-0:animate__fadeInUp" use:addSteps>
 		<p class="font-sans text-sm font-bold uppercase tracking-widest text-blue-600">Feature</p>
 		<h1 class="mt-8 text-left font-sans text-5xl font-black tracking-tighter text-neutral-900">
 			Create impactful presentations with animations.

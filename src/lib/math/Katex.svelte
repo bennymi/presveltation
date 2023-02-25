@@ -1,10 +1,14 @@
+<!-- Source: https://svelte.dev/repl/49ff6c089825418888cf804d9dde77bc?version=3 -->
 <script lang="ts">
 	import katex from 'katex';
+
 	export let math: string;
 	export let displayMode: boolean = false;
 
 	const options = {
 		displayMode: displayMode,
+		trust: true, // so we can add htmlClass
+		strict: false,
 		throwOnError: false
 	};
 
