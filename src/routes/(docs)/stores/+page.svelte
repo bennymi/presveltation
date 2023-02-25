@@ -22,7 +22,7 @@
 
 <CodeBlock code={storesEx} language="svelte" />
 
-<a id="slides"><h2>Slides</h2></a>
+<h2 id="slides">Slides</h2>
 
 <p>
 	The <code>slides</code> store allows you to access the slides you define in the root layout file,
@@ -33,7 +33,7 @@
 
 <CodeBlock code={slidesEx} language="svelte" />
 
-<a id="curr-slide"><h2>Current Slide</h2></a>
+<h2 id="curr-slide">Current Slide</h2>
 
 <p>
 	<code>currSlide</code> holds the index (a number value) representing the current active slide. You
@@ -44,7 +44,7 @@
 
 <CodeBlock code={currSlideEx} language="svelte" />
 
-<a id="max-steps"><h2>Max Steps</h2></a>
+<h2 id="max-steps">Max Steps</h2>
 
 <p>
 	<code>maxSteps</code> can be used to set the number of steps you want to have per slide in the
@@ -55,7 +55,7 @@
 
 <CodeBlock code={maxStepsEx} language="svelte" />
 
-<a id="curr-step"><h2>Current Step</h2></a>
+<h2 id="curr-step">Current Step</h2>
 
 <p>
 	The <code>currStep</code> store can be used to check which step you are on in a slide. This store

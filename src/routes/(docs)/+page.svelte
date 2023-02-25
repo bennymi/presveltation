@@ -54,7 +54,7 @@
 	headerText="tailwind.config.cjs"
 />
 
-<a id="project-structure"><h2>Project Structure</h2></a>
+<h2 id="project-structure">Project Structure</h2>
 
 <p>
 	The structure of the project should look something like shown below (you can find an example in
@@ -70,7 +70,7 @@
 
 <!-- <br /> -->
 
-<a id="slides-folder"><h2>Slides Folder</h2></a>
+<h2 id="slides-folder">Slides Folder</h2>
 
 <p>
 	Each slide is created by creating a new page. To create new slides we first need to set up the <code
@@ -96,7 +96,7 @@
 
 <CodeBlock code={slidesLayout} language="svelte" headerText="(slides)/+layout.svelte" />
 
-<a id="notes-folder"><h2>Notes Folder</h2></a>
+<h2 id="notes-folder">Notes Folder</h2>
 
 <p>
 	To create a note for a slide that will then be shown in the speaker's view, create a sub-folder in

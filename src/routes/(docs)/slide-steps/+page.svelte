@@ -5,7 +5,7 @@
 
 <h1>Add Slide Step Classes</h1>
 
-<a id="add-step-animation"><h2>Add Step Animations</h2></a>
+<h2 id="add-step-animation">Add Step Animations</h2>
 
 <p>
 	You can add classes to elements at specific steps in your presentation. To do this import the <code
@@ -49,7 +49,7 @@
 
 <CodeBlock code={addStepsEx} language="svelte" />
 
-<a id="animate-css"><h2>Animate.css</h2></a>
+<h2 id="animate-css">Animate.css</h2>
 
 <CodeBlock code="pnpm add -D animate.css" language="shell" showLineNumbers={false} />
 
@@ -73,7 +73,7 @@
 
 <CodeBlock code={animateCssEx} language="svelte" highlightLines="1,5-6" focusType="highlight" />
 
-<a id="tailwind-css"><h2>Tailwind CSS</h2></a>
+<h2 id="tailwind-css">Tailwind CSS</h2>
 
 <p>
 	You can also add Tailwind classes stepwise. To do this you have to use method 2, otherwise

@@ -51,32 +51,31 @@
 	<div
 		class="flex items-center justify-center gap-2 text-lg font-semibold leading-relaxed text-gray-300 hover:text-gray-100"
 	>
-		<button class="flex justify-center md:hidden" on:click={handleClick}>
-			<iconify-icon
-				icon="material-symbols:menu-rounded"
-				class="text-2xl"
-				aria-label="menu"
-				aria-details="open menu to see available pages"
-			/>
+		<button
+			class="flex justify-center md:hidden"
+			on:click={handleClick}
+			aria-label="menu"
+			aria-pressed={showSidebar}
+			aria-details="open menu to see available pages"
+		>
+			<iconify-icon icon="material-symbols:menu-rounded" class="text-2xl" />
 		</button>
 		<a href="/" class="text-2xl font-bold text-white md:text-3xl">SvelteShow</a>
 	</div>
 	<div class="flex items-center justify-center gap-5">
-		<button class="inline-flex text-gray-300 hover:text-gray-100" on:click={themeSwitch}>
+		<button
+			class="inline-flex text-gray-300 hover:text-gray-100"
+			on:click={themeSwitch}
+			aria-label="dark-theme"
+			aria-pressed={darkTheme}
+		>
 			<span class="sr-only">Dark / Light mode toggle</span>
 			{#if darkTheme}
-				<iconify-icon
-					icon="line-md:moon-rising-filled-loop"
-					class="text-xl md:text-2xl"
-					aria-label="theme-switcher"
-					aria-details="currently showing dark-theme"
-				/>
+				<iconify-icon icon="line-md:moon-rising-filled-loop" class="text-xl md:text-2xl" />
 			{:else}
 				<iconify-icon
 					icon="line-md:moon-filled-to-sunny-filled-loop-transition"
 					class="text-xl md:text-2xl"
-					aria-label="theme-switcher"
-					aria-details="currently showing light-theme"
 				/>
 			{/if}
 		</button>
@@ -86,12 +85,8 @@
 			href="/example/00-intro"
 			class="flex items-center justify-center gap-1 text-lg font-semibold leading-relaxed text-gray-300 hover:text-gray-100"
 		>
-			<iconify-icon
-				icon="mdi:presentation-play"
-				class="text-xl md:text-2xl"
-				aria-label="demo"
-				aria-details="open demo presentation in a new tab"
-			/>
+			<span class="sr-only">link to demo presentation</span>
+			<iconify-icon icon="mdi:presentation-play" class="text-xl md:text-2xl" />
 			<span class="hidden md:block"> Demo </span>
 		</a>
 
@@ -101,12 +96,8 @@
 			rel="noopener noreferrer"
 			class="flex items-center justify-center gap-1 text-lg font-semibold leading-relaxed text-gray-300 hover:text-gray-100"
 		>
-			<iconify-icon
-				icon="mdi:github"
-				class="text-xl md:text-2xl"
-				aria-label="github link"
-				aria-details="open github repo in a new tab"
-			/>
+			<span class="sr-only">link to github repository</span>
+			<iconify-icon icon="mdi:github" class="text-xl md:text-2xl" />
 			<span class="hidden md:block">GitHub</span>
 		</a>
 	</div>

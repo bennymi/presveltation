@@ -6,7 +6,7 @@
 
 <h1>Math</h1>
 
-<a id="katex"><h2>Katex</h2></a>
+<h2 id="katex">Katex</h2>
 
 <p>
 	You can of course use any library you want to implement equations, but for our example we are
@@ -39,7 +39,7 @@
 
 <CodeBlock code={katexEx} language="svelte" />
 
-<a id="math-example"><h2>Example</h2></a>
+<h2 id="math-example">Example</h2>
 
 <p>
 	To highlight parts of your equation you can use the <code>{'\\htmlClass{}{}'}</code> function. In

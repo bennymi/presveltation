@@ -7,7 +7,7 @@ h1 {
 }
 
 h2 {
-    @apply pb-4 pt-8 text-2xl font-bold text-gray-900 dark:text-white;
+    @apply pb-4 pt-14 text-2xl font-bold text-gray-900 dark:text-white;
 }
 
 p, li {

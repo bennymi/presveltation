@@ -17,7 +17,7 @@
 
 <h1>Dynamic Code Blocks</h1>
 
-<a id="svhighlight"><h2>SvHighlight</h2></a>
+<h2 id="svhighlight">SvHighlight</h2>
 
 <p>
 	For including code blocks into your slides you can use the
@@ -30,7 +30,7 @@
 
 <CodeBlock code="pnpm add -D svhighlight" language="shell" showLineNumbers={false} />
 
-<a id="focus-blocks"><h2>Add Step Focus Blocks</h2></a>
+<h2 id="focus-blocks">Add Step Focus Blocks</h2>
 
 <p>
 	You might want to highlight different sections of your code at different points in your

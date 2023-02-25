@@ -22,7 +22,7 @@ specifiers:
   svelte: ^3.54.0
   svelte-check: ^2.9.2
   svelte-local-storage-store: ^0.4.0
-  svhighlight: ^0.6.5
+  svhighlight: ^0.7.1
   tailwindcss: ^3.2.4
   tslib: ^2.4.1
   typescript: ^4.9.3
@@ -53,7 +53,7 @@ devDependencies:
   scroll-into-view-if-needed: 3.0.4
   svelte: 3.55.1
   svelte-check: 2.10.3_pehl75e5jsy22vp33udjja4soi
-  svhighlight: 0.6.5
+  svhighlight: 0.7.1
   tailwindcss: 3.2.4_postcss@8.4.21
   tslib: 2.4.1
   typescript: 4.9.4
@@ -2093,8 +2093,8 @@ packages:
     resolution: {integrity: sha512-S+87/P0Ve67HxKkEV23iCdAh/SX1xiSfjF1HOglno/YTbSTW7RniICMCofWGdJJbdjw3S+0PfFb1JtGfTXE0oQ==}
     engines: {node: '>= 8'}
 
-  /svhighlight/0.6.5:
-    resolution: {integrity: sha512-E3pxWMBAn4iQaqaGU/4m9F5wxfET09874iqkGZ7Ls+Q0CBWzkoLMPlNO/inifbOcnatOgIkPqgvv7EAEcMzJuQ==}
+  /svhighlight/0.7.1:
+    resolution: {integrity: sha512-I2Pwkcl1Nw5cRrzdIua7OgwKr+tx5wv1P1sN7jz+4zO8dkUIfvZzF5hUoJJPx2kPyyS+27h6k4suNzNLLGw4+g==}
     dependencies:
       highlight.js: 11.7.0
       scroll-into-view-if-needed: 3.0.4
