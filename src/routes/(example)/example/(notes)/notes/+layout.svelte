@@ -4,4 +4,5 @@
 
 <div class="h-screen min-h-screen">
 	<Speaker />
+	<slot />
 </div>

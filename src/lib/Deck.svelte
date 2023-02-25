@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { slides, currSlide, currStep, maxSteps } from '$lib/stores';
+	import { slides, currSlide, currStep, maxSteps } from './stores';
 	import { page } from '$app/stores';
 	import { onMount, onDestroy } from 'svelte';
 
 	import Overview from './menu/Overview.svelte';
+
+	export let notesURL: string = '/notes';
 
 	let openOverview: boolean = false;
 	let speakerWindow: WindowProxy;
@@ -32,7 +34,7 @@
 	let features = 'menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes';
 	const openSpeakerView = () => {
 		// let speakerWindow = window.open($slides[currSlide].route, 'Notes', features);
-		let speakerWindow = window.open('/example/notes', 'Notes', features);
+		let speakerWindow = window.open(notesURL, 'Notes', features);
 		console.log(speakerWindow);
 	};
 

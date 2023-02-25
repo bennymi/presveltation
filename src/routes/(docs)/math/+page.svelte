@@ -26,12 +26,12 @@
 
 <p>
 	You can then import the <code>Katex</code> component to which you can pass your math string.
-	There's different ways to create the string, as described
+	There's
 	<a
 		href="https://katex.org/docs/api.html"
 		class="font-bold underline"
 		target="_blank"
-		rel="noopener noreferrer">here</a
+		rel="noopener noreferrer">different ways to create the string</a
 	>. In our case we are escaping the backslash, so the <code>\</code> is used twice.
 </p>
 

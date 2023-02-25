@@ -16,6 +16,6 @@
 	];
 </script>
 
-<Deck>
+<Deck notesURL="/examples/notes">
 	<slot />
 </Deck>

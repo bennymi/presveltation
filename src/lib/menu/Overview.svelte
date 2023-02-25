@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 
-	import { slides } from '$lib/stores';
+	import { slides } from '../stores';
 
 	const dispatch = createEventDispatcher();
 

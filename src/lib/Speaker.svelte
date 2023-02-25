@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { slides, currSlide, currStep, maxSteps } from '$lib/stores';
+	import { slides, currSlide, currStep } from './stores';
 	import Timer from './Timer.svelte';
 
-	$: console.log('Inside Notes: currStep =', $currStep);
 	$: slide = $slides[$currSlide];
 	$: notesRoute = slide.notes ? slide.notesRoute ?? `${slide.route}/notes` : '';
-	$: console.log('Inside Notes: slide =', slide);
+	// $: console.log('Inside Notes: currStep =', $currStep);
+	// $: console.log('Inside Notes: slide =', slide);
 </script>
 
 <div class="fixed top-0 left-0 z-20 m-4">

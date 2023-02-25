@@ -24,8 +24,16 @@
 		rel="noopener noreferrer"
 		href="https://revealjs.com/"
 		class="font-bold underline">reveal.js</a
-	>
+	>.
 </p>
+
+<br />
+
+<CodeBlock code="npm i svelte-show --save-dev" language="shell" showLineNumbers={false} />
+
+<br />
+
+<p>or...</p>
 
 <br />
 
@@ -89,7 +97,9 @@
 	is the name of the slide that will appear in the table of contents menu that you acn access by pressing
 	the <kbd>m</kbd> key ("m" stands for "Menu"). <code>notes</code> is an optional
 	<code>boolean</code>
-	value that specifies, whether the slide has a <code>notes/+page.svelte</code> file.
+	value that specifies, whether the slide has a <code>notes/+page.svelte</code> file. You also need
+	to pass the <code>notesURL</code> to <code>Deck</code>, which by default is in the
+	<code>/notes</code> route.
 </p>
 
 <br />

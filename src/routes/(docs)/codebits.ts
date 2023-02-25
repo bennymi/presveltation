@@ -39,13 +39,13 @@ export let slidesLayout = `<script lang="ts">
     import { Deck, slides } from 'svelte-show';
 
     $slides = [
-        { route: '/00-intro', title: 'Introduction', notes: true },
+        { route: '/00-intro', title: 'Introduction', notes: false },
         { route: '/01-motivation', title: 'Motivation', notes: true },
-        { route: '/02-related works', title: 'Related Works', notes: true }
+        { route: '/02-related-works', title: 'Related Works', notes: true }
     ]
 </script>
 
-<Deck>
+<Deck notesURL="/notes">
     <slot />
 </Deck>`;
 
