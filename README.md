@@ -2,6 +2,16 @@
 
 Create fun, interactive, and dynamic presentations and slideshows with SvelteKit and Tailwind CSS.
 
+```bash
+npm install presveltation --save-dev
+```
+
+or
+
+```bash
+pnpm add -D presveltation
+```
+
 ## Links
 - [Documentation](https://presveltation.vercel.app/)
 - [Github](https://github.com/bennymi/presveltation)
