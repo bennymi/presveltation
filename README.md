@@ -3,8 +3,8 @@
 Create fun, interactive, and dynamic presentations and slideshows with SvelteKit and Tailwind CSS.
 
 ## Links
-- [PreSveltation Documentation](https://presveltation.vercel.app/)
-- [PreSveltation Github](https://github.com/bennymi/presveltation)
+- [Documentation](https://presveltation.vercel.app/)
+- [Github](https://github.com/bennymi/presveltation)
 
 ## Features
 
