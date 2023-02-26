@@ -1,4 +1,5 @@
 <script>
+	import './intro.css';
 	import { addSteps } from '$lib/addsteps';
 </script>
 
@@ -28,7 +29,7 @@
 
 	<nav class="mx-auto mt-8 flex space-x-4">
 		<a
-			href="https://github.com/bennymi/svelte-show"
+			href="https://github.com/bennymi/presveltation"
 			class="flex items-center justify-center gap-1 font-sans text-lg font-semibold leading-relaxed text-blue-500 hover:text-blue-600"
 		>
 			<iconify-icon icon="mdi:github" class="text-2xl" />
@@ -62,9 +63,3 @@
 		(These demo slides are currently not mobile friendly)
 	</div>
 </div>
-
-<style>
-	kbd {
-		@apply rounded-lg bg-blue-600 px-2 py-1 font-mono font-bold text-white;
-	}
-</style>

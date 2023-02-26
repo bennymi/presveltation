@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+kbd {
+    @apply rounded-lg bg-blue-600 px-2 py-1 font-mono font-bold text-white;
+}

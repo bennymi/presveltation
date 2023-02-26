@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import 'animate.css';
 	import 'iconify-icon';
 	import '@lottiefiles/lottie-player';
