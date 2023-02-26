@@ -74,9 +74,9 @@
 				/>
 			{/if}
 		</button>
+		<!-- target="_blank"
+		rel="noopener noreferrer" -->
 		<a
-			target="_blank"
-			rel="noopener noreferrer"
 			href="/example/00-intro"
 			class="flex items-center justify-center gap-1 text-lg font-semibold leading-relaxed text-gray-300 hover:text-gray-100"
 		>
