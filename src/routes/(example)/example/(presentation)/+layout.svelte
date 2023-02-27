@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+
 	import 'animate.css';
 	import 'iconify-icon';
-	import '@lottiefiles/lottie-player';
 
 	import { slides } from '$lib/stores';
 	import Deck from '$lib/Deck.svelte';
@@ -14,6 +16,12 @@
 		{ route: '/example/04-code', title: 'Code Blocks' },
 		{ route: '/example/05-math', title: 'Math' }
 	];
+
+	onMount(async () => {
+		if (browser) {
+			await import('@lottiefiles/lottie-player');
+		}
+	});
 </script>
 
 <Deck notesURL="/example/notes">
