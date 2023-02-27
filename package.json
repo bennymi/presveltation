@@ -1,6 +1,6 @@
 {
 	"name": "presveltation",
-	"version": "0.5.0",
+	"version": "0.5.5",
 	"description": "PreSveltation: Create interactive and dynamic presentations and slideshows with Svelte / SvelteKit and Tailwind CSS.",
 	"author": "Benedikt Mielke",
 	"repository": {
