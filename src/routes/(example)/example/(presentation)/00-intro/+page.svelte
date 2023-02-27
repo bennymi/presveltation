@@ -37,6 +37,7 @@
 		</a>
 		<a
 			href={'/'}
+			data-sveltekit-preload-data="tap"
 			class="flex items-center justify-center gap-1 font-sans text-lg font-semibold leading-relaxed text-gray-300 hover:text-gray-400"
 		>
 			<iconify-icon icon="mdi:book-open-page-variant" class="text-2xl" />
