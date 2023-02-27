@@ -22,13 +22,9 @@ pnpm add -D presveltation
 - ✅ slide overview / table of contents menu
 - ✅ every page is a slide
 - ✅ ⬅️➡️ arrow keys can be used to move through slides
-- ✅ add transitions (with animate.css)
+- ✅ add transitions (with Animate.css)
 - ✅ add Tailwind classes stepwise
 - ✅ add code and stepwise highlight lines (with SvHighlight)
 - ✅ easily apply steps per slide with **maxStep** and **currStep** stores
-
-## TODOs (Coming Soon)
-- more examples:
-  - ❌ maps
-  - ❌ tables
+- ✅ add formulas (with Katex)
 

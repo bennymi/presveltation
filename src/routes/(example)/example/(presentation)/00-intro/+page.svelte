@@ -12,7 +12,7 @@
 	<h1
 		class="max-w-5/6 mx-10 my-2 text-center font-sans text-5xl font-black leading-none tracking-tighter text-white"
 	>
-		Welcome to <span class="text-[#fff6a9] text-shadow-neon">SvelteShow</span>
+		Welcome to <span class="text-[#fff6a9] text-shadow-neon">PreSveltation</span>
 	</h1>
 	<div
 		class="max-w-4/6 mx-auto mt-8 text-center font-sans text-2xl font-normal leading-relaxed text-gray-400"
