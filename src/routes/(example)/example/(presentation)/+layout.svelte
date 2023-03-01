@@ -14,7 +14,8 @@
 		{ route: '/example/02-lottie', title: 'Lottie-Player' },
 		{ route: '/example/03-animate-tailwind', title: 'Tailwind Transitions' },
 		{ route: '/example/04-code', title: 'Code Blocks' },
-		{ route: '/example/05-math', title: 'Math' }
+		{ route: '/example/05-math', title: 'Math' },
+		{ route: '/example/final', title: 'Final Slide' }
 	];
 
 	onMount(async () => {
