@@ -7,7 +7,7 @@
 </script>
 
 
-# Markdown!
+# We even got Markdown (thanks to [MDSveX](https://mdsvex.pngwn.io/))!
 
 <div use:addSteps={[{ steps: '1', classes: classP }]}>
 
