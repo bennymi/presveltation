@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { addSteps } from '$lib/addsteps';
-	import Test from './Test.md'
 
 	let classP = 'text-blue-400';
 
