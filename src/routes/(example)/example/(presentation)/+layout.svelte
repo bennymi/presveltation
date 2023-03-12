@@ -15,6 +15,7 @@
 		{ route: '/example/03-animate-tailwind', title: 'Tailwind Transitions' },
 		{ route: '/example/04-code', title: 'Code Blocks' },
 		{ route: '/example/05-math', title: 'Math' },
+		{ route: '/example/06-prose', title: 'Markdown' },
 		{ route: '/example/final', title: 'Final Slide' }
 	];
 
